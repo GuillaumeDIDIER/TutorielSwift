@@ -33,7 +33,7 @@ méthode marche à tous les niveaux).
 \subsection{Risque d’évolution}
 Ce cours est susceptible d'évoluer rapidement du fait que Swift n'est pas encore stabilisé.
 
-Le site https://github.com/ksm/SwiftInFlux/blob/master/README.md répertorie les
+Le site \url{https://github.com/ksm/SwiftInFlux/blob/master/README.md}  répertorie les
 évolutions de Swift, y compris celles qui ne sont qu’envisagées.
 \section{Quelques notions sur le fonctionnement d'un ordinateur}
 \subsection{Qu'est-ce qu'un ordinateur ?}
@@ -72,6 +72,22 @@ La première idée que l'on a eu c'est de mettre des mots un peu plus clair pour
 instruction, et d'utiliser un programme, l'\emph{assembleur}, pour effectuer la traduction. C'était
 mieux, mais pour écrire du texte a l'écran et faire de jolis boutons, c'était encore trop
 difficile.
+\begin{listing}[H]
+\caption{Exemple d'assembleur x86\_64, tiré de Qt}
+\begin{minted}[linenos=true]{asm}
+q_atomic_increment:
+	lock
+	incl (%rdi)
+	setne %al
+	ret
+	.size q_atomic_increment,.-q_atomic_increment
+
+	.globl q_atomic_decrement
+        .type q_atomic_decrement,@function
+        .section .text, "ax"
+        .align 16
+\end{minted}
+\end{listing}
 
 C'est pour cela que l'on a inventé d'autres langages de programmation, de plus en plus
 élaborés, qui sont ensuite traduits par un autre programme en code binaire.
