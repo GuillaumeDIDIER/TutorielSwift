@@ -72,7 +72,7 @@ La première idée que l'on a eu c'est de mettre des mots un peu plus clair pour
 instruction, et d'utiliser un programme, l'\emph{assembleur}, pour effectuer la traduction. C'était
 mieux, mais pour écrire du texte a l'écran et faire de jolis boutons, c'était encore trop
 difficile.
-\begin{listing}[H]
+\begin{listing}[h]
 \caption{Exemple d'assembleur x86\_64, tiré de Qt}
 \begin{minted}[linenos=true]{asm}
 q_atomic_increment:
@@ -124,8 +124,10 @@ Le deuxième outil est celui qui permet d'éditer le code (les plus malins m'aur
 Comme le code s'écrit dans des fichiers textes, un simple éditeur de texte, comme
 TextEdit, pourrait suffire. Cependant les programmeurs utilisent en général des éditeurs
 dédiés qui possèdent des fonctionnalités supplémentaires, comme la coloration du code.
-% (cf Illustration en page suivante, il s’agit de l’éditeur TextWrangler)
-
+\begin{figure}[H]
+\includegraphics[scale=0.5]{\TSwiftRoot/P1/CH1/img/TextWrangler}
+\caption{TextWrangler, un editeur de text gratuit pour Mac, d'excellente facture}
+\end{figure}
 Enfin un troisième outil est un debugger, qui permet de contrôler l'exécution pas à pas du
 programme, pour comprendre pourquoi ça ne marche pas. (En théorie, si l'on ne faisait
 pas d'erreur on pourrait s'en passer, mais << \emph{errare humanum est.} >> )
