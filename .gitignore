@@ -12,4 +12,5 @@
 *.idx
 *.ind
 *.ilg
-
+*.pyg
+*.out

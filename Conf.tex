@@ -2,12 +2,20 @@
 \documentclass[11pt,a4paper,oneside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
-\usepackage[T1]{fontenc}
+\usepackage{fontspec} % Required by french.
+%\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[hidelinks]{hyperref} % colorlinks=true
+%\usepackage{tikz}
 
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\usepackage{minted}
+\usemintedstyle{xcode}
 
 \author{Guillaume DIDIER}
 \newcommand{\TSwiftTitle}[0]{Apprendre à programmer sur OS X en Swift avec Xcode}
