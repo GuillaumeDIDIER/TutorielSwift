@@ -1,0 +1,36 @@
+\chapter{Les variables, les Constantes, un peu d'arithmétique}
+Comme je l'ai dit, un ordinateur manipule des données. Il faut donc pouvoir les stocker
+quelque part.
+\section{La mémoire d'un ordinateur, qu'est-ce qu'une \emph{variable} ?}
+L'unité de base de la mémoire d'un ordinateur est \emph{le} bit (pas la !), qui possède deux états,
+1 ou 0, à comparer aux 10 chiffres de notre système décimal.
+
+Pour stocker des nombres
+plus grand, il faut mettre plusieurs bits cote à cote, comme nous mettons plusieurs chiffres
+pour écrire 1999, par exemple. Dans ce cas, le dernier chiffre correspond aux unités, l'avant dernier à
+des paquets de 2, l'antépénultième 4, ... 8, 16, 32, 64... .
+
+Les bits sont regroupés en mots
+appelés Bytes en Anglais, d'une taille fixée par l'architecture du processeur. En Français
+on traduit improprement ce terme par octet, qui désigne un mot de 8 bit qui peut prendre
+\begin{math}2*2*2...*2\end{math} huit fois, noté \begin{math} 2^{8} \end{math}. Soit 256 valeurs (retenez ce nombre, on le retrouvera par la suite.)
+Toute la mémoire est découpé en byte. On manipule forcément un ensemble de byte. (1,
+2, 4, ...)
+L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. % Fixme Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cetv excellent tutoriel \url{}
+
+\emph{Mais il n'y a que des nombres, comment on stocke du texte ?!}
+Désolé, mais pour l'ordinateur, tout est un nombre, tout dépend de la façon dont on
+l'interprète, on y viendra un peu plus tard.
+\section{Demander poliment de la place pour stocker un nombre}
+
+\section{Variables et Constantes}
+On peut en fait imposer que la valeur d'une variable ne change plus après sa création :
+c'est alors une constante. Elle se déclare comme une variable excepté que l'on utilise le
+mot clé let, et que sa valeur doit être fixé à la déclaration.
+Du fait de cette déclaration, le compilateur peut d'une part vous prémunir d'une erreur, et
+d'autre part réaliser des optimisations supplémentaires. Apple vous recommande d'utiliser
+des constantes en priorité, et de ne déclarer comme variable que ce qui doit l'être.
+\section{Une vraie calculatrice !}
+Je l'ai déjà dit, mais un ordinateur est une véritable calculatrice, et pour vous prouver que
+je ne vous mène pas en bateau, nous allons nous en servir :
+\section{Première approche des fonctions}
