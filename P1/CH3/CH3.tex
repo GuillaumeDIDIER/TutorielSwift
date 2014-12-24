@@ -16,21 +16,89 @@ on traduit improprement ce terme par octet, qui désigne un mot de 8 bit qui peu
 \begin{math}2*2*2...*2\end{math} huit fois, noté \begin{math} 2^{8} \end{math}. Soit 256 valeurs (retenez ce nombre, on le retrouvera par la suite.)
 Toute la mémoire est découpé en byte. On manipule forcément un ensemble de byte. (1,
 2, 4, ...)
-L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. % Fixme Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cetv excellent tutoriel \url{}
+L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cetv excellent tutoriel \url{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}
 
 \emph{Mais il n'y a que des nombres, comment on stocke du texte ?!}
 Désolé, mais pour l'ordinateur, tout est un nombre, tout dépend de la façon dont on
 l'interprète, on y viendra un peu plus tard.
 \section{Demander poliment de la place pour stocker un nombre}
+Passons à la pratique !
+\subsection{Déclarons l'age du Capitaine}
+\begin{listing}[h]
+\caption{Premier exemple, l'age du Capitaine}
+\begin{minted}[linenos=true]{swift}
+var age_du_capitaine = 42 // ;-)
+\end{minted}
+\end{listing}
+Décortiquons ce qui précède :
+\begin{description}
+\item[var :] Mot \emph{clé} indiquant que l'on veut déclarer une variable.
+\item[age\_du\_capitaine :] Nom de la variable, qui nous permettra d'y accéder de nouveau. \emph{Attention, il ne peut pas y avoir deux variables de même nom}
+\item[= :] Opérateur utilisé pour doner une valeur à une variable.
+\item[42 :] La valeur entière que l'on donne à notre variable.
+\item[// ;-) :] C'est un commentaire. Si vous ne le saviez pas, \emph{relisez le chapitre précédent}.
+\end{description}
+\subsection{Différents types d'entiers}
+Je vous ai parlé de la représentation en mémoire des entiers, donc vous devriez me demander comment Swift détermine le nombres d'octets qui sont attribués à notre entier. La réponse c'est qu'il a attend qu'on  le lui précise, ou il prend une valeur par défaut.
+Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de nombre particulière. Nottament, il existe des variantes non signées, qui ne contienne que des nombres positifs.
 
+\begin{table}[h]
+\begin{longtabu} to \linewidth {|X[,l,m]|X[,l,m]|X[2,r,m]|}
+\hline Taille & Type & Plage de valeur \\ \hline
+\endhead
+Architecture (32 ou 64 bits) & \mintinline{swift}{Int} (par défaut) & 32 bits : UInt32, 64 bits : Int64 \\ \hline
+Architecture (32 ou 64 bits) & \mintinline{swift}{UInt} & 32 bits : \mintinline{swift}{UInt32}, 64 bits : \mintinline{swift}{UInt64} \\ \hline
+1 octet soit 8 bits & \mintinline{swift}{Int8} & -127 à 128 \\ \hline
+1 octet soit 8 bits & \mintinline{swift}{UInt8} & 0 à 255 \\ \hline
+2 octets soit 16 bits & \mintinline{swift}{Int16} & -32767 à 32768 \\ \hline
+2 octets soit 16 bits & \mintinline{swift}{UInt16} & 0 à 65535 \\ \hline
+4 octets soit 32 bits & \mintinline{swift}{Int32} & -2147483647 à 2147483648 \\ \hline
+4 octets soit 32 bits & \mintinline{swift}{UInt32} & 0 à 4294967295 \\ \hline
+8 octets soit 64 bits & \mintinline{swift}{Int64} & -9223372036854775807 à 9223372036854775808 \\ \hline
+8 octets soit 64 bits & \mintinline{swift}{UInt64} & 0 à 18446744073709551615 \\ \hline
+\end{longtabu}
+\caption{Les différents Types d'entiers}
+\end{table}
+Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet (soit 8 bit) et que ce doit être un entier non signé (positif) on utilise :
+
+\begin{listing}[h]
+\caption{Un type plus approprié pour l'age du capitaine}
+\begin{minted}[linenos]{swift}
+var age_du_pitaine : UInt8  = 42 
+\end{minted}
+\end{listing}
+Le caractère \verb":" permet d'introduire une \emph{annotation de type}, tandis que \verb"UInt8" correspond au type d'entier choisi.
+
+Remarquez que Swift est ici plutôt agréable à utiliser puisqu'il ne nous oblige pas à lui précisé le type lorsque la réponse est évidente, mais nous permet d'être plus précis si on en a besoin.
+\subsection{La structure Générale}
+\subsection{Les nombres à virgule flottante}
+\subsection{Changer la valeur d'une variable}
+\subsection{Récapitulatif des types de nombres}
 \section{Variables et Constantes}
 On peut en fait imposer que la valeur d'une variable ne change plus après sa création :
 c'est alors une constante. Elle se déclare comme une variable excepté que l'on utilise le
-mot clé let, et que sa valeur doit être fixé à la déclaration.
+mot clé \mintinline{swift}{let}, et que sa valeur doit être fixé à la déclaration, dans ce cas toute tentative de changement de la valeur résulte en une erreur à la compilation.
+\begin{listing}[h]
+\begin{minted}[linenos=true]{swift}
+let pi = 3.141592
+// Que personne n'essaye de changer pi !
+pi = 3.1416 // Erreur !
+\end{minted}
+\end{listing}
 Du fait de cette déclaration, le compilateur peut d'une part vous prémunir d'une erreur, et
 d'autre part réaliser des optimisations supplémentaires. Apple vous recommande d'utiliser
 des constantes en priorité, et de ne déclarer comme variable que ce qui doit l'être.
 \section{Une vraie calculatrice !}
 Je l'ai déjà dit, mais un ordinateur est une véritable calculatrice, et pour vous prouver que
 je ne vous mène pas en bateau, nous allons nous en servir :
+\subsection{Additionnons deux nombres}
+\subsection{Soustraction et multiplication}
+\subsection{Division et modulo}
+\subsection{Opérateurs augmentés}
+\subsection{Incrémenter et Décrémenter}
+
 \section{Première approche des fonctions}
+Vous vous souvenez de la ligne affichant du texte, au chapitre 2. Je vais ici vous l'expliquer un peu plus en détail. % Fixme, récupérer une partie des explications du chapitre sur les fonctions.
+\subsection{Une fonction}
+
+\subsection{Les Fonctions mathématiques}
