@@ -76,13 +76,13 @@ difficile.
 \caption{Exemple d'assembleur x86\_64, tiré de Qt}
 \begin{minted}[linenos=true]{asm}
 q_atomic_increment:
-	lock
-	incl (%rdi)
-	setne %al
-	ret
-	.size q_atomic_increment,.-q_atomic_increment
+    lock
+    incl (%rdi)
+    setne %al
+    ret
+    .size q_atomic_increment,.-q_atomic_increment
 
-	.globl q_atomic_decrement
+    .globl q_atomic_decrement
         .type q_atomic_decrement,@function
         .section .text, "ax"
         .align 16
@@ -125,10 +125,12 @@ Le deuxième outil est celui qui permet d'éditer le code (les plus malins m'aur
 Comme le code s'écrit dans des fichiers textes, un simple éditeur de texte, comme
 TextEdit, pourrait suffire. Cependant les programmeurs utilisent en général des éditeurs
 dédiés qui possèdent des fonctionnalités supplémentaires, comme la coloration du code.
-\begin{figure}[H]
+\begin{figure}[h]
+\centering
 \includegraphics[scale=0.4]{\TSwiftRoot/P1/CH1/img/TextWrangler}
 \caption{TextWrangler, un éditeur de text gratuit pour Mac, d'excellente facture}
 \end{figure}
+
 Enfin un troisième outil est un debugger, qui permet de contrôler l'exécution pas à pas du
 programme, pour comprendre pourquoi ça ne marche pas. (En théorie, si l'on ne faisait
 pas d'erreur on pourrait s'en passer, mais << \emph{errare humanum est.} >> )

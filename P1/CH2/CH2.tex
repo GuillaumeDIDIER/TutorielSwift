@@ -12,13 +12,16 @@ soumettre des applications sur les App Store, et pouvoir signer son code, pour l
 distribution via internet)
 Une fois les quelques Giga-octets de l'application téléchargés (grosse pause café), vous
 verrez l'application apparaitre dans votre dossier application.
-\begin{figure}[H]
+\begin{figure}[h]
+\centering
 \includegraphics[scale=0.30]{\TSwiftRoot/P1/CH2/img/Launchpad}
 \caption{L'icône de Xcode dans la pile Applications}
 \end{figure}
+
 \section{Premier contact avec Swift, un Playground}
 Ouvrez Xcode. Vous devez voir apparaitre cette fenêtre, à la colonne de droite près.
-\begin{figure}[H]
+\begin{figure}[h]
+\centering
 \includegraphics[scale=0.5]{\TSwiftRoot/P1/CH2/img/XCodeWindow}
 \caption{Fenêtre d'accueil de Xcode}
 \end{figure}
@@ -83,6 +86,7 @@ Comme un court exemple vaut mieux qu’un long discours je vous laisse consulter
 
 \emph{Attention à ceux qui connaissent les commentaires du C, en Swift, les commentaires
 s'imbriquent les un dans les autres.}
+
 \begin{listing}[h]
 \caption{Que de commentaires !}
 \begin{minted}[linenos=true]{swift}
@@ -101,6 +105,7 @@ println("Hello, playground") // Comme ici.
 println(/*Texte ici*/"Bonjour, bac à sable") // Parce qu'en Français c'est mieux.
 \end{minted}
 \end{listing}
+Remarquez que Xcode colore les commentaires d'une couleur particulière (chez moi, le vert).
 \section{Un quasi-interpréteur : La REPL Swift}
 Le playground, est un outil très puissant puisqu’il compile et exécute immédiatement
 chacune de vos instructions.
