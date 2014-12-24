@@ -14,3 +14,5 @@
 *.ilg
 *.pyg
 *.out
+.minted*
+*.synctex.gz
