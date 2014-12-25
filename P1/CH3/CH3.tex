@@ -1,7 +1,9 @@
-\chapter{Les variables, les Constantes, un peu d'arithmétique}
+\chapter{Les variables, les constantes, un peu d'arithmétique}
 Comme je l'ai dit, un ordinateur manipule des données. Il faut donc pouvoir les stocker
 quelque part.
 \section{La mémoire d'un ordinateur, qu'est-ce qu'une \emph{variable} ?}
+Une \emph{variable}, c'est avant tout un compartiment de la mémoire de l'ordinateur sur lequel on colle un nom, et dans lequel on a le droit de mettre ce que l'on veut, pour pouvoir y accéder ultérieurement.
+
 L'unité de base de la mémoire d'un ordinateur est \emph{le} bit (pas la !), qui possède deux états,
 1 ou 0, à comparer aux 10 chiffres de notre système décimal.
 
@@ -11,12 +13,15 @@ pour écrire 1999, par exemple. Dans ce cas, le dernier chiffre correspond aux u
 des paquets de 2, l'antépénultième 4, ... 8, 16, 32, 64... .
 
 Les bits sont regroupés en mots
-appelés Bytes en Anglais, d'une taille fixée par l'architecture du processeur. En Français
-on traduit improprement ce terme par octet, qui désigne un mot de 8 bit qui peut prendre
+appelés \emph{bytes} en anglais, d'une taille fixée par l'architecture du processeur. En français
+on traduit improprement ce terme par octet, qui désigne un mot/byte de 8 bit qui peut prendre
 \begin{math}2*2*2...*2\end{math} huit fois, noté \begin{math} 2^{8} \end{math}. Soit 256 valeurs (retenez ce nombre, on le retrouvera par la suite.)
-Toute la mémoire est découpé en byte. On manipule forcément un ensemble de byte. (1,
-2, 4, ...)
-L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cetv excellent tutoriel \url{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}
+Toute la mémoire est découpé en bytes. On manipule forcément un ensemble de byte. (1,
+2, 4, ...), et donc toute variable a une taille définie qui est un multiple de l'octet.
+
+L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cet excellent tutoriel :
+
+\url{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}
 
 \emph{Mais il n'y a que des nombres, comment on stocke du texte ?!}
 Désolé, mais pour l'ordinateur, tout est un nombre, tout dépend de la façon dont on
@@ -40,40 +45,79 @@ Décortiquons ce qui précède :
 \end{description}
 \subsection{Différents types d'entiers}
 Je vous ai parlé de la représentation en mémoire des entiers, donc vous devriez me demander comment Swift détermine le nombres d'octets qui sont attribués à notre entier. La réponse c'est qu'il a attend qu'on  le lui précise, ou il prend une valeur par défaut.
-Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de nombre particulière. Nottament, il existe des variantes non signées, qui ne contienne que des nombres positifs.
+Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de nombre particulière. Notamment, il existe des variantes non signées, qui ne contienne que des nombres positifs.
 
-\begin{table}[h]
-\begin{longtabu} to \linewidth {|X[,l,m]|X[,l,m]|X[2,r,m]|}
-\hline Taille & Type & Plage de valeur \\ \hline
+\begin{longtabu} to \linewidth {|X[3,l,m]|X[1.5,l,m]|X[6,r,m]|X[1,r,m]|}
+\hline Taille & Type & Plage de valeur & Précision \\ \hline
 \endhead
-Architecture (32 ou 64 bits) & \mintinline{swift}{Int} (par défaut) & 32 bits : UInt32, 64 bits : Int64 \\ \hline
-Architecture (32 ou 64 bits) & \mintinline{swift}{UInt} & 32 bits : \mintinline{swift}{UInt32}, 64 bits : \mintinline{swift}{UInt64} \\ \hline
-1 octet soit 8 bits & \mintinline{swift}{Int8} & -127 à 128 \\ \hline
-1 octet soit 8 bits & \mintinline{swift}{UInt8} & 0 à 255 \\ \hline
-2 octets soit 16 bits & \mintinline{swift}{Int16} & -32767 à 32768 \\ \hline
-2 octets soit 16 bits & \mintinline{swift}{UInt16} & 0 à 65535 \\ \hline
-4 octets soit 32 bits & \mintinline{swift}{Int32} & -2147483647 à 2147483648 \\ \hline
-4 octets soit 32 bits & \mintinline{swift}{UInt32} & 0 à 4294967295 \\ \hline
-8 octets soit 64 bits & \mintinline{swift}{Int64} & -9223372036854775807 à 9223372036854775808 \\ \hline
-8 octets soit 64 bits & \mintinline{swift}{UInt64} & 0 à 18446744073709551615 \\ \hline
-\end{longtabu}
+\input{\TSwiftRoot/Reference/Types/Integer}
 \caption{Les différents Types d'entiers}
-\end{table}
+\end{longtabu}
+
+Attention, n'essayez pas de mélanger des types différents ou le compilateur vous fera amèrement regretter. On discutera de ce problème un peu plus en détail dans la quatrième section.
+
 Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet (soit 8 bit) et que ce doit être un entier non signé (positif) on utilise :
 
 \begin{listing}[h]
 \caption{Un type plus approprié pour l'age du capitaine}
 \begin{minted}[linenos]{swift}
-var age_du_pitaine : UInt8  = 42 
+var age_du_pitaine : UInt8  = 42 // Question ? Quel est l'age maximal du capitaine
 \end{minted}
 \end{listing}
 Le caractère \verb":" permet d'introduire une \emph{annotation de type}, tandis que \verb"UInt8" correspond au type d'entier choisi.
 
-Remarquez que Swift est ici plutôt agréable à utiliser puisqu'il ne nous oblige pas à lui précisé le type lorsque la réponse est évidente, mais nous permet d'être plus précis si on en a besoin.
-\subsection{La structure Générale}
+Remarquez que Swift est ici plutôt agréable à utiliser puisqu'il ne nous oblige pas à lui préciser le type lorsque la réponse est évidente, mais nous permet d'être plus précis si on en a besoin.
+\subsection{La structure générale}
+La structure générale est la suivante, ou les parties entre crochets peuvent être absente, mais pas toute les deux.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+var <nom de variable> [ : <Type> ] [ = <valeur initiale> ]
+\end{minted}
+\caption{Structure générale d'une déclaration de variable}
+\end{listing}
+\begin{description}
+\item[nom de variable :] Un nom de variable peut être composé de n'importe quel caractère unicode à part les espaces, les flèches et symboles mathématiques et les caractères Unicode invalides ou servant à dessiner des lignes et des boites, soit à peu près tout ce que vous puvez vouloir utiliser. Il ne doit pas commencer par un chiffre.
+\item[Type :] Il peut être omis si une valeur initiale est précisée, permettant à Swift de déduire le Type.
+Le mot clé \mintinline{swift}{typealias} permet de définir un type comme étant la même chose qu'un type déja existant (Les noms de types suivent les même règles que les noms de variable). Exemple \mint{swift}|typealias Age = UInt8|
+\emph{Toute variable possède un type.}
+\item[valeur initiale :] Il est recommandé d'initialiser une variable à sa déclaration, mais ce n'est pas obligatoire, dans ce cas il est indispensable de préciser le type pour que Swift s'y retrouve. Dans ce cas il faut aussi garantir que la variable sera toujours initialisée avant d'y accéder pour la première fois, sinon le programme ne compilera pas.
+\end{description}
+Il est possible de déclarer plusieurs variables en même temps, exemple :
+\mint{swift}|var frères = 5, sœurs = 4 // c'est une famille nombreuse !|
 \subsection{Les nombres à virgule flottante}
+Parlons maintenant des nombres à virgule (ou à points, puisque tel est le séparateur décimal en Angleterre et donc dans le monde des programmeurs).
+Ces nombres ont un défaut, il ne peuvent pas représenter parfaitement tous les nombres décimaux, comme un nombre décimal ne peu pas représenter parfaitement \begin{math} \frac{1}{7} \end{math}, par exemple. Mais en général cette approximation n'est pas un problème.
+Il y deux principaux types de nombres à virgule, ainsi qu'un troisième, moins commun, que je cite par soucis d'exhaustivité :
+\begin{longtabu} to \linewidth {|X[3,l,m]|X[1,l,m]|X[4,r,m]|X[3,r,m]|}
+\hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
+\endhead
+\input{\TSwiftRoot/Reference/Types/Float}
+\caption{Les différents Types de nombres à virgule flottante}
+\end{longtabu}
+
 \subsection{Changer la valeur d'une variable}
+Pour changer la valeur d'une variable il suffit d'utiliser l'opérateur \verb"=".
+\begin{listing}[h]
+\caption{Un type plus approprié pour l'age du capitaine}
+\begin{minted}[linenos]{swift}
+var sens_de_la_vie = 5 // Int
+sens_de_la_vie = 42 // Parce que c'est la seule bonne réponse !
+var six_fois_sept = sens_de_la_vie // ça marche aussi.
+var pi = 3.14 // Double
+pi = 3.141592 // Plus précis !
+\end{minted}
+\end{listing}
+
+\emph{Attention, on ne peut pas changer le type d'une variable après qu'elle est été défini.}
 \subsection{Récapitulatif des types de nombres}
+\begin{longtabu} to \linewidth {|X[2,l,m]|X[1,l,m]|X[4,r,m]|X[2,r,m]|}
+\hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
+\endhead
+\input{\TSwiftRoot/Reference/Types/Integer}
+\input{\TSwiftRoot/Reference/Types/Float}
+\caption{Les différents types de nombres}
+\end{longtabu}
+Notez aussi que les nombres littéraux, que vous tapez n'ont pas de type a priori, et que le type résultant n'est déterminé qu'après comme étant Int ou Double, si le résultat n'est pas entier. Il existe plusieurs notations(décimale, hexadécimale, octale, binaire), mais je ne vous les présente pas ici.
 \section{Variables et Constantes}
 On peut en fait imposer que la valeur d'une variable ne change plus après sa création :
 c'est alors une constante. Elle se déclare comme une variable excepté que l'on utilise le
@@ -85,20 +129,140 @@ let pi = 3.141592
 pi = 3.1416 // Erreur !
 \end{minted}
 \end{listing}
+
 Du fait de cette déclaration, le compilateur peut d'une part vous prémunir d'une erreur, et
 d'autre part réaliser des optimisations supplémentaires. Apple vous recommande d'utiliser
 des constantes en priorité, et de ne déclarer comme variable que ce qui doit l'être.
 \section{Une vraie calculatrice !}
-Je l'ai déjà dit, mais un ordinateur est une véritable calculatrice, et pour vous prouver que
+Je l'ai déjà dit, mais un ordinateur n'est qu'une grosse calculatrice, et pour vous prouver que
 je ne vous mène pas en bateau, nous allons nous en servir :
 \subsection{Additionnons deux nombres}
-\subsection{Soustraction et multiplication}
-\subsection{Division et modulo}
-\subsection{Opérateurs augmentés}
-\subsection{Incrémenter et Décrémenter}
+Pour additionner deux nombres, on utilise l'opérateur plus, comme au primaire.
+\begin{listing}
+\begin{minted}[linenos]{swift}
+let nombre1 = 64
+let nombre2 = 36
+let résultat = nombre1 + nombre2
+// On initialise la constante résultat avec le résultat de l'addition des deux nombres.
+let flottant = 1.5
+let entier = 5
+let resultat2 = flottant + Double(entier) // Conversion !
+let pi = 3 + 0.141592 
+// Ceci ne marche que parce que les nombres littéraux n'ont pas de type.
+\end{minted}
+\caption{Des additions}
+\end{listing}
 
+Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante il faut convertir  
+\subsection{Soustraction et multiplication}
+De même les bonnes vielles soustractions et multiplications fonctionnent, avec les mêmes règles de priorité des opérations en utilisant respectivement les opérateurs \verb"-" et \verb"*".
+Exemple :
+\begin{listing}
+\begin{minted}[linenos]{swift}
+let nombre1 = 10 * 10
+let nombre2 = 6 * 6
+let résultat = nombre1 - nombre2
+// Pythagore à encore frappé. 
+\end{minted}
+\caption{Multiplications et Soustractions}
+\end{listing}
+
+\subsection{Division et modulo}
+La division, vous connaissez, mais vous allez surment me demander ce que j'entends par \emph{modulo}.
+
+Il s'agit en fait du nom que les programmeurs donnent au \emph{reste} de la division euclidienne.
+
+Commençons par la division.
+
+Il est possible de diviser deux entiers pour obtenir un eniter, et deux nombres à virgule pour obtenir un nombre à virgule, attention, les trois du même type, à vous de faire des conversiuons si besoin est : \mintinline{swift}{LeBonType(<var_du_mauvais_type>) + var_du_bon_type}.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let entier = 49
+let flottant = 5.0
+let quotient_entier = entier / Int(flottant)
+// Division d'entier : 9
+let quotient_flottant = Double(entier) / flottant
+// Division de flottants : 9.8
+\end{minted}
+\caption{Les deux divisions}
+\end{listing}
+
+Le modulo \mintinline{swift}{(a % b)} est défini tel que \mintinline{swift}{a = b * un_entier + (a % b)} ou \verb"un_entier" est le plus grand entier en valeur absolue (en ommetant le signe) tel que \verb"a % b" soit du signe de \verb"a". \verb"a % b", est donc, en valeur absolue (sans le signe), strictement plus petit que \verb"b".
+(en supposant b, positif, mais s'il est négatif on a le même réultat que s'il était positif)
+
+En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possibel de l'appliquer à \emph{deux} nombres à virgule.
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let entier = 49
+let flottant = 5.0
+let reste_entier = entier % Int(flottant)
+// Division d'entier : 4
+let reste_flottant = Double(entier) % 2.5
+// Division de flottants : 1.5
+\end{minted}
+\caption{Le modulo, avec des entiers ou des flottants.}
+\end{listing}
+
+\subsection{Opérateurs augmentés}
+J'avais aussi omis de vous le préciser, mais la qualité première du programmeur est la fainéantise. En fait je plaisante un peu, mais les programmeurs apprécient dès qu'ils ont moins à taper.
+Par conséquent au lieu d'écrire \mintinline{swift}{a = a + 1}
+Ils utilisent une notation raccourcis spéciale \mintinline{swift}{a += 1}
+
+On appel ces opérateurs \emph{augmentés}. Ils existent pour les 5 opérateurs que nous avons déja vu :
+
+\begin{longtabu} to \linewidth {|X[,l,m]|X[,l,m]|}
+\hline Opérateurs augmenté & Opérateurs normal \\ \hline
+\endhead
+\mintinline{swift}{a += 1} & \mintinline{swift}{a = a + 1} \\ \hline
+\mintinline{swift}{a -= 1} & \mintinline{swift}{a = a - 1} \\ \hline
+\mintinline{swift}{a *= 2} & \mintinline{swift}{a = a * 2} \\ \hline
+\mintinline{swift}{a /= 2} & \mintinline{swift}{a = a / 2} \\ \hline
+\mintinline{swift}{a \%= 2} & \mintinline{swift}{a = a \% 2} \\ \hline
+\caption{Les différents opérateurs augmentés}
+\end{longtabu}
+
+\subsection{Incrémenter et Décrémenter}
+Comme les programmeurs sont vraiments très fainéants il existe deux opérateurs pour ajouter et enlever 1 à une variable : \mintinline{swift}{++} et \mintinline{swift}{--}, formes raccourcies respectives de \mintinline{swift}{+=1} et \mintinline{swift}{-=1}. Ils peuvent être placés avant ou après une variable, avec une légère différence en terme de priorité, dont nous parlerons dans le chapitre dédié aux opérateurs avancés.
 \section{Première approche des fonctions}
-Vous vous souvenez de la ligne affichant du texte, au chapitre 2. Je vais ici vous l'expliquer un peu plus en détail. % Fixme, récupérer une partie des explications du chapitre sur les fonctions.
+Vous vous souvenez de la ligne affichant du texte, au chapitre 2. Je vais ici vous l'expliquer un peu plus en détail.
 \subsection{Une fonction}
+Pour le matheux : \emph{Une fonction associe à tout élément d'un ensemble de départ au plus un élément d'un ensemble d'arrivé}.
+
+Pour le programmeur, une fonction c'est donc une sorte de boite noire, à laquelle on donne à manger des paramètres, \emph{de types bien définis}, et qui renvoi une valeur (ou rien du tout).
+
+Une fonction sert à réutiliser un bout de code sans avoir à le recopier à chaque fois, et permet de ne pas avoir à savoir comment cela fonctionne.
+On reviendra à l'utilité du découpage du code dans un chapitre ultérieur.
+
+L'exemple que vous avez déja vu est la fonction \mintinline{swift}{println}, qui affiche une ligne de texte. Les conversion de type sont aussi à des fonctions.
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let entier = 42
+let flottant = Double(entier)
+println("Bonjour tout le monde")
+\end{minted}
+\caption{Deux appels de fonctions}
+\end{listing}
+
+Un appel de fonction se présente sous la forme :
+\pagebreak % Required hack, because if not some texts disapears out of the page.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+nom_de_la_fonction(<paramètre>[, <paramètre2 ...]) 
+\end{minted}
+\caption{forme générale d'un appel de fonction}
+\end{listing}
+
+Ici les noms correspondants sont \mintinline{swift}{Double} (le nom du type, en effet ...) et \mintinline{swift}{println}. La deuxième ne renvoie rien, tandis que la première renvoie un \mintinline{swift}{Double} (comme c'est original ...), que l'on récupère ici dans une variable, mais qui aurait pu être utilisé dans une autre expression, comme paramètre d'une autre fonction, ou dans une opération.
 
 \subsection{Les Fonctions mathématiques}
+
+Pour ceux qui connaissent un peu les maths, je vais ici vous donner la liste des fonctions disponibles dans Swift. Attention, ce ne sont pas de vraies fonctions au sens mathématiques, donc pas de dérivation, intégration, limite et autres.
+\begin{description}
+\item[pow :] La fonction puissance, prend deux paramètre Double ou Float $x$ et $a$, et renvoie $x^{a}$. % Penser à faire un TP Opérateur **
+\item[abs :] Cette bonne vieille fonction valeur absolue (Int et Double).
+\item[exp :] L'exponentielle d'un Double
+
+J'en passe et des meilleurs, dont les fonctions trigonométriques (ainsi qu'inverses et hyperboliques, logarithmes...)
+\end{description}
