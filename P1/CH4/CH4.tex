@@ -1,8 +1,36 @@
-\chapter{Première approche des chaines de caractères}
+\chapter{Première approche des chaînes de caractères}
+Dans ce chapitre, nous allons découvrir le type \mintinline{swift}{String}, de terme anglais pour ficelle, et qui n'a (cachez votre déception !) rien à voir avec un maillot de bain.
 
+Il s'agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l'ordinateur, mais comme Swift utilise l'Unicode (qui permet de coder n'importe quel caractère informatique existant) le détail du fonctionnent des chaines de caractère est extrêmement complexe, et je ne le détaillerai pas ici !
 \section{Playground, dis bonjour au monsieur}
+Pour introduire une chaîne de caractère littérale dans votre code, il suffit d'écrire votre texte entre des guillemets doubles \verb'"', une variable ou constante se déclarant exactement de la même manière :
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let bonjour = "Bonjour tout le monde !"
+let au_revoir = "J'espère avoir le plaisir de vous revoir"
+\end{minted}
+\end{listing}
+Pour insérer certains caractères spéciaux, interprétés par Swift de façon spécifique, par exemple, comme fin de chaîne il est nécessaire d'utiliser le caractère \verb"\".
+% Tableau récap.
 
+Un élément d'une chaîne de caractère est un caractère, de type \mintinline{swift}{Character}, très difficile à distinguer d'une chaîne de caractère de longueur 1, à ceci près qu'on ne peut pas la rallonger.
+\section{Concaténer deux chaînes}
+Il est possible de créer une chaîne en mettant bout à bout deux (voir plusieurs) chaînes ou carctères, on dit alors que l'on \emph{concatène} ces chaînes. En Swift, l'opérateur \verb"+", que l'on a déja croisé, permet aussi de concaténer deux chaînes de caractères.
+
+De même étant donné une variable \mintinline{swift}{String} déja existante, on peut lui concaténer une seconde chaîne en utilisant \verb"+=".
+Ceci ne peux être fait avec une variable de type \mintinline{swift}{Character}
+Exemple :
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let bonjour = "Bonjour tout le monde !"
+let au_revoir = "J'espère avoir le plaisir de vous revoir"
+var discussion = bonjour + " ... " + au_revoir
+// Notez les espaces dans la chaîne
+// On a oublié le point !
+discussion += "."
+\end{minted}
+\end{listing}
 \section{Insérer la valeur d'une variable dans une chaîne de caractères}
 
 \section{Accéder au n\textsuperscript{ième} caractère d'une chaîne}
-%\section{Accéder au n\sup{ième} caractère d'une chaine de caractère}
+%\section{Accéder au n\sup{ième} caractère d'une chaîne de caractère}
