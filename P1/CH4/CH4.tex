@@ -12,6 +12,15 @@ let au_revoir = "J'espère avoir le plaisir de vous revoir"
 \end{listing}
 Pour insérer certains caractères spéciaux, interprétés par Swift de façon spécifique, par exemple, comme fin de chaîne il est nécessaire d'utiliser le caractère \verb"\".
 % Tableau récap.
+\begin{longtabu} to \linewidth {|X[1,l,m]|X[4,l,m]|}
+\hline
+Séquence & Signification \\ \hline
+\endhead
+\input{\TSwiftRoot/Reference/Character/SpecialCharacter}
+%\caption{Les caractères spéciaux}
+\end{longtabu}
+
+Je vous passe les détails sur l'Unicode. Pour les curieux je vous renvoie à la doc : \url{https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html#//apple_ref/doc/uid/TP40014097-CH7-ID285}
 
 Un élément d'une chaîne de caractère est un caractère, de type \mintinline{swift}{Character}, très difficile à distinguer d'une chaîne de caractère de longueur 1, à ceci près qu'on ne peut pas la rallonger.
 \section{Concaténer deux chaînes}
@@ -31,6 +40,13 @@ discussion += "."
 \end{minted}
 \end{listing}
 \section{Insérer la valeur d'une variable dans une chaîne de caractères}
+Il est possible d'insérer la valeur d'une variable dans une chaine de caractère (sous réserve que son type le permette), ce qu'Apple appelle interpolation dans une chaîne de caractères, en utilisant la syntaxe suivante :
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+var str = "La variable contient \(nom_de_la_variable)"
+\end{minted}
+\caption{Interpolation dans une chaine de caractères.}
+\end{listing}%\)
+En réalité, on peut mettre entre les parenthèses n'importe quelle expression, sous réserve que celle ci ne contienne ni guillemet double, ni antislash, ni retour à la ligne.
 
-\section{Accéder au n\textsuperscript{ième} caractère d'une chaîne}
-%\section{Accéder au n\sup{ième} caractère d'une chaîne de caractère}
+Il set aussi possible de convertir une variable en texte en utilisant \mintinline{swift}{String(variable)}.
