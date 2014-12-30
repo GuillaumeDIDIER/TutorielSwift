@@ -156,6 +156,7 @@ let pi = 3 + 0.141592
 Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante il faut convertir  
 \subsection{Soustraction et multiplication}
 De même les bonnes vielles soustractions et multiplications fonctionnent, avec les mêmes règles de priorité des opérations en utilisant respectivement les opérateurs \verb"-" et \verb"*".
+L'opérateur \verb"-" peut aussi âtre utilisé seul devant une variable numérique pour en obtenir l'opposé.
 Exemple :
 \begin{listing}
 \begin{minted}[linenos]{swift}
@@ -163,6 +164,7 @@ let nombre1 = 10 * 10
 let nombre2 = 6 * 6
 let résultat = nombre1 - nombre2
 // Pythagore à encore frappé. 
+let moins_cent= -nombre1
 \end{minted}
 \caption{Multiplications et Soustractions}
 \end{listing}
@@ -190,7 +192,7 @@ let quotient_flottant = Double(entier) / flottant
 Le modulo \mintinline{swift}{(a % b)} est défini tel que \mintinline{swift}{a = b * un_entier + (a % b)} ou \verb"un_entier" est le plus grand entier en valeur absolue (en ommetant le signe) tel que \verb"a % b" soit du signe de \verb"a". \verb"a % b", est donc, en valeur absolue (sans le signe), strictement plus petit que \verb"b".
 (en supposant b, positif, mais s'il est négatif on a le même réultat que s'il était positif)
 
-En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possibel de l'appliquer à \emph{deux} nombres à virgule.
+En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possible de l'appliquer à \emph{deux} nombres à virgule.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -204,7 +206,7 @@ let reste_flottant = Double(entier) % 2.5
 \caption{Le modulo, avec des entiers ou des flottants.}
 \end{listing}
 
-\subsection{Opérateurs augmentés}
+\subsection{Assignations augmentés}
 J'avais aussi omis de vous le préciser, mais la qualité première du programmeur est la fainéantise. En fait je plaisante un peu, mais les programmeurs apprécient dès qu'ils ont moins à taper.
 Par conséquent au lieu d'écrire \mintinline{swift}{a = a + 1}
 Ils utilisent une notation raccourcis spéciale \mintinline{swift}{a += 1}
@@ -224,6 +226,9 @@ On appel ces opérateurs \emph{augmentés}. Ils existent pour les 5 opérateurs 
 
 \subsection{Incrémenter et Décrémenter}
 Comme les programmeurs sont vraiments très fainéants il existe deux opérateurs pour ajouter et enlever 1 à une variable : \mintinline{swift}{++} et \mintinline{swift}{--}, formes raccourcies respectives de \mintinline{swift}{+=1} et \mintinline{swift}{-=1}. Ils peuvent être placés avant ou après une variable, avec une légère différence en terme de priorité, dont nous parlerons dans le chapitre dédié aux opérateurs avancés.
+\subsection{Les priorités}
+Si vous mélangez les différentes opérations, les opérateurs normaux serons éxéécutés en suivant les priorités mathématiques, c'est à dire les multiplications, divisions et restes avant les additions et soustractions; et les assignations (éventuellement augmentées) en dernier.
+Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématiques.
 \section{Première approche des fonctions}
 Vous vous souvenez de la ligne affichant du texte, au chapitre 2. Je vais ici vous l'expliquer un peu plus en détail.
 \subsection{Une fonction}
@@ -246,7 +251,6 @@ println("Bonjour tout le monde")
 \end{listing}
 
 Un appel de fonction se présente sous la forme :
-\pagebreak % Required hack, because if not some texts disapears out of the page.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 nom_de_la_fonction(<paramètre>[, <paramètre2 ...]) 
