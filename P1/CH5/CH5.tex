@@ -6,13 +6,76 @@ Je vous ai mentionné à l'instant les conditions ; l'heure est donc venu de vou
 type "qui va bien" pour stocker et manipuler les conditions.
 \subsection{Le type Bool}
 Une condition peut être ou non vérifié, elle peut donc prendre deux valeurs : Vrai ou Faux.
-En Swift, le type Bool correspond à cela. Un Bool, du nom du mathématicien Boole,
-inventeur de la logique Booléenne, peut prendre les valeurs true (Vrai en anglais) et false.
-(Listing ?)
+En Swift, le type Bool correspond à cela. Un Bool, du nom du mathématicien anglais du XIX\textsuperscript{e} George Boole,
+inventeur de la logique Booléenne, peut prendre les valeurs \mintinline{swift}{true} (Vrai en anglais) et \mintinline{swift}{false}.
+\begin{listing}
+\begin{minted}[linenos]{swift}
+// Avec des constantes, rappel d'un chapitre précédent.
+let les_oranges_sont_orange = true
+let les_navets_sont_délicieux = false
+\end{minted}
+\caption{Deux booléens}
+\end{listing}
 \subsection{Un peu de logique}
+Je ne vous ferez pas un cours complet de logique, mais je vais tout de même vous montrer les trois opérateurs de bases,
+du point de vu théorique, avant de vous les montrer en Swift.
+Pour toute la suite $A$ et $B$ désignent des booléens.
+\subsubsection{La négation}
+On appelle $non(A)$, le booléen qui est de la valeur opposée à $A$.
+\begin{table}[h]
+\centering
+\begin{tabu} spread \linewidth {|l|r|}
+\hline
+$A$ & $non(A)$ \\ \hline
+Vrai & Faux \\ \hline
+Faux & Vrai \\ \hline
+\end{tabu}
+\caption{La négation}
+\end{table}
+\subsubsection{La conjonction}
+La conjonction que l'on note $A$ $et$ $B$, n'est vraie que si à la fois $A$ et $B$ sont toute les deux vrai.
+\begin{table}[h]
+\centering
+\begin{tabu} spread \linewidth {|l|l|r|}
+\hline
+$A$ & $B$ & $A$ $et$ $B$ \\ \hline
+Vrai & Vrai & Vrai \\ \hline
+Vrai & Faux & Faux \\ \hline
+Faux & Vrai & Faux \\ \hline
+Faux & Faux & Faux \\ \hline
+\end{tabu}
+\caption{La conjonction}
+\end{table}
+\subsubsection{La disjonction}
+La disjonction que l'on note $A$ $ou$ $B$, est vraie si au moins un des deux booléens $A$ et $B$ est vrai.
+\begin{table}[h]
+\centering
+\begin{tabu} spread \linewidth {|l|l|r|}
+\hline
+$A$ & $B$ & $A$ $ou$ $B$ \\ \hline
+Vrai & Vrai & Vrai \\ \hline
+Vrai & Faux & Vrai \\ \hline
+Faux & Vrai & Vrai \\ \hline
+Faux & Faux & Faux \\ \hline
+\end{tabu}
+\caption{La disjonction}
+\end{table}
+%\subsubsection{Les lois de Morgan}
+%Todo
+%\subsubsection{Distributivité}
+%Todo
 \subsection{Les opérateurs booléens en pratique}
-\subsection{L'évaluation raccourcie}
+\subsubsection{La négation}
+\subsubsection{La conjonction}
+\subsubsection{La disjonction}
+\subsubsection{Les priorités}
+La négation est prioritaire par rapport aux opération mathématiques, prioritaires par rapport à la conjonction qui est elle même prioritaire sur la disjonction. Les parenthèses sont toujours utilisable pour contrôler la priorité.
+
+\emph{Comme cette dernière priorité n'est pas évidente, je vous recommande de toujours mettre des parenthèses, comme si rien n'était spécifié à propos des priorité entre conjonction et disjonction. C'est aussi ce qu'\emph{Apple} recommande.}
 \subsection{Les tests}
+\subsection{L'évaluation raccourcie}
+Pour optimiser les programmes, lorsque l'ordinateur peut conclure en ayant évalué que le premier opérande, il n'évalue pas le deuxième. C'est le cas pour \mintinline{swift}{A && B} si \mintinline{swift}{A == false},
+et pour \mintinline{swift}{A || B} si \mintinline{swift}{A == true}.
 \section{Si ... Alors... Sinon ...}
 \subsection{Exécuter des instructions uniquement lorsque une condition est vérifiée}
 
