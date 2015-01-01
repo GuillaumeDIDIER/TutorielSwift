@@ -73,10 +73,17 @@ La négation est prioritaire par rapport aux opération mathématiques, priorita
 
 \emph{Comme cette dernière priorité n'est pas évidente, je vous recommande de toujours mettre des parenthèses, comme si rien n'était spécifié à propos des priorité entre conjonction et disjonction. C'est aussi ce qu'\emph{Apple} recommande.}
 \subsection{Les tests}
+\subsubsection{Égalité et inégalité}
+
+\subsubsection{Relation d'ordre}
+
+J'ai laissé quelques tests de coté, ils seront traités plus tard.
 \subsection{L'évaluation raccourcie}
 Pour optimiser les programmes, lorsque l'ordinateur peut conclure en ayant évalué que le premier opérande, il n'évalue pas le deuxième. C'est le cas pour \mintinline{swift}{A && B} si \mintinline{swift}{A == false},
 et pour \mintinline{swift}{A || B} si \mintinline{swift}{A == true}.
+Ce comportement est garanti par le langage.
 \section{Si ... Alors... Sinon ...}
+
 \subsection{Exécuter des instructions uniquement lorsque une condition est vérifiée}
 
 \subsection{Et dans le cas contraire ?}

@@ -5,3 +5,27 @@ répéter des instructions un nombre variable de fois.
 \section{Énumérons des entiers, la boucle for in}
 \section{Seconde syntaxe de la boucle for}
 \section{Application : Copions des lignes}
+\subsection{Consignes}
+Votre but est d'écrire un programme qui
+écrive un certain nombre de fois fixé dans une constante $n$ une ligne telle que << \emph{Je ne lancerai pas d'avions en papier.} >>.
+\pagebreak % Let's not cheat.
+\subsection{Indications}
+Il vous faut une boucle, mais de quel type ?
+
+Stocker la ligne et le nombre de fois dans deux constantes.
+
+...\ est votre ami.
+\pagebreak % Let's not cheat.
+\subsection{Correction}
+Posez vos stylos !
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let n : UInt = 50 // Je ne suis pas complètement fou.
+let punition : String = "Je dois chercher mes exercices !"
+// Je ne vise personne ...
+for i in 1...n { // n inclus
+    println("\(i). \(punition)")
+}
+\end{minted}
+\caption{Correction des lignes copiées.}
+\end{listing}%\) Against stupid syntactique coloration.
