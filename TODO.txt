@@ -1,3 +1,6 @@
 Penser au découpage en plusieurs fichiers.
 Penser aux cas et au typage.
 Fusioner Les deux chapitres sur les string de la deuxième partie.
+Traduire les commentaires en français.
+Créer un script pour les "wrappers".
+Licence FDL.
