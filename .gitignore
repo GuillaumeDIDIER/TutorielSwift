@@ -16,3 +16,4 @@
 *.out
 .minted*
 *.synctex.gz
+*.bak
