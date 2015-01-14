@@ -79,29 +79,269 @@ $A$ ou $(B$ et $C) = (A$ ou $B)$ et $(A$ ou $C)$
 
 \subsection{Les opérateurs booléens en pratique}
 \subsubsection{La négation}
+La négation est représentée en Swift par l'opérateur (unaire préfix) \verb"!", qui se place immédiatement avant le booléen dont on veut la négation.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let le_plat_du_jour_est_dégoutant = true
+// ou false si votre cantine vous gate.
+let je_vais_apprécier_mon_repas = !le_plat_du_jour_est_dégoutant
+\end{minted}
+\caption{Négation}
+\end{listing}
 \subsubsection{La conjonction}
+En Swift la conjonction (ET), s'exprime avec l'opérateur (binaire) \verb"&&", qui se place entre les deux booléens dont on souhaite obtenir la conjonction.
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+// à l'entré d'un complexe militaire par exemple.
+let peut_rentrer = connait_le_mot_de_passe && a_des_papiers_en_ordre
+\end{minted}
+\caption{Conjonction}
+\end{listing}
 \subsubsection{La disjonction}
+En Swift la disjonction (ET), s'exprime avec l'opérateur (binaire) \verb"||" (ce symbole s'obtient en appuyant sur \emph{alt + shift + L}), qui se place entre les deux booléens dont on souhaite obtenir la disjonction.
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+// Spécial dédicace à un auteur du Site du Zér0 !
+// Pour ouvrir un compte en banque il faut être assez âgé ou avoir beaucoup d'argent !
+let peut_ouvrir_un_compte_chez_Picsou_Banque = 
+est_assez_vieux || est_très_riche
+\end{minted}
+\caption{Disjonction}
+\end{listing}
+
 \subsubsection{Les priorités}
 La négation est prioritaire par rapport aux opération mathématiques, prioritaires par rapport à la conjonction qui est elle même prioritaire sur la disjonction. Les parenthèses sont toujours utilisable pour contrôler la priorité.
 
 \emph{Comme cette dernière priorité n'est pas évidente, je vous recommande de toujours mettre des parenthèses, comme si rien n'était spécifié à propos des priorité entre conjonction et disjonction. C'est aussi ce qu'\emph{Apple} recommande.}
 \subsection{Les tests}
+<< \emph{C'est bien jolie les booléens, mais comment on en fabrique à partir d'autre chose ?}>>
+Il faut savoir que Certains types peuvent se convertir en booléens, mais pas tous, mais il est heuresement possible de tester une condition sur deux objets et obtenir un booléens.
 \subsubsection{Égalité et inégalité}
+Pour tester si deux objets sont égaux (ont la même valeur),
+on utilise \verb"==". Attention à bien mettre \emph{deux} signes égal, pour distinguer cela de l'affectation d'une valeur à une variable. Pour obtenir en obtenir la négation, l'opérateur \verb"!=" existe aussi. On a bien \mintinline{swift}{(a != b) == !(a == b)}
 
+On peut, entre autre, l'appliquer à des entiers, des nombres à virgule et des chaînes de caractères.
 \subsubsection{Relation d'ordre}
+Pour un certain nombre d'objet, il y a du sens à les ordonner.
+Je vous passe la définition mathématique qui correspond, mais pour les types entiers et les nombres à virgule flottante.
+Ils sont au nombre de 4 :
+\begin{itemize}
+\item \verb">", strictement supérieur à,
+\item \verb"<", strictement inférieur à,
+\item \verb">=", supérieur ou égal,
+\item \verb"<=", inférieur ou égal,
+\end{itemize}
 
-J'ai laissé quelques tests de coté, ils seront traités plus tard.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+println("2 > 3 ? \(2 > 3)")
+println("2.5 > 2.4 ? \(2.5 > 2.4)")
+let trois /*: Int */ = 3
+println("2.3 < 3 ? \(2.3 < Double(trois))") // Conversion necessaire.
+println(" (5 * 3) >= 15 \((5 * 3) >= 15)")
+println(" (5 * 3) <= 15 \((5 * 3) <= 15)")
+// Un nombre qui est à la fois plus petit et plus grand qu'un autre lui est égal !
+
+\end{minted}
+\caption{Quelques tests}
+\end{listing}%\) Stupid syntactic coloration !
+\subsubsection{Priorités}
+Tous les tests ont la même priorité
+(et s'exécutent de gauche à droite),
+qui est supérieurs à la conjonction (et à la disjonction),
+mais inférieur aux opérateurs mathématiques.
+
+
+
+J'ai laissé quelques tests de coté, moins intéressants pour vous dans l'immédiat, ils seront traités plus tard.
 \subsection{L'évaluation raccourcie}
 Pour optimiser les programmes, lorsque l'ordinateur peut conclure en ayant évalué que le premier opérande, il n'évalue pas le deuxième. C'est le cas pour \mintinline{swift}{A && B} si \mintinline{swift}{A == false},
 et pour \mintinline{swift}{A || B} si \mintinline{swift}{A == true}.
 Ce comportement est garanti par le langage.
 \section{Si ... Alors... Sinon ...}
-
+\emph{<< C'est bien joli, les booléens, mais à quoi servent-ils ? >>}
+Une première utilisation des booléens est le <<\emph{branchement conditionnel}>>.
 \subsection{Exécuter des instructions uniquement lorsque une condition est vérifiée}
+On va prendre un exemple, on suppose que vous avez obtenu de l'utilisateur deux nombres a et b, stockés dans deux variables, pour calculer le quotient $\frac{a}{b}$.
+Cependant, si b est nul, vous ne pouvez pas effectuer la division. (En fait en Swift, avec des nombres à virgule vous obtiendrez $\pm infinty$
 
+On se propose de vérifier si b est nul et d'écrire un message à la console dans ce cas.
+
+Grâce aux sections précedentes vous pouvez me trouver le condition correspondante.
+
+\pagebreak % No cheating
+\mintinline{swift}{b == 0}, comme vous avez tous trouvé (sans tricher).
+
+Pour executer \mintinline{swift}{println("b est nul ! Division impossible")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let b = 0
+if b == 0 /*Condition, non nécessairement entre parenthèse*/{
+    // Code à exécuter si la conditions est vérifié
+    // Éventuellement plusieurs instructions.
+    println("b est nul ! Division impossible")
+} // Les accolades ouvrantes et fermantes pourraient respectivement
+  // être mise une ligne après le if,
+  // ou sur la même ligne que la dernière instruction.
+// Code exécuté dans tout les cas.
+\end{minted}
+\caption{la syntaxe de if}
+\end{listing}
+Deux commentaires pour ceux qui ont déjà programmé
+dans un langage utilisant la syntaxe du C :
+\begin{itemize}
+\item Les parenthèses autour de la condition ne sont pas nécessaires,
+et sont en général omise dans la doc d'Apple.
+\item Les accolades ne peuvent par contre pas être omise,
+même s'il n'y a qu'un instruction à exécuter.
+\end{itemize}
 \subsection{Et dans le cas contraire ?}
+Évidement maintenenant que l'on  a testé la valeur de b, il faut n'exécuter la division que si b est non nul.
+La solution que vous pourriez envisager est de faire ensuite
+\mintinline{swift}{if b != 0},
+mais il existe une solution plus claire : \mintinline{swift}{else}
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let b = 0
+if b == 0 /*Condition, non nécessairement entre parenthèse*/{
+    // Code à exécuter si la conditions est vérifié
+    // Éventuellement plusieurs instructions.
+    println("b est nul ! Division impossible")
+} else { // Même commentaire que précédement pour les accolades.
+    println("a/b = \( a/b )")
+    // Code exécuté dans le cas contraire.
+}
+// Code exécuté dans tout les cas.
+\end{minted}
+\caption{la syntaxe de if}
+\end{listing} %\)
+
+Il est bien sur possible d'imbriquer des if à l'intérieur des accolades.
 \subsection{Else if, exécuter des tests plus complexes}
+Il est enfin possible de traiter des cas plus complexe avec l'idiome \mintinline{swift}{else if}, << sinon si >> :
+\begin{listing}[h]
+if condition1 {
+    // code à exécuter si 1 est vérifiée.
+}
+else if condition 2
+{
+    // code à exécuter si 1 n'est pas vrai et que 2 est vrai.
+} else if condition 3 {
+    // code à exécuter si 1 et 2 fausses et 3 vrai 
+}
+/* ... Avec autant de codition nécéssaires */
+/* De façon optionelle, un unique else, à exécuter si aucune des condition n'a été vérifiée. */
+else {
+    // code à exécuter si aucune  condition n'est vérifié.
+}
+// Code à exécuter dans tout les cas.
+
+\caption{if, else if, else}
+\end{listing}
 \section{Application : Une année est elle bissextile ?}
+Après un chapitre quelque peu théorique, je vous propose un premier exercice intéressant :
 \subsection{Consignes}
-\subsection{Correction}
+Je vous demande d'écrire un code qui déclare une constante contenant une année
+(que vous changerez pour tester le programme),
+puis détermine si cette année est bissextile,
+en affichant sur la sortie standard l'information.
+
+Je rapelle à toute fin utile qu'une année sur quatre est bissextile, sauf pour les années qui sont un multiple de 100, qui ne sont pas bissextile, sauf (encore un exception !) lorsque qu'elles sont multiple de 400.
+\subsection{Indications}
+\begin{itemize}
+
+\item N'oubliez pas l'assommant cours de méthodologie que je vous ai servi en introduction.
+
+\item Pour savoir si un nombre est multiple d'un autre,
+rien de mieux que le reste de la division euclidienne.
+
+\item Un ou plusieurs if (et éventuellement else), comme vous voulez.
+\end{itemize}
+\pagebreak % Let's not cheat
+\subsection{Corrections}
+Je vous mets ici plusieurs corrections successives,
+de la moins bonne à la meilleure, même si les 4 sont justes.
+
+\begin{listing}[h!]
+\begin{minted}[linenos]{swift}
+let année = 2015
+if année % 4 == 0 {
+    if année % 100 == 0 {
+        if année % 400 == 0 {
+            println("Bissextile")
+        } else {
+            println("Pas bissextile")
+        }
+    } else {
+        println("Bissextile")
+    }
+} else {
+    println("Pas Bissextile")
+}
+\end{minted}
+\caption{Méthode bourrin}
+\end{listing}
+Ce n'est pas la méthode la plus lisible,
+même si c'est la plus évidente pour le débutant.
+
+\begin{listing}[h!]
+\begin{minted}[linenos]{swift}
+let année = 2000 // Attention BUG ! ;)
+if année % 400 == 0 {
+    println("Bissextile")
+} else if année % 100 == 0 {
+    println("Pas Bissextile")
+} else if année % 4 == 0 {
+    println("Bissextile")
+} else {
+    pintln("Pas Bissextile")
+}
+\end{minted}
+\caption{Un peu plus élégant}
+\end{listing}
+C'est un peu moins brouillon, mais (comme précédemment), on duplique les lignes <<bissextile>> et <<pas bissextile>>, ce qui n'est pas génial. De plus pour une année non multiple de 4 (a priori le plus fréquent), on effectue tout les tests alors que l'on pourrait conclure immédiatement.
+
+\begin{listing}[h!]
+\begin{minted}[linenos]{swift}
+let année = 1995
+if année % 4 != O {
+    println("Pas Bissextile")
+} else if année % 100 != 0 {
+    println("Bissextile")
+} else if année % 400 != 0 {
+    println("Pas Bissextile")
+} else {
+    println("Bissextile")
+}
+\end{minted}
+\caption{Méthode élégante optimisée}
+\end{listing}
+Voilà qui est plus optimisé, mais il reste à résoudre la duplication de code :
+
+\begin{listing}[h!]
+\begin{minted}[linenos]{swift}
+let année = 2042
+if année % 4 != 0 || (année % 100 == 0 && année % 400 != 0) {
+    println("Pas Bissextile")
+} else {
+    println("Bissextile")
+}
+\end{minted}
+\caption{Méthode experte !}
+\end{listing}
+
+Je vous conseil de ne pas attaquer le chapitre suivant
+si vous ne comprenez pas ces quatre correction,
+et sans avoir essayé les petits exercices facile qui suivent.
 \subsection{Variantes}
+Essayez de refaire cela:
+\begin{itemize}
+
+\item En affichant l'année si ce n'est pas déjà fait.
+\item En stockant l'information dans un booléen.
+\item En n'obtenant cela sans if, juste avec un grosse condition.
+
+\end{itemize}
