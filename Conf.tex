@@ -8,7 +8,12 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+% Hypertext links.
 \usepackage[hidelinks]{hyperref} % colorlinks=true
+
+% This command is like \href except that it also inserts a foot note with the url printed, introduced by the third parameter.
+\newcommand{\TSwiftUrl}[3]{\href{#1}{#2}\footnote{#3 : \url{#1}}}
 
 \usepackage{longtable}
 \usepackage{tabu}
