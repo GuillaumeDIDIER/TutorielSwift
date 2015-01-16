@@ -12,19 +12,87 @@ while <condition> {
 \end{minted}
 \caption{Syntaxe de la boucle While.}
 \end{listing}
+
+Par exemple :
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+while !l_utilisateur_veut_quitter {
+    // Continuer l'application.
+}
+// L'utilisateur veut quitter.
+// On fait le ménage et on quitte.
+\end{minted}
+\caption{Syntaxe de la boucle While.}
+\end{listing}
+
 \section{Énumérons des entiers, la boucle for in}
+La deuxième syntaxe de boucle que nous allons étudier permet d'énumérer des entiers.
+La première ligne de la boucle vous permet de nommer une variable qui prendra successivement toute les valeurs entière de la plage d'entier que vous lui fournirez.
+Cette variable n'est ensuite accessible que dans le corps de la boucle,
+contenu entre deux accolades.
+Si elle était déja définie,
+la seconde définition masquera la première dans le corps de la boucle,
+et la première sera de nouveau accessible après la fin de la boucle.
+Cependant ce code, qui semble toléré par le compilateur,
+n'est pas recommandé, et je vous le déconseille très fortement.
+\subsection{Les plages d'entiers, ..< et ...}
+Ce sont deux opérateurs permettant d'obtenir une suite d'entiers entre deux bornes. \verb"a..<b" correspondra aux entiers entre a inclus et b exclus, tandis que \verb"a...b" correspondra à a et b inclus. Ils renvoient tous deux un objet de type range, type que nous n'allons pas traiter ici, mais dont la boucle for extraira à chaque itération un entier, jusqu'à ce qu'il n'y en aie plus, ce qui arrêtera la boucle.
+\paragraph{Attention :}
+Il ne faut pas que b < a, sinon vous obtenez une erreur, voir une boucle infinie. 
+\subsection{La syntaxe complète}
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let n /*: Int*/ = <ce que vous voulez>
+for i/* nom de variable valide*/ in 0..<n /*ou a...b,
+comme vous voulez */{
+    // Corps de la boucle à exécuter
+    // i prend successivement toutes les valeurs contenues dans le Range.
+    println(i) // par exemple.
+}
+// i n'est plus accessible
+\end{minted}
+\caption{Syntaxe de la boucle for in}
+\end{listing}
+\paragraph{Remarque :}
+La boucle for in à en fait une application plus générale, mais nous en parlerons par la suite. %TODO ref
+\subsection{Exercice}
+Essayez d'écrire une boucle while équivalente.
+
 \section{Seconde syntaxe de la boucle for}
+Cette seconde syntaxe était la première historiquement,
+il s'agit en effet de la syntaxe historique de cette boucle en C,
+à ceci près que la version C exige des parenthèse
+qu'il n'est pas nécessaire de mettre en Swift.
+
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+for /initialisation, eg*/ var i = 0; /*Condition*/ i<100;
+/*Action à exécuter après chaque itération eg incrémentation*/ i++{
+    // Corps de la boucle à exécuter, tant que la condition n'est pas vérifié.
+    println(i) // par exemple.
+}
+// Une variable définie juste après for n'est plus disponible.
+\end{minted}
+\caption{Syntaxe de la boucle for in}
+\end{listing}
+Ici l'initialization déclare une variable,
+mais ce n'est pas nécessaire.
+L'initialisation est une instruction quelconque, éventuellement vide.
+La condition est une condition, qui peut être vide, ce qui causerai une boucle infinie.
+La dernière instruction ne doit pas être vide.
 \section{Application : Copions des lignes}
 \subsection{Consignes}
 Votre but est d'écrire un programme qui
 écrive un certain nombre de fois fixé dans une constante $n$ une ligne telle que << \emph{Je ne lancerai pas d'avions en papier.} >>.
 \pagebreak % Let's not cheat.
 \subsection{Indications}
-Il vous faut une boucle, mais de quel type ?
+\begin{itemize}
+\item Il vous faut une boucle, mais de quel type ?
 
-Stocker la ligne et le nombre de fois dans deux constantes.
+\item Stocker la ligne et le nombre de fois dans deux constantes.
 
-...\ est votre ami.
+\item ...\ est votre ami.
+\end{itemize}
 \pagebreak % Let's not cheat.
 \subsection{Correction}
 Posez vos stylos !
@@ -39,3 +107,6 @@ for i in 1...n { // n inclus
 \end{minted}
 \caption{Correction des lignes copiées.}
 \end{listing}%\) Against stupid syntactique coloration.
+\section{Altérer l'exécution des boucles}
+\paragraph{Attention :}
+L'abus de ces fonctionnalités est nuisible à la santé de qui lira votre code.
