@@ -1,7 +1,10 @@
 \chapter{Les Boucles}
 Dans ce chapitre, nous allons voir comment
 répéter des instructions un nombre variable de fois.
-\section{La boucle While}
+\section{Les boucles while et do-while}
+\subsection{Une boucle ?}
+
+\subsection{while}
 Cette première boucle permet de répéter un groupe d'instruction tant qu'une condition est vérifié (ou que sa négation n'est pas vérifiée.).
 
 \begin{listing}[h]
@@ -24,6 +27,7 @@ while !l_utilisateur_veut_quitter {
 \end{minted}
 \caption{Syntaxe de la boucle While.}
 \end{listing}
+\subsection{do-while}
 
 \section{Énumérons des entiers, la boucle for in}
 La deuxième syntaxe de boucle que nous allons étudier permet d'énumérer des entiers.
@@ -110,3 +114,16 @@ for i in 1...n { // n inclus
 \section{Altérer l'exécution des boucles}
 \paragraph{Attention :}
 L'abus de ces fonctionnalités est nuisible à la santé de qui lira votre code.
+
+\subsection{break}
+Cette instruction, située dans un switch ou une boucle permet de sortir des accolades, en sautant tout le code qui pouvait éventuellement rester dans les accolades.
+
+Cela revient à sauter à l'accolade fermante suivante de switch ou de boucle \emph{la plus proche}.
+\paragraph{Attention :}N'utilisez cette syntaxe pour sortir d'une boucle while que pour des cas très particulier, qui ne peuvent être exprimé par une condition. En effet cela nuit \emph{grandement} à la lisibilité de votre code. (Certains de mes professeurs considère que break est le mal absolue (comme l'instruction goto, bannie des langages les plus modernes pour la même raison, en pire.)
+\subsubsection{Syntaxe basique}
+
+\subsubsection{Les "labels" de boucle et de switch}
+Il est possible de mettre un nom sur une boucle ou un switch, et en précisant ce nom de sortir de ce bloc de l'intérieur. Ce ci permet de sortir de plusieurs blocs d'un seul coup, comme par exemple sortir d'une boucle contenant un switch depuis l'intérieur de ce switch.
+\subsection{continue}
+
+\subsection{fallthrough}
