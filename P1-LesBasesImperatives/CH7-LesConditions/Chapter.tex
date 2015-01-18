@@ -29,8 +29,6 @@ if b == 0 /*Condition, non nécessairement entre parenthèse*/{
 \end{minted}
 \caption{la syntaxe de if}
 \end{listing}
-\paragraph{Attention :}
-Vous pouvez déclarer des variables entre les deux accolades, mais ces variables ne seront accessible que jusqu'à l'accolade fermante.
 \paragraph{Deux commentaires pour ceux qui ont déjà programmé
 dans un langage utilisant la syntaxe du C :}
 \begin{itemize}
@@ -82,6 +80,10 @@ else {
 
 \caption{if, else if, else}
 \end{listing}
+\section{Quelques généralités sur les instructions composée}
+Lorsque vous voyez apparaître de accolades, vous entrez dans un nouveau bloc de code, dans ce bloc, toutes les variables que vous déclarerez ne serons déclarés que dans ce bloc, et ne seront plus accessible une fois que vous en serez sorti. On parle de variable locales. Dans certain cas une variable locale est définie sur la ligne introduisant l'instruction composée.
+
+On peut, par contre, accéder aux variables définis à l'extérieur de ce bloc, dite globales.
 \section{Application : Une année est elle bissextile ?}
 Après un chapitre quelque peu théorique, je vous propose un premier exercice intéressant :
 \subsection{Consignes}
@@ -90,7 +92,9 @@ Je vous demande d'écrire un code qui déclare une constante contenant une anné
 puis détermine si cette année est bissextile,
 en affichant sur la sortie standard l'information.
 
-Je rapelle à toute fin utile qu'une année sur quatre est bissextile, sauf pour les années qui sont un multiple de 100, qui ne sont pas bissextile, sauf (encore un exception !) lorsque qu'elles sont multiple de 400.
+Je rappelle à toute fin utile qu'une année sur quatre est bissextile,
+sauf pour les années qui sont un multiple de 100, qui ne sont pas bissextile,
+sauf (encore un exception !) lorsque qu'elles sont multiple de 400.
 \subsection{Indications}
 \begin{itemize}
 
@@ -164,7 +168,7 @@ Voilà qui est plus optimisé, mais il reste à résoudre la duplication de code
 
 \begin{listing}[h!]
 \begin{minted}[linenos]{swift}
-let année = 2042
+let année = 2042 // Attention, Geek !
 if année % 4 != 0 || (année % 100 == 0 && année % 400 != 0) {
     println("Pas Bissextile")
 } else {
@@ -186,3 +190,31 @@ Essayez de refaire cela:
 \item En n'obtenant cela sans if, juste avec un grosse condition.
 
 \end{itemize}
+\section{Switch...case}
+\subsection{Effectuer un disjonction de cas}
+Il existe une deuxième syntaxe permettant de créer des branchements :
+\mintinline{swift}{switch...case}.
+Il s'agit de choisir un bloc à exécuter selon la valeur d'une variable.
+\paragraph{Remarque :}Cette Syntaxe diffère de celle du C de façon importante.
+
+
+En effet en Swift, il faut que toux les cas soient traités.
+\begin{listing}{h}
+\begin{minted}[linenos]{swift}
+switch(<variable>){
+case <valeur1> :
+    // Code exécuté pour la valeur 1
+    // IL ne peut pas y avoir de code vide.
+case <valeur2>, <valeur3>:
+    // Il est possible de lister plusieurs valeurs.
+    // Code exécuté pour les valeurs 2 et 3
+default :
+    // Code exécuté pour tous les autres cas.
+    // Il peut être omis s'il y a un nombre fini de cas.
+
+}
+\end{minted}
+\caption{Syntaxe basique de switch}
+\end{listing}
+\subsection{Exprimer des cas plus complexes}
+%TODO 
