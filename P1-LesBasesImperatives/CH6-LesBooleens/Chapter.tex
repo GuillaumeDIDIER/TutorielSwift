@@ -99,7 +99,7 @@ let peut_rentrer = connait_le_mot_de_passe && a_des_papiers_en_ordre
 \caption{Conjonction}
 \end{listing}
 \subsection{La disjonction}
-En Swift la disjonction (ET), s'exprime avec l'opérateur (binaire) \verb"||" (ce symbole s'obtient en appuyant sur \emph{alt + shift + L}), qui se place entre les deux booléens dont on souhaite obtenir la disjonction.
+En Swift la disjonction (ET), s'exprime avec l'opérateur (binaire) \verb"||" (ce symbole s'obtient en appuyant sur \emph{Alt + Shift + L}), qui se place entre les deux booléens dont on souhaite obtenir la disjonction.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -156,7 +156,7 @@ mais inférieur aux opérateurs mathématiques.
 
 
 J'ai laissé quelques tests de coté, moins intéressants pour vous dans l'immédiat, ils seront traités plus tard.
-\subsection{L'évaluation raccourcie}
+\section{L'évaluation raccourcie}
 Pour optimiser les programmes, lorsque l'ordinateur peut conclure en ayant évalué que le premier opérande, il n'évalue pas le deuxième. C'est le cas pour \mintinline{swift}{A && B} si \mintinline{swift}{A == false},
 et pour \mintinline{swift}{A || B} si \mintinline{swift}{A == true}.
 Ce comportement est garanti par le langage.
