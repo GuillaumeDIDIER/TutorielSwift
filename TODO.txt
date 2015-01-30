@@ -1,6 +1,10 @@
-Penser au découpage en plusieurs fichiers.
-Penser aux cas et au typage.
-Fusioner Les deux chapitres sur les string de la deuxième partie.
-Traduire les commentaires en français.
+Penser au découpage en plusieurs fichiers. OK
+Penser aux cas et au typage. OK
+Fusioner Les deux chapitres sur les string de la deuxième partie. ?
+Traduire les commentaires en français. 
 Créer un script pour les "wrappers".
-Licence FDL.
+Licence FDL. OK
+Ajouter des exo d'application du cours à la fin des chapitres qui le permettent.
+Submodule SwiftInput ?
+Télécharger le projet entier ou seulement le fichier SwiftInput.swift
+Préparer le plan complet.
