@@ -43,6 +43,7 @@ Décortiquons ce qui précède :
 \item[42 :] La valeur entière que l'on donne à notre variable.
 \item[// ;-) :] C'est un commentaire. Si vous ne le saviez pas, \emph{relisez le chapitre précédent}.
 \end{description}
+Avertissement, ne mettez pas de zéro suivi de chiffres non nuls, car vous auriez des surprises (octale). (Je reviendrait la dessus dans un chapitre ultérieur.)
 \subsection{Différents types d'entiers}
 Je vous ai parlé de la représentation en mémoire des entiers, donc vous devriez me demander comment Swift détermine le nombres d'octets qui sont attribués à notre entier. La réponse c'est qu'il a attend qu'on  le lui précise, ou il prend une valeur par défaut.
 Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de nombre particulière. Notamment, il existe des variantes non signées, qui ne contienne que des nombres positifs.
@@ -94,6 +95,8 @@ Il y deux principaux types de nombres à virgule, ainsi qu'un troisième, moins 
 \input{\TSwiftRoot/Reference/Types/Float}
 \caption{Les différents Types de nombres à virgule flottante}
 \end{longtabu}
+
+Il est aussi possible d'insérer des \_ entre les chiffres, pour formatter ses nombres de manière plus (ou moins, au choix) lisible.
 
 \subsection{Changer la valeur d'une variable}
 Pour changer la valeur d'une variable il suffit d'utiliser l'opérateur \verb"=".
