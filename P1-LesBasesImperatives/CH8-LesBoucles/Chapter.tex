@@ -25,9 +25,23 @@ while !l_utilisateur_veut_quitter {
 // L'utilisateur veut quitter.
 // On fait le ménage et on quitte.
 \end{minted}
-\caption{Syntaxe de la boucle While.}
+\caption{Syntaxe de la boucle While}
 \end{listing}
 \subsection{do-while}
+Cette boucle est similaire à la précédente, à ceci près que le code contenu dans la boucle est toujours exécuté au moins une fois, et que la conditions est placé (et donc évaluée, à la fin de la boucle).
+
+Comme l'utilisateur ne vas certainement pas essayer de quitter avant d'avoir utilisé le programme, on peut réécrire le code de l'exemple précédent comme ceci :
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+// Initialisation du programme
+do {
+    // La boucle principale,
+    // exécutée tant que l'utilisateur ne veut pas quitter.
+} while !l_utilisateur_veut_quitter
+// L'utilisateur veut quitter.
+// On fait le ménage et on quitte.
+\end{minted}Avec une boucle Do While}
+\end{listing}
 
 \section{Énumérons des entiers, la boucle for in}
 La deuxième syntaxe de boucle que nous allons étudier permet d'énumérer des entiers.
@@ -58,7 +72,7 @@ comme vous voulez */{
 \caption{Syntaxe de la boucle for in}
 \end{listing}
 \paragraph{Remarque :}
-La boucle for in à en fait une application plus générale, mais nous en parlerons par la suite. %TODO ref
+La boucle for in a en fait une application plus générale, mais nous en parlerons par la suite. %TODO ref
 \subsection{Exercice}
 Essayez d'écrire une boucle while équivalente.
 
@@ -110,7 +124,7 @@ for i in 1...n { // n inclus
 }
 \end{minted}
 \caption{Correction des lignes copiées.}
-\end{listing}%\) Against stupid syntactique coloration.
+\end{listing}%\) Contre la coloration syntactique débile.
 \section{Altérer l'exécution des boucles}
 \paragraph{Attention :}
 L'abus de ces fonctionnalités est nuisible à la santé de qui lira votre code.
@@ -126,4 +140,46 @@ Cela revient à sauter à l'accolade fermante suivante de switch ou de boucle \e
 Il est possible de mettre un nom sur une boucle ou un switch, et en précisant ce nom de sortir de ce bloc de l'intérieur. Ce ci permet de sortir de plusieurs blocs d'un seul coup, comme par exemple sortir d'une boucle contenant un switch depuis l'intérieur de ce switch.
 \subsection{continue}
 
+\section{Retour sur Switch}
+%TODO 
+
+\subsubsection{Capturer un intervalle} % Problème : Je n'ai pas encore introduit les ranges.
+Il est en fait possible de faire un peu plus avec un switch :
+Tout d'abord il est possible de traiter un intervalle d'un coup, en utilisant la notation d'intervalle :
+\begin{listing}{h}
+\begin{minted}[linenos]{swift}
+switch(un_nombre){
+case 1..5 :
+    // Code exécuté pour toute valeur entre 1 et 5
+
+}
+\end{minted}
+\caption{Un intervalle}
+\end{listing}
+\subsubsection{Un switch sur plusieurs valeurs}
+Je détaille ici une syntaxe un peu plus complexe, qui fait intervenir en réalité un type que nous verrons par la suite.
+
+% À déplacer plus loin, je pense.
+\subsubsection{Capturer la valeur d'une variable dans un case}
+
+\begin{listing}{h}
+\begin{minted}[linenos]{swift}
+switch(un_nombre){
+case let x :
+    // Code exécuté pour toute valeur, x prenant cette valeur.
+    // Ceci a peu d'intérêt
+
+}
+
+switch (x, y){
+case (let abscisse, 0)
+    println("Point d'abscisse \(abscisse) sur cet axe.")
+default:
+    break
+}
+
+\end{minted}
+\caption{Capturer une valeur}
+\end{listing}%\) Contre la coloration syntactique débile.
+Cela n'a pas d'intérêt ici, mais si vous obtenez les deux valeurs d'un coup dans une seule variable, cela présente un intérêt. Je reviendrai sur ce type plus loin.
 \subsection{fallthrough}
