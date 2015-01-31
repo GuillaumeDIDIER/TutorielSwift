@@ -71,8 +71,8 @@ else if condition 2
 } else if condition 3 {
     // code à exécuter si 1 et 2 fausses et 3 vrai 
 }
-/* ... Avec autant de codition nécéssaires */
-/* De façon optionelle, un unique else, à exécuter si aucune des condition n'a été vérifiée. */
+/* ... Avec autant de condition nécessaires */
+/* De façon optionnelle, un unique else, à exécuter si aucune des condition n'a été vérifiée. */
 else {
     // code à exécuter si aucune  condition n'est vérifié.
 }
@@ -198,7 +198,7 @@ Il s'agit de choisir un bloc à exécuter selon la valeur d'une variable.
 \paragraph{Remarque :}Cette Syntaxe diffère de celle du C de façon importante.
 
 
-En effet en Swift, il faut que toux les cas soient traités.
+En effet en Swift, il faut que tous les cas soient traités.
 \begin{listing}{h}
 \begin{minted}[linenos]{swift}
 switch(<variable>){
@@ -216,5 +216,5 @@ default :
 \end{minted}
 \caption{Syntaxe basique de switch}
 \end{listing}
-\subsection{Exprimer des cas plus complexes}
-%TODO 
+\paragraph{Un cas vide}
+Je détaillerai le role de break par la suite, mais sachez que pour qu'un cas vide accepte de compiler, il suffit de mettre l'instruction \mintinline{swift}{break} là ou le code et attendu.
