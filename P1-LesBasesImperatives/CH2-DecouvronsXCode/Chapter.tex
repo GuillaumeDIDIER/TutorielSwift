@@ -135,8 +135,11 @@ en Swift, les commentaires s'imbriquent les un dans les autres.
 \caption{Que de commentaires !}
 \begin{minted}[linenos=true]{swift}
 // Ceci est un commentaire s'arrêtant en fin de ligne.
+// Cette sorte de commentaire commence par deux slash (/)
+// Et s'arrête à la fin de la ligne.
 println("Ceci est bien affiché")
-/* Ceci est un commentaire qui s'arrête au symbole */
+/* Ceci est un commentaire qui s'arrête au symbole de fin */
+println("Ceci est (aussi) bien affiché")
 /*
 Il peut s'étendre sur plusieurs lignes,
 il est délimité par un symbole de début, un slash (/) suivi d'une étoile *,
@@ -210,3 +213,8 @@ Dans cette partie vous avez :
 \item Appris comment afficher du texte sur la sortie standard.
 \item Ce qu'est un commentaire.
 \end{itemize}
+\section*{Exercice}
+\phantomsection
+\addcontentsline{toc}{section}{Exercice}
+Passez à la pratique et faites en sorte que le playground affiche
+votre prénom dans la colonne de droite.
