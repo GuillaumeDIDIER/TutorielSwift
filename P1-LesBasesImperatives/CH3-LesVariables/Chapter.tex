@@ -1,52 +1,84 @@
 \chapter{Les variables et constantes}
-Comme je l'ai dit, un ordinateur manipule des données. Il faut donc pouvoir les stocker
-quelque part.
+Comme je l'ai dit, un ordinateur manipule des données.
+Il faut donc pouvoir les stocker quelque part.
 \section{La mémoire d'un ordinateur, qu'est-ce qu'une \emph{variable} ?}
-Une \emph{variable}, c'est avant tout un compartiment de la mémoire de l'ordinateur sur lequel on colle un nom, et dans lequel on a le droit de mettre ce que l'on veut, pour pouvoir y accéder ultérieurement.
+Une \emph{variable},
+c'est avant tout un compartiment de la mémoire de l'ordinateur 
+sur lequel on colle un nom,
+et dans lequel on a le droit de mettre ce que l'on veut,
+pour pouvoir y accéder ultérieurement.
 
-L'unité de base de la mémoire d'un ordinateur est \emph{le} bit (pas la !), qui possède deux états,
-1 ou 0, à comparer aux 10 chiffres de notre système décimal.
+L'unité de base de la mémoire d'un ordinateur est \emph{le} bit (pas la !),
+qui possède deux états, 1 ou 0,
+à comparer aux 10 chiffres de notre système décimal.
 
 Pour stocker des nombres
-plus grand, il faut mettre plusieurs bits cote à cote, comme nous mettons plusieurs chiffres
-pour écrire 1999, par exemple. Dans ce cas, le dernier chiffre correspond aux unités, l'avant dernier à
+plus grand, il faut mettre plusieurs bits cote à cote,
+comme nous mettons plusieurs chiffres cote à cote pour écrire 1999, par exemple.
+Dans ce cas, le dernier chiffre correspond aux unités, l'avant dernier à
 des paquets de 2, l'antépénultième 4, ... 8, 16, 32, 64... .
 
-Les bits sont regroupés en mots
-appelés \emph{bytes} en anglais, d'une taille fixée par l'architecture du processeur. En français
-on traduit improprement ce terme par octet, qui désigne un mot/byte de 8 bit qui peut prendre
-\begin{math}2*2*2...*2\end{math} huit fois, noté \begin{math} 2^{8} \end{math}. Soit 256 valeurs (retenez ce nombre, on le retrouvera par la suite.)
-Toute la mémoire est découpé en bytes. On manipule forcément un ensemble de byte. (1,
-2, 4, ...), et donc toute variable a une taille définie qui est un multiple de l'octet.
+Les bits sont regroupés en mots appelés \emph{bytes} en anglais,
+d'une taille fixée par l'architecture du processeur.
+En français on traduit improprement ce terme par octet,
+qui désigne un mot/byte de 8 bit, pouvant prendre
+\begin{math}2*2*2...*2\end{math} huit fois, noté \begin{math} 2^{8} \end{math},
+soit 256 valeurs (retenez ce nombre, on le retrouvera par la suite.)
+Toute la mémoire est découpé en bytes.
+On manipule forcément un ensemble de byte (1, 2, 4, ...),
+et donc toute variable a une taille définie qui est un multiple de l'octet.
 
-L'ordinateur peut aussi stocker des nombres binaires à virgule, comme nos nombres à virgule, avec les limitations de ces derniers. Je ne détaille pas ici toute la représentation, si vous voulez des details je vous renvoie à cet excellent \TSwiftUrl{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}{tutoriel}{Fonctionnement d'un ordinateur à partir de zéro --- OpenClassrooms}.
+L'ordinateur peut aussi stocker des nombres binaires à virgule,
+comme nos nombres à virgule, avec les limitations de ces derniers.
+Je ne détaille pas ici toute la représentation, si vous voulez des détails,
+je vous renvoie à cet excellent \TSwiftUrl{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}{tutoriel}{Fonctionnement d'un ordinateur à partir de zéro --- OpenClassrooms}.
 
-\url
+Sachez toutefois que 0,1 n'est pas codable exactement avec un nombre fini de bit,
+tout comme \(\frac{1}{3}\) en numération décimale.
+
 
 \emph{Mais il n'y a que des nombres, comment on stocke du texte ?!}
-Désolé, mais pour l'ordinateur, tout est un nombre, tout dépend de la façon dont on
-l'interprète, on y viendra un peu plus tard.
+Désolé, mais pour l'ordinateur, tout est un nombre,
+tout dépend de la façon dont on l'interprète,
+on en viendra au texte un peu plus tard.
+
 \section{Demander poliment de la place pour stocker un nombre}
 Passons à la pratique !
+
 \subsection{Déclarons l'age du Capitaine}
+
 \begin{listing}[h]
 \caption{Premier exemple, l'age du Capitaine}
 \begin{minted}[linenos=true]{swift}
 var age_du_capitaine = 42 // ;-)
 \end{minted}
 \end{listing}
+
 Décortiquons ce qui précède :
 \begin{description}
 \item[var :] Mot \emph{clé} indiquant que l'on veut déclarer une variable.
-\item[age\_du\_capitaine :] Nom de la variable, qui nous permettra d'y accéder de nouveau. \emph{Attention, il ne peut pas y avoir deux variables de même nom}
-\item[= :] Opérateur utilisé pour doner une valeur à une variable.
+\item[age\_du\_capitaine :] Nom de la variable,
+qui nous permettra d'y accéder de nouveau.
+\emph{Attention, il ne peut pas y avoir deux variables de même nom}
+\item[= :] Opérateur utilisé pour donner une valeur à une variable.
 \item[42 :] La valeur entière que l'on donne à notre variable.
 \item[// ;-) :] C'est un commentaire. Si vous ne le saviez pas, \emph{relisez le chapitre précédent}.
 \end{description}
-Avertissement, ne mettez pas de zéro suivi de chiffres non nuls, car vous auriez des surprises (octale). (Je reviendrait la dessus dans un chapitre ultérieur.)
+\paragraph{Attention :}
+Ne mettez pas de zéro suivi de chiffres non nuls,
+car vous auriez des surprises (octales).
+(Je reviendrait la dessus dans un chapitre ultérieur.)
 \subsection{Différents types d'entiers}
-Je vous ai parlé de la représentation en mémoire des entiers, donc vous devriez me demander comment Swift détermine le nombres d'octets qui sont attribués à notre entier. La réponse c'est qu'il a attend qu'on  le lui précise, ou il prend une valeur par défaut.
-Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de nombre particulière. Notamment, il existe des variantes non signées, qui ne contienne que des nombres positifs.
+Je vous ai parlé de la représentation en mémoire des entiers,
+donc vous devriez me demander comment Swift détermine
+le nombres d'octets qui sont attribués à notre entier.
+La réponse c'est qu'à moins qu'on le lui précise,
+il prend une valeur par défaut.
+Il existe plusieurs type d'entiers,
+chacun pouvant contenir une plage de nombre particulière,
+selon le nombre d'octets qu'il comprennent.
+Notamment, il existe des variantes non signées,
+qui ne contienne que des nombres positifs.
 
 \begin{longtabu} to \linewidth {|X[3,l,m]|X[1.5,l,m]|X[6,r,m]|X[1,r,m]|}
 \hline Taille & Type & Plage de valeur & Précision \\ \hline
@@ -55,9 +87,13 @@ Il existe donc plusieurs type d'entiers, chacun pouvant contenir une plage de no
 \caption{Les différents Types d'entiers}
 \end{longtabu}
 
-Attention, n'essayez pas de mélanger des types différents ou le compilateur vous fera amèrement regretter. On discutera de ce problème un peu plus en détail dans la quatrième section.
+\paragraph{Attention :}
+N'essayez pas de mélanger des types différents ou
+le compilateur vous fera (amèrement) regretter.
+On discutera de ce problème un peu plus en détail dans la quatrième section.
 
-Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet (soit 8 bit) et que ce doit être un entier non signé (positif) on utilise :
+Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet
+(soit 8 bit) et que ce doit être un entier non signé (positif), on utilise :
 
 \begin{listing}[h]
 \caption{Un type plus approprié pour l'age du capitaine}
@@ -65,33 +101,94 @@ Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet (soit 
 var age_du_pitaine : UInt8  = 42 // Question ? Quel est l'age maximal du capitaine
 \end{minted}
 \end{listing}
-Le caractère \verb":" permet d'introduire une \emph{annotation de type}, tandis que \verb"UInt8" correspond au type d'entier choisi.
+Le caractère \verb":" permet d'introduire une \emph{annotation de type},
+tandis que \verb"UInt8" correspond au type d'entier choisi.
 
 Remarquez que Swift est ici plutôt agréable à utiliser puisqu'il ne nous oblige pas à lui préciser le type lorsque la réponse est évidente, mais nous permet d'être plus précis si on en a besoin.
 \paragraph{L'age maximal du capitaine est :}
 255 ans.
-C'est parfaitement approprié, puisque c'est le type le plus proche qui soit non signé (positif), et qui ai la plage la moins grande possible toute les valeurs possibles.
+
+C'est parfaitement approprié, puisque c'est le type le plus proche
+qui soit non signé (positif), ce qui est logique,
+car qui connait un capitaine ayant -10 ans, et qui aie la plage la moins grande possible contenant toute les valeurs possibles (de zéro à environ une grosse centaine d'année).
+Un entier signé sur 8 bits aurait posé problème
+car on connait des humains ayant 130 ans.
+
+Enfin cela suppose que le capitaine soit un humain
+et pas un être ayant une plus grande longévité, un elfe par exemple.
+
 \subsection{La structure générale}
-La structure générale est la suivante, ou les parties entre crochets peuvent être absente, mais pas toute les deux.
+La structure générale est la suivante,
+où les parties entre crochets peuvent être absente,
+mais pas toute les deux en même temps.
+
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 var <nom de variable> [ : <Type> ] [ = <valeur initiale> ]
 \end{minted}
 \caption{Structure générale d'une déclaration de variable}
 \end{listing}
+
 \begin{description}
-\item[nom de variable :] Un nom de variable peut être composé de n'importe quel caractère unicode à part les espaces, les flèches et symboles mathématiques et les caractères Unicode invalides ou servant à dessiner des lignes et des boites, soit à peu près tout ce que vous puvez vouloir utiliser. Il ne doit pas commencer par un chiffre.
-\item[Type :] Il peut être omis si une valeur initiale est précisée, permettant à Swift de déduire le Type.
-Le mot clé \mintinline{swift}{typealias} permet de définir un type comme étant la même chose qu'un type déja existant (Les noms de types suivent les même règles que les noms de variable). Exemple \mint{swift}|typealias Age = UInt8|
+
+\item[nom de variable :]
+Un nom de variable peut être composé de n'importe quel caractère Unicode
+à part les espaces, les flèches et symboles mathématiques et les
+caractères Unicode invalides ou servant à dessiner des lignes et des boites,
+soit à peu près tout ce que vous puvez vouloir utiliser.
+Il ne doit pas commencer par un chiffre.
+Un certain nombres de noms sont aussi réservés par le langage% :
+
+%TODO : Déplacer dans les références.
+\begin{itemize}
+%Mots-clés utilisés dans les déclarations
+\item \mintinline{swift}{}
+%class, deinit, enum, extension, func, import, init, internal, let, operator, private, protocol, public, static, struct, subscript, typealias, and var. »
+%Mots-clés utilisés dans des instructions
+%break, case, continue, default, do, else, fallthrough, for, if, in, return, switch, where, and while
+%Mots-clés utilisés dans des expressions.
+%as, dynamicType, false, is, nil, self, Self, super, true, __COLUMN__, __FILE__, __FUNCTION__, and __LINE__
+%Mots-clés utilisés dans des contextes particuliers,
+% En dehors de ces contextes il ne sont pa considérés comme des mots-clés.
+%associativity, convenience, dynamic, didSet, final, get, infix, inout, lazy, left, mutating, none, nonmutating, optional, override, postfix, precedence, prefix, Protocol, required, right, set, Type, unowned, weak, and willSet
+\end{itemize}
+
+\item[Type :] Il peut être omis si une valeur initiale est précisée,
+permettant à Swift de déduire le Type.
+Le mot clé \mintinline{swift}{typealias} permet de définir un type
+comme étant la même chose qu'un type déjà existant.
+(Les noms de types suivent les même règles que les noms de variable).
+Exemple :
+\mint{swift}|typealias Age = UInt8|
+Par convention les noms de type sont en CamelCase,
+c'est à dire fait de mots dont la première lettre est en majuscule
+collés les uns aux autres sans espaces.
+
 \emph{Toute variable possède un type.}
-\item[valeur initiale :] Il est recommandé d'initialiser une variable à sa déclaration, mais ce n'est pas obligatoire, dans ce cas il est indispensable de préciser le type pour que Swift s'y retrouve. Dans ce cas il faut aussi garantir que la variable sera toujours initialisée avant d'y accéder pour la première fois, sinon le programme ne compilera pas.
+
+\item[valeur initiale :]
+Il est recommandé d'initialiser une variable à sa déclaration,
+mais ce n'est pas obligatoire,
+dans ce cas, il est indispensable de préciser le type pour que Swift s'y retrouve. 
+Dans ce cas, il faut aussi garantir que la variable sera toujours initialisée
+avant d'y accéder pour la première fois, sinon le programme ne compilera pas.
+Attention le compilateur Swift est très strict là dessus.
 \end{description}
+
 Il est possible de déclarer plusieurs variables en même temps, exemple :
 \mint{swift}|var frères = 5, sœurs = 4 // c'est une famille nombreuse !|
+
 \subsection{Les nombres à virgule flottante}
-Parlons maintenant des nombres à virgule (ou à points, puisque tel est le séparateur décimal en Angleterre et donc dans le monde des programmeurs).
-Ces nombres ont un défaut, il ne peuvent pas représenter parfaitement tous les nombres décimaux, comme un nombre décimal ne peu pas représenter parfaitement \begin{math} \frac{1}{7} \end{math}, par exemple. Mais en général cette approximation n'est pas un problème.
-Il y deux principaux types de nombres à virgule, ainsi qu'un troisième, moins commun, que je cite par soucis d'exhaustivité :
+
+Parlons maintenant des nombres à virgule (ou à points, puisque tel est le séparateur décimal en Angleterre et donc dans le monde des programmeurs;-).
+
+Ces nombres ont un  défaut,
+il ne peuvent pas représenter parfaitement tous les nombres décimaux,
+comme un nombre décimal ne peut pas représenter parfaitement
+\begin{math} \frac{1}{7} \end{math}, par exemple.
+Mais en général cette approximation n'est pas un problème.
+Il y deux principaux types de nombres à virgule, ainsi qu'un troisième,
+moins commun, que je cite par soucis d'exhaustivité :
 \begin{longtabu} to \linewidth {|X[3,l,m]|X[1,l,m]|X[4,r,m]|X[3,r,m]|}
 \hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
 \endhead
@@ -99,7 +196,8 @@ Il y deux principaux types de nombres à virgule, ainsi qu'un troisième, moins 
 \caption{Les différents Types de nombres à virgule flottante}
 \end{longtabu}
 
-Il est aussi possible d'insérer des \_ entre les chiffres, pour formatter ses nombres de manière plus (ou moins, au choix) lisible.
+Il est aussi possible d'insérer des \_ entre les chiffres,
+pour formater ses nombres de manière plus (ou moins, au choix) lisible.
 
 \subsection{Changer la valeur d'une variable}
 Pour changer la valeur d'une variable il suffit d'utiliser l'opérateur \verb"=".
