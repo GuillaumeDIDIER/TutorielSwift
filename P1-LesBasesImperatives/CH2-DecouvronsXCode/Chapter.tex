@@ -45,7 +45,7 @@ En Swift une instruction se termine par un retour à la ligne, ou un point virgu
 (Si on tient absolument à mettre plusieurs instructions sur une ligne).
 Vous avez normalement le code suivant,
 affichant \verb"Hello, playground" en face de la troisième ligne :
-\begin{listing}[h]
+\begin{listing}[H]
 \caption{Code par défaut d'un Playground Swift}
 \begin{minted}[linenos=true]{swift}
 // Playground - noun: a place where people can play
@@ -57,7 +57,7 @@ var str = "Hello, playground"
 \end{listing}
 
 Remplacez le par le code suivant :
-\begin{listing}[h]
+\begin{listing}[H]
 \caption{Programme affichant "Hello, playground"}
 \begin{minted}[linenos=true]{swift}
 // Playground - noun: a place where people can play
@@ -121,17 +121,17 @@ car il rendrait un vrai code illisible !
 
 Il existe deux sortes de commentaires,
 des commentaires qui s'arrêtent à la fin d'une ligne,
-et des commentaires, éventuellement multilignes,
+et des commentaires, éventuellement multi-lignes,
 qui font ignorer au compilateur tout ce qui est contenu entre deux marqueurs.
 
-%TODO : Refactor.
+%TODO : Refactor ?
 Comme un court exemple vaut mieux qu’un long discours,
 je vous laisse consulter le code suivant.
 
 \paragraph{Attention :} À ceux qui connaissent les commentaires du C,
 en Swift, les commentaires s'imbriquent les un dans les autres.
 
-\begin{listing}[h]
+\begin{listing}[H]
 \caption{Que de commentaires !}
 \begin{minted}[linenos=true]{swift}
 // Ceci est un commentaire s'arrêtant en fin de ligne.
@@ -144,8 +144,10 @@ println("Ceci est (aussi) bien affiché")
 Il peut s'étendre sur plusieurs lignes,
 il est délimité par un symbole de début, un slash (/) suivi d'une étoile *,
 et un délimiteur de fin, le même, mais à l'envers.
-// Je suis un commentaire imbriqué
-/*Moi aussi*/
+En swift les commentaires s'imbriquent les un dans les autres.
+// Je suis un commentaire imbriqué sur une ligne*/
+Le symbole de fin est ignoré puisqu'il est dans un commentaire mono-ligne.
+/*Je suis aussi imbriqué*/
 println("Hello, playground")
 Mais rien ne se passe ! On est dans un commentaire.
 Fin du commentaire sur plusieurs lignes:*/
