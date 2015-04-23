@@ -1,28 +1,28 @@
 \chapter{Découvrons Xcode}
-Dans cette parte nous allons installer et découvrir l'IDE d’Apple,
-puis découvrir notre première ligne de code.
+Dans cette partie, nous allons installer et découvrir l'EDI\footnote{\emph{EDI} : Environnement de Développement Intégré} d’Apple,
+puis découvrir notre première ligne de code. % FIXME : chapitre
 \section{Installation de Xcode}
 L'installation de cet outil est plutôt facile,
-puisqu’il est disponible gratuitement depuis le Mac App Store.
+puisqu’il est disponible gratuitement depuis le \emph{Mac App Store}.
  
 On peut cependant s'inscrire gratuitement en tant que développeur
 avec son Apple ID sur le
 \TSwiftUrl{http://developer.apple.com/}{site consacré aux développeurs}{Site d'Apple pour les développeurs},
-pour accéder aux divers ressource, dont la documentation,
+pour accéder aux diverses ressources, dont la documentation,
 ce que je vous recommande de faire.
 (Attention, les programmes payants ne sont pas nécessaires,
-il servent juste à pouvoir soumettre des applications sur les App Store,
-et pouvoir signer son code, pour la distribution via internet)
-Une fois les quelques Giga-octets de l'application téléchargés
+il servent juste à pouvoir soumettre des applications sur les \emph{App Store},
+et à pouvoir signer son code, pour la distribution via Internet)
+Une fois les quelques gigaoctets de l'application téléchargés
 (grosse pause café),
-vous verrez l'application apparaitre dans votre dossier application.
+vous verrez l'application apparaître dans votre dossier application.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.25]{\TSwiftRoot/P1-LesBasesImperatives/CH2-DecouvronsXcode/img/Launchpad}
-\caption{L'icône de Xcode dans la pile Applications}
+\caption{L'icône de Xcode dans la pile \og Applications \fg{}}
 \end{figure}
 
-\section{Premier contact avec Swift, un Playground}
+\section{Premier contact avec Swift : un playground}
 Ouvrez Xcode.
 Vous devez voir apparaitre cette fenêtre, à la colonne de droite près.
 \begin{figure}[H]
@@ -32,21 +32,21 @@ Vous devez voir apparaitre cette fenêtre, à la colonne de droite près.
 \end{figure}
 
 Cliquez sur << \emph{Get started with a playground} >>,
-pour créer un nouveau playground.
-Choisissez comme plateforme OS X, et donnez lui un nom sensé.
-Une fois le projet enregistré, vous voyez apparaitre une fenêtre en deux parties.
+pour créer un nouveau \og playground \fg{}.
+Choisissez comme plate-forme OS X, et donnez lui un nom sensé.
+Une fois le projet enregistré, vous voyez apparaître une fenêtre en deux parties.
 
-A gauche un éditeur de texte qui contient du code Swift,
-à droite une colonne dans laquelle sont affichés
+À gauche, un éditeur de texte qui contient du code Swift,
+à droite, une colonne dans laquelle sont affichés
 les résultats de chaque instructions.
-Cette dernière est ce qui fait la puissance d'un playground !
+Cette dernière est ce qui fait la puissance d'un \og playground \fg{} !
 
 En Swift une instruction se termine par un retour à la ligne, ou un point virgule
-(Si on tient absolument à mettre plusieurs instructions sur une ligne).
+(si on tient absolument à mettre plusieurs instructions sur une ligne).
 Vous avez normalement le code suivant,
 affichant \verb"Hello, playground" en face de la troisième ligne :
 \begin{listing}[H]
-\caption{Code par défaut d'un Playground Swift}
+\caption{Code par défaut d'un \og playground \fg{} Swift}
 \begin{minted}[linenos=true]{swift}
 // Playground - noun: a place where people can play
 
@@ -58,7 +58,7 @@ var str = "Hello, playground"
 
 Remplacez le par le code suivant :
 \begin{listing}[H]
-\caption{Programme affichant "Hello, playground"}
+\caption{Programme affichant \og Hello, playground \fg{}}
 \begin{minted}[linenos=true]{swift}
 // Playground - noun: a place where people can play
 
@@ -67,32 +67,32 @@ println("Hello, playground")
 \end{listing}
 
 Ce code semble avoir le même effet que le précédent,
-mais cela n'est vrai que dans un playground,
+mais cela n'est vrai que dans un \emph{playground},
 qui reste un environnement très particulier.
 
 Il s’agit du premier programme que l’on montre,
 par convention, dans un nouveau langage :
-« Hello, World ! », qui affiche à l’écran le texte en question.
+« \emph{Hello, World!} », qui affiche à l’écran le texte en question.
 
 La première ligne de code est un commentaire
-(ignoré royalement par le compilateur)
-notion que nous étudieront dans la prochaine section,
-la deuxième, la ligne qui affiche le texte << Hello, Playground ! >>
+(ignoré royalement par le compilateur),
+notion que nous étudierons dans la prochaine section ;
+la deuxième, la ligne qui affiche le texte << Hello, playground ! >>
 (sans les guillemets) à l’écran.
 On reviendra plus en détail sur cette ligne plus tard,
-mais je tenait à vous présenter ce programme,
+mais je tenais à vous présenter ce programme,
 qui est plutôt court dans ce langage
-(1 ligne en Swift, contre 4 lignes en C).
+(une ligne en Swift, contre quatre lignes en C).
 
-Vous pouvez remplacer le texte entre guillemet par le texte que vous voulez,
+Vous pouvez remplacer le texte entre guillemets par le texte que vous voulez,
 par exemple << \verb"Bonjour, <votre prénom> !" >>.
 
 \mintinline{swift}{println} est la fonction
-qui est chargé d’afficher à l’écran une ligne de texte.
+qui est chargée d’afficher à l’écran une ligne de texte.
 
 Cette ligne de code correspond à une \emph{instruction}.
 
-Un playground est un outil très puissant de Xcode
+Un \emph{playground} est un outil très puissant de Xcode
 puisqu’il permet de voir immédiatement
 les conséquences d’une modification du code.
 \section{Les Commentaires}
@@ -102,7 +102,7 @@ du texte ignoré par le compilateur.
 
 Vous allez me dire, que vous ne voyez pas à quoi cela sert.
 En fait, lire le code d’un autre programmeur n’est pas toujours évident,
-(à quoi ça sert ça !? Et qu’est ce que tu veux faire là ?).
+(\og \emph{à quoi ça sert ça !? Et qu’est ce que tu veux faire là ?} \fg{}).
 Pour aider les autres, ainsi que soi-même,
 lorsque l'on se replonge dans son code des mois après,
 il est donc indispensable d’expliquer son code.
@@ -210,13 +210,13 @@ Par ce biais il est possible d'écrire des scripts, comme en python.
 \addcontentsline{toc}{section}{Conclusion}
 Dans cette partie vous avez :
 \begin{itemize}
-\item Installé l'EDI d'Apple
-\item Créer un nouveau playground.
-\item Appris comment afficher du texte sur la sortie standard.
-\item Ce qu'est un commentaire.
+\item installé l'EDI\footnote{\emph{EDI} : Environnement de Développement Intégré} d'Apple ;
+\item créé un nouveau \emph{playground} ;
+\item appris comment afficher du texte sur la sortie standard ;
+\item ce qu'est un commentaire ;
 \end{itemize}
 \section*{Exercice}
 \phantomsection
 \addcontentsline{toc}{section}{Exercice}
-Passez à la pratique et faites en sorte que le playground affiche
+Passez à la pratique et faites en sorte que le \emph{playground} affiche
 votre prénom dans la colonne de droite.
