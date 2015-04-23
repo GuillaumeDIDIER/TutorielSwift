@@ -17,3 +17,6 @@
 .minted*
 *.synctex.gz
 *.bak
+*.pygtex
+
+*.pygstyle
