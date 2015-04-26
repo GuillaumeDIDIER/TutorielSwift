@@ -136,22 +136,8 @@ Un nom de variable peut être composé de n'importe quel caractère Unicode
 à part les espaces, les flèches et symboles mathématiques et les
 caractères Unicode invalides ou servant à dessiner des lignes et des boites,
 soit à peu près tout ce que vous puvez vouloir utiliser.
-Il ne doit pas commencer par un chiffre.
-Un certain nombres de noms sont aussi réservés par le langage% :
+Il ne doit pas commencer par un chiffre, ni correspondre à un mot clé du langage.
 
-%TODO : Déplacer dans les références.
-\begin{itemize}
-%Mots-clés utilisés dans les déclarations
-\item \mintinline{swift}{}
-%class, deinit, enum, extension, func, import, init, internal, let, operator, private, protocol, public, static, struct, subscript, typealias, and var. »
-%Mots-clés utilisés dans des instructions
-%break, case, continue, default, do, else, fallthrough, for, if, in, return, switch, where, and while
-%Mots-clés utilisés dans des expressions.
-%as, dynamicType, false, is, nil, self, Self, super, true, __COLUMN__, __FILE__, __FUNCTION__, and __LINE__
-%Mots-clés utilisés dans des contextes particuliers,
-% En dehors de ces contextes il ne sont pa considérés comme des mots-clés.
-%associativity, convenience, dynamic, didSet, final, get, infix, inout, lazy, left, mutating, none, nonmutating, optional, override, postfix, precedence, prefix, Protocol, required, right, set, Type, unowned, weak, and willSet
-\end{itemize}
 
 \item[Type :] Il peut être omis si une valeur initiale est précisée,
 permettant à Swift de déduire le Type.
@@ -177,6 +163,91 @@ Attention le compilateur Swift est très strict là dessus.
 
 Il est possible de déclarer plusieurs variables en même temps, exemple :
 \mint{swift}|var frères = 5, sœurs = 4 // c'est une famille nombreuse !|
+\subsection{Mots clés}
+
+%TODO : Déplacer dans les références.
+\begin{itemize}
+
+\item Mots-clés utilisés dans les déclarations :
+\mintinline{swift}{class},
+\mintinline{swift}{deinit},
+\mintinline{swift}{enum},
+\mintinline{swift}{extension},
+\mintinline{swift}{func},
+\mintinline{swift}{import},
+\mintinline{swift}{init},
+\mintinline{swift}{internal},
+\mintinline{swift}{let},
+\mintinline{swift}{operator},
+\mintinline{swift}{private},
+\mintinline{swift}{protocol},
+\mintinline{swift}{public},
+\mintinline{swift}{static},
+\mintinline{swift}{struct},
+\mintinline{swift}{subscript},
+\mintinline{swift}{typealias} et
+\mintinline{swift}{var}
+
+\item Mots-clés utilisés dans des instructions :
+\mintinline{swift}{break},
+\mintinline{swift}{case},
+\mintinline{swift}{continue},
+\mintinline{swift}{default},
+\mintinline{swift}{do},
+\mintinline{swift}{else},
+\mintinline{swift}{fallthrough},
+\mintinline{swift}{for},
+\mintinline{swift}{if},
+\mintinline{swift}{in},
+\mintinline{swift}{return},
+\mintinline{swift}{switch},
+\mintinline{swift}{where} et
+\mintinline{swift}{while}
+
+\item Mots-clés utilisés dans des expressions :
+\mintinline{swift}{as},
+\mintinline{swift}{dynamicType},
+\mintinline{swift}{false},
+\mintinline{swift}{is},
+\mintinline{swift}{nil},
+\mintinline{swift}{self},
+\mintinline{swift}{Self},
+\mintinline{swift}{super},
+\mintinline{swift}{true},
+\mintinline{swift}{__COLUMN__},
+\mintinline{swift}{__FILE__},
+\mintinline{swift}{__FUNCTION__} et
+\mintinline{swift}{__LINE__}
+
+\item Mots-clés utilisés dans des contextes particuliers, en dehors de ces contextes il ne sont pas considérés comme des mots-clés.
+Dans le doute je vous recommande de ne pas les utiliser.
+\mintinline{swift}{associativity},
+\mintinline{swift}{convenience},
+\mintinline{swift}{dynamic},
+\mintinline{swift}{didSet},
+\mintinline{swift}{final},
+\mintinline{swift}{get},
+\mintinline{swift}{infix},
+\mintinline{swift}{inout},
+\mintinline{swift}{lazy},
+\mintinline{swift}{left},
+\mintinline{swift}{mutating},
+\mintinline{swift}{none},
+\mintinline{swift}{nonmutating},
+\mintinline{swift}{optional},
+\mintinline{swift}{override},
+\mintinline{swift}{postfix},
+\mintinline{swift}{precedence},
+\mintinline{swift}{prefix},
+\mintinline{swift}{Protocol},
+\mintinline{swift}{required},
+\mintinline{swift}{right},
+\mintinline{swift}{set},
+\mintinline{swift}{Type},
+\mintinline{swift}{unowned},
+\mintinline{swift}{weak} et
+\mintinline{swift}{willSet}
+\end{itemize}
 
 \subsection{Les nombres à virgule flottante}
 
