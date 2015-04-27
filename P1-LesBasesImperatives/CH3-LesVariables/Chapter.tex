@@ -269,13 +269,13 @@ moins commun, que je cite par soucis d'exhaustivité :
 \caption{Les différents Types de nombres à virgule flottante}
 \end{longtabu}
 
-Il est aussi possible d'insérer des \_ entre les chiffres,
+Il est aussi possible d'insérer des \verb"_" entre les chiffres,
 pour formater ses nombres de manière plus (ou moins, au choix) lisible.
 
 \subsection{Changer la valeur d'une variable}
 Pour changer la valeur d'une variable il suffit d'utiliser l'opérateur \verb"=".
 \begin{listing}[h]
-\caption{Un type plus approprié pour l'age du capitaine}
+\caption{Changer la valeur d'une variable.}
 \begin{minted}[linenos]{swift}
 var sens_de_la_vie = 5 // Int
 sens_de_la_vie = 42 // Parce que c'est la seule bonne réponse !
@@ -285,9 +285,9 @@ pi = 3.141592 // Plus précis !
 \end{minted}
 \end{listing}
 
-\emph{Attention, on ne peut pas changer le type d'une variable après qu'elle est été défini.}
+\emph{Attention, on ne peut pas changer le type d'une variable après qu'elle a été défini.}
 \subsection{Récapitulatif des types de nombres}
-\begin{longtabu} to \linewidth {|X[2,l,m]|X[1,l,m]|X[4,r,m]|X[2,r,m]|}
+\begin{longtabu} to \linewidth {|X[3,l,m]|X[1,l,m]|X[4,r,m]|X[2,r,m]|}
 \hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
 \endhead
 \input{\TSwiftRoot/Reference/Types/Integer}
@@ -315,12 +315,12 @@ des constantes en priorité, et de ne déclarer comme variable que ce qui doit l
 \addcontentsline{toc}{section}{Conclusion}
 Dans cette partie vous avez appris :
 \begin{itemize}
-\item Ce qu'était une variable.
-\item Qu'il existe plusieurs types de variables.
-\item Comment déclarer une variable entière
+\item ce qu'était une variable.
+\item qu'il existe plusieurs types de variables.
+\item comment déclarer une variable entière
 \item comment déclarer un nombre à virgule.
-\item Comment changer la valeur d'un variable.
-\item Ce qu'est une constante.
+\item comment changer la valeur d'un variable.
+\item ce qu'est une constante.
 \end{itemize}
 
 \section*{Exercice}
