@@ -1,10 +1,12 @@
 \chapter{Utilisation des variables}
 
+Dans cette partie nous allons utiliser de façon un peu plus intéressante ces variables.
+
 \section{Une vraie calculatrice !}
 Je l'ai déjà dit, mais un ordinateur n'est qu'une grosse calculatrice, et pour vous prouver que
 je ne vous mène pas en bateau, nous allons nous en servir :
 \subsection{Additionnons deux nombres}
-Pour additionner deux nombres, on utilise l'opérateur plus, comme au primaire.
+Pour additionner deux nombres, on utilise l'opérateur plus, \verb"+", comme au primaire.
 \begin{listing}
 \begin{minted}[linenos]{swift}
 let nombre1 = 64
@@ -20,7 +22,7 @@ let pi = 3 + 0.141592
 \caption{Des additions}
 \end{listing}
 
-Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante il faut convertir  
+Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante, il faut l'un des deux pour que les deux aient le même type. 
 \subsection{Soustraction et multiplication}
 De même les bonnes vielles soustractions et multiplications fonctionnent, avec les mêmes règles de priorité des opérations en utilisant respectivement les opérateurs \verb"-" et \verb"*".
 L'opérateur \verb"-" peut aussi âtre utilisé seul devant une variable numérique pour en obtenir l'opposé.
@@ -40,6 +42,7 @@ let moins_cent= -nombre1
 La division, vous connaissez, mais vous allez surment me demander ce que j'entends par \emph{modulo}.
 
 Il s'agit en fait du nom que les programmeurs donnent au \emph{reste} de la division euclidienne.
+\subsubsection{La division}
 
 Commençons par la division.
 
@@ -56,10 +59,12 @@ let quotient_flottant = Double(entier) / flottant
 \caption{Les deux divisions}
 \end{listing}
 
-Le modulo \mintinline{swift}{(a % b)} est défini tel que \mintinline{swift}{a = b * un_entier + (a % b)} ou \verb"un_entier" est le plus grand entier en valeur absolue (en ommetant le signe) tel que \verb"a % b" soit du signe de \verb"a". \verb"a % b", est donc, en valeur absolue (sans le signe), strictement plus petit que \verb"b".
-(en supposant b, positif, mais s'il est négatif on a le même réultat que s'il était positif)
+\subsubsection{Le modulo}
 
-En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possible de l'appliquer à \emph{deux} nombres à virgule.
+Le modulo \mintinline{swift}{(a % b)} est défini tel que \mintinline{swift}{a = b * un_entier + (a % b)} ou \verb"un_entier" est le plus grand entier en valeur absolue (en ommetant le signe) tel que \verb"a % b" soit du signe de \verb"a". \verb"a % b", est donc, en valeur absolue (sans le signe), strictement plus petit que \verb"b".
+(en supposant \verb"b", positif, mais s'il est négatif on a le même réultat que s'il était positif)
+
+En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possible de l'appliquer à deux nombres à virgule.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -75,8 +80,8 @@ let reste_flottant = Double(entier) % 2.5
 
 \subsection{Assignations augmentés}
 J'avais aussi omis de vous le préciser, mais la qualité première du programmeur est la fainéantise. En fait je plaisante un peu, mais les programmeurs apprécient dès qu'ils ont moins à taper.
-Par conséquent au lieu d'écrire \mintinline{swift}{a = a + 1}
-Ils utilisent une notation raccourcis spéciale \mintinline{swift}{a += 1}
+Par conséquent au lieu d'écrire \mintinline{swift}{a = a + 1},
+ils utilisent une notation raccourcis spéciale \mintinline{swift}{a += 1}.
 
 On appel ces opérateurs \emph{augmentés}. Ils existent pour les 5 opérateurs que nous avons déja vu :
 
@@ -94,20 +99,20 @@ On appel ces opérateurs \emph{augmentés}. Ils existent pour les 5 opérateurs 
 \subsection{Incrémenter et Décrémenter}
 Comme les programmeurs sont vraiments très fainéants il existe deux opérateurs pour ajouter et enlever 1 à une variable : \mintinline{swift}{++} et \mintinline{swift}{--}, formes raccourcies respectives de \mintinline{swift}{+=1} et \mintinline{swift}{-=1}. Ils peuvent être placés avant ou après une variable, avec une légère différence en terme de priorité, dont nous parlerons dans le chapitre dédié aux opérateurs avancés.
 \subsection{Les priorités}
-Si vous mélangez les différentes opérations, les opérateurs normaux serons éxéécutés en suivant les priorités mathématiques, c'est à dire les multiplications, divisions et restes avant les additions et soustractions; et les assignations (éventuellement augmentées) en dernier.
-Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématiques.
+Si vous mélangez les différentes opérations, les opérateurs normaux serons exécutés en suivant les priorités mathématiques, c'est à dire les multiplications, divisions et restes avant les additions et soustractions; et les assignations (éventuellement augmentées) en dernier.
+\emph{Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématiques.}
 \section{Première approche des fonctions}
 Vous vous souvenez de la ligne affichant du texte, au chapitre 2. Je vais ici vous l'expliquer un peu plus en détail.
 \subsection{Une fonction}
 Pour le matheux : \emph{Une fonction associe à tout élément d'un ensemble de départ au plus un élément d'un ensemble d'arrivé}.
 
-Pour le programmeur, une fonction c'est donc une sorte de boite noire, à laquelle on donne à manger des paramètres, \emph{de types bien définis}, et qui renvoi une valeur (ou rien du tout).
+Pour le programmeur, une fonction c'est donc une sorte de \emph{boite noire}, à laquelle on donne à manger des paramètres, \emph{de types bien définis}, et qui renvoi une valeur (ou rien du tout).
 
 Une fonction sert à réutiliser un bout de code sans avoir à le recopier à chaque fois, et permet de ne pas avoir à savoir comment cela fonctionne.
 On reviendra à l'utilité du découpage du code dans un chapitre ultérieur,
 ainsi que sur un usage plus avancé des fonctions.
 
-L'exemple que vous avez déja vu est la fonction \mintinline{swift}{println}, qui affiche une ligne de texte. Les conversion de type sont aussi à des fonctions.
+L'exemple que vous avez déja vu est la fonction \mintinline{swift}{println}, qui affiche une ligne de texte. Les conversion de type ressemblent aussi à des fonctions.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -166,12 +171,12 @@ Dans cette partie vous avez appris :
 \section*{Exercices}
 \phantomsection
 \addcontentsline{toc}{section}{Exercices}
-\subsection{Des heures, minutes, secondes vers les secondes}
+\subsection*{Des heures, minutes, secondes vers les secondes}
 Donnez vous trois variables contenant des heures des minutes et des secondes
 et faites calculer à votre ordinateur le nombre de secondes que cela fait.
 
 
-\subsection{Des secondes vers les heures, minutes, secondes}
+\subsection*{Des secondes vers les heures, minutes, secondes}
 Essayez d'écrire un code qui à partir d'une durée en seconde la transforme en (jours,) heures, minutes et secondes, soit l'inverse de l'exercice précédent.
 
 %\section*{Correction}
