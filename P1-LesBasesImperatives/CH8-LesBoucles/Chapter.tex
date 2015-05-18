@@ -1,13 +1,13 @@
 \chapter{Les Boucles}
-Dans ce chapitre, nous allons voir comment
-répéter des instructions un nombre variable de fois.
+Dans ce dernier chapitre avant votre premier chapitre de TP,
+nous allons voir comment répéter des instructions un nombre variable de fois.
 \section{Les boucles while et do-while}
 \subsection{Une boucle ?}
 
 \subsection{while}
 Cette première boucle permet de répéter un groupe d'instruction tant qu'une condition est vérifié (ou que sa négation n'est pas vérifiée.).
 
-\begin{listing}[h]
+\begin{listing}[H]
 \begin{minted}[linenos]{swift}
 while <condition> {
     // code à exécuter.
@@ -31,7 +31,7 @@ while !l_utilisateur_veut_quitter {
 Cette boucle est similaire à la précédente, à ceci près que le code contenu dans la boucle est toujours exécuté au moins une fois, et que la conditions est placé (et donc évaluée, à la fin de la boucle).
 
 Comme l'utilisateur ne vas certainement pas essayer de quitter avant d'avoir utilisé le programme, on peut réécrire le code de l'exemple précédent comme ceci :
-\begin{listing}[h]
+\begin{listing}[H]
 \begin{minted}[linenos]{swift}
 // Initialisation du programme
 do {
@@ -61,7 +61,7 @@ Il ne faut pas que b < a, sinon vous obtenez une erreur, voir une boucle infinie
 \subsection{La syntaxe complète}
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-let n /*: Int*/ = <ce que vous voulez>
+let n /*: Int*/ = <entier positif>
 for i/* nom de variable valide*/ in 0..<n /*ou a...b,
 comme vous voulez */{
     // Corps de la boucle à exécuter
@@ -72,10 +72,12 @@ comme vous voulez */{
 \end{minted}
 \caption{Syntaxe de la boucle for in}
 \end{listing}
-\paragraph{Remarque :}
-La boucle for in a en fait une application plus générale, mais nous en parlerons par la suite. %TODO ref
 \subsection{Exercice}
 Essayez d'écrire une boucle while équivalente.
+
+\subsection{La boucle for et les chaines de caractères}
+
+
 
 \section{Seconde syntaxe de la boucle for}
 Cette seconde syntaxe était la première historiquement,
@@ -142,9 +144,9 @@ Il est possible de mettre un nom sur une boucle ou un switch, et en précisant c
 \subsection{continue}
 
 \section{Retour sur Switch}
-%TODO 
+Je reviens commme promis sur les switch pour vous présenter certaines des fonctionnalités avancées que je ne vous ai pas présenté au chapitre précédent.
 
-\subsubsection{Capturer un intervalle} % Problème : Je n'ai pas encore introduit les ranges.
+\subsubsection{Capturer un intervalle} 
 Il est en fait possible de faire un peu plus avec un switch :
 Tout d'abord il est possible de traiter un intervalle d'un coup, en utilisant la notation d'intervalle :
 \begin{listing}{h}
@@ -160,10 +162,9 @@ case 1..5 :
 \subsubsection{Un switch sur plusieurs valeurs}
 Je détaille ici une syntaxe un peu plus complexe, qui fait intervenir en réalité un type que nous verrons par la suite.
 
-% À déplacer plus loin, je pense.
 \subsubsection{Capturer la valeur d'une variable dans un case}
 
-\begin{listing}{h}
+\begin{listing}[h]
 \begin{minted}[linenos]{swift}
 switch(un_nombre){
 case let x :
@@ -184,3 +185,4 @@ default:
 \end{listing}%\) Contre la coloration syntactique débile.
 Cela n'a pas d'intérêt ici, mais si vous obtenez les deux valeurs d'un coup dans une seule variable, cela présente un intérêt. Je reviendrai sur ce type plus loin.
 \subsection{fallthrough}
+Il est possible de poursuivre l'exécution d'un case dans le case suivant, en utilisant le mot clé \mintinline{swift}{fallthrough}.

@@ -50,7 +50,7 @@ Passons à la pratique !
 \subsection{Déclarons l'age du Capitaine}
 
 \begin{listing}[h]
-\caption{Premier exemple, l'age du Capitaine}
+\caption{Premier exemple, l'âge du capitaine}
 \begin{minted}[linenos=true]{swift}
 var age_du_capitaine = 42 // ;-)
 \end{minted}
@@ -58,114 +58,112 @@ var age_du_capitaine = 42 // ;-)
 
 Décortiquons ce qui précède :
 \begin{description}
-\item[var :] Mot \emph{clé} indiquant que l'on veut déclarer une variable.
-\item[age\_du\_capitaine :] Nom de la variable,
+\item[var :] mot-clé indiquant que l'on veut déclarer une variable.
+\item[age\_du\_capitaine :] nom de la variable,
 qui nous permettra d'y accéder de nouveau.
 \emph{Attention, il ne peut pas y avoir deux variables de même nom}
-\item[= :] Opérateur utilisé pour donner une valeur à une variable.
-\item[42 :] La valeur entière que l'on donne à notre variable.
-\item[// ;-) :] C'est un commentaire. Si vous ne le saviez pas, \emph{relisez le chapitre précédent}.
+\item[= :] opérateur utilisé pour donner une valeur à une variable.
+\item[42 :] la valeur entière que l'on donne à notre variable.
+\item[// ;-) :] 'est un commentaire. Si vous ne le saviez pas, \emph{relisez le chapitre précédent}.
 \end{description}
 \paragraph{Attention :}
 Ne mettez pas de zéro suivi de chiffres non nuls,
 car vous auriez des surprises (octales).
-(Je reviendrait la dessus dans un chapitre ultérieur.)
+Je reviendrait la dessus dans un chapitre ultérieur.
 \subsection{Différents types d'entiers}
 Je vous ai parlé de la représentation en mémoire des entiers,
 donc vous devriez me demander comment Swift détermine
 le nombres d'octets qui sont attribués à notre entier.
 La réponse c'est qu'à moins qu'on le lui précise,
 il prend une valeur par défaut.
-Il existe plusieurs type d'entiers,
+Il existe plusieurs types d'entiers,
 chacun pouvant contenir une plage de nombre particulière,
 selon le nombre d'octets qu'il comprennent.
 Notamment, il existe des variantes non signées,
-qui ne contienne que des nombres positifs.
+qui ne contiennent que des nombres positifs.
 
 \begin{longtabu} to \linewidth {|X[3,l,m]|X[1.5,l,m]|X[6,r,m]|X[1,r,m]|}
 \hline Taille & Type & Plage de valeur & Précision \\ \hline
 \endhead
 \input{\TSwiftRoot/Reference/Types/Integer}
-\caption{Les différents Types d'entiers}
+\caption{Les différents types d'entiers.}
 \end{longtabu}
 
 \paragraph{Attention :}
 N'essayez pas de mélanger des types différents ou
-le compilateur vous fera (amèrement) regretter.
+le compilateur vous le fera (amèrement) regretter.
 On discutera de ce problème un peu plus en détail dans la quatrième section.
 
-Par exemple pour déclarer que l'on stocke l'age du Capitaine sur 1 octet
-(soit 8 bit) et que ce doit être un entier non signé (positif), on utilise :
+Par exemple, pour déclarer que l'on stocke l'âge du capitaine sur 1 octet
+(soit 8 bits) et que ce doit être un entier non signé (positif), on utilise le code suivant.
 
 \begin{listing}[h]
-\caption{Un type plus approprié pour l'age du capitaine}
+\caption{Un type plus approprié pour l'âge du capitaine}
 \begin{minted}[linenos]{swift}
-var age_du_pitaine : UInt8  = 42 // Question ? Quel est l'age maximal du capitaine
+var age_du_pitaine : UInt8  = 42 // Question : quel est l'âge maximal du capitaine ?
 \end{minted}
 \end{listing}
 Le caractère \verb":" permet d'introduire une \emph{annotation de type},
-tandis que \verb"UInt8" correspond au type d'entier choisi.
+tandis que \verb"UInt8" correspond au type d'entiers choisi.
 
 Remarquez que Swift est ici plutôt agréable à utiliser puisqu'il ne nous oblige pas à lui préciser le type lorsque la réponse est évidente, mais nous permet d'être plus précis si on en a besoin.
 \paragraph{L'age maximal du capitaine est :}
 255 ans.
 
 C'est parfaitement approprié, puisque c'est le type le plus proche
-qui soit non signé (positif), ce qui est logique,
-car qui connait un capitaine ayant -10 ans, et qui aie la plage la moins grande possible contenant toute les valeurs possibles (de zéro à environ une grosse centaine d'année).
+qui soit \emph{non signé (positif)}, ce qui est logique (car qui connaît un capitaine ayant -10 ans ?), et qui aie la plage la moins grande possible contenant toute les valeurs possibles (de zéro à environ une grosse centaine d'années).
 Un entier signé sur 8 bits aurait posé problème
 car on connait des humains ayant 130 ans.
 
-Enfin cela suppose que le capitaine soit un humain
+Enfin, cela suppose que le capitaine soit un humain
 et pas un être ayant une plus grande longévité, un elfe par exemple.
 
 \subsection{La structure générale}
 La structure générale est la suivante,
-où les parties entre crochets peuvent être absente,
-mais pas toute les deux en même temps.
+où les parties entre crochets peuvent être absentes,
+mais pas toutes les deux en même temps.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 var <nom de variable> [ : <Type> ] [ = <valeur initiale> ]
 \end{minted}
-\caption{Structure générale d'une déclaration de variable}
+\caption{Structure générale d'une déclaration de variable.}
 \end{listing}
 
 \begin{description}
 
 \item[nom de variable :]
-Un nom de variable peut être composé de n'importe quel caractère Unicode
+un nom de variable peut être composé de n'importe quel caractère Unicode
 à part \emph{les espaces, les flèches et symboles mathématiques et les
 caractères Unicode invalides ou servant à dessiner des lignes et des boites},
 soit à peu près tout ce que vous pouvez vouloir utiliser.
 Il ne doit pas commencer par un chiffre, ni correspondre à un mot clé du langage.
 
 
-\item[Type :] Il peut être omis si une valeur initiale est précisée,
-permettant à Swift de déduire le Type.
+\item[Type :] il peut être omis si une valeur initiale est précisée,
+permettant à Swift de déduire le type.
 Le mot clé \mintinline{swift}{typealias} permet de définir un type
 comme étant la même chose qu'un type déjà existant.
 (Les noms de types suivent les même règles que les noms de variable).
 Exemple :
-\mint{swift}|typealias Age = UInt8|
+\mintinline{swift}{typealias Age = UInt8}
 Par convention les noms de type sont en CamelCase,
 c'est à dire fait de mots dont la première lettre est en majuscule
 collés les uns aux autres sans espaces.
-
 \emph{Toute variable possède un type.}
 
 \item[valeur initiale :]
-Il est recommandé d'initialiser une variable à sa déclaration,
-mais ce n'est pas obligatoire,
-dans ce cas, il est indispensable de préciser le type pour que Swift s'y retrouve. 
-Dans ce cas, il faut aussi garantir que la variable sera toujours initialisée
+il est recommandé d'initialiser une variable à sa déclaration,
+mais ce n'est pas obligatoire.
+Dans ce cas, il est indispensable de préciser le type pour que Swift s'y retrouve. 
+Il faut alors aussi garantir que la variable sera toujours initialisée
 avant d'y accéder pour la première fois, sinon le programme ne compilera pas.
-Attention le compilateur Swift est très strict là dessus.
+Attention, le compilateur Swift est très strict là dessus.
 \end{description}
 
-Il est possible de déclarer plusieurs variables en même temps, exemple :
+Il est possible de déclarer plusieurs variables en même temps, comme dans cet exemple.
 \mint{swift}|var frères = 5, sœurs = 4 // c'est une famille nombreuse !|
-\subsection{Mots clés}
+\subsection{Mots-clés}
 
 %TODO : Déplacer dans les références.
 \begin{itemize}
@@ -221,8 +219,8 @@ Il est possible de déclarer plusieurs variables en même temps, exemple :
 \mintinline{swift}{__FUNCTION__} et
 \mintinline{swift}{__LINE__}
 
-\item Mots-clés utilisés dans des contextes particuliers, en dehors de ces contextes il ne sont pas considérés comme des mots-clés.
-Dans le doute je vous recommande de ne pas les utiliser.
+\item Mots-clés utilisés dans des contextes particuliers (en dehors de ces contextes, ils ne sont pas considérés comme des mots-clés,
+mais dans le doute je vous recommande de ne pas les utiliser) :
 \mintinline{swift}{associativity},
 \mintinline{swift}{convenience},
 \mintinline{swift}{dynamic},
@@ -253,10 +251,10 @@ Dans le doute je vous recommande de ne pas les utiliser.
 
 \subsection{Les nombres à virgule flottante}
 
-Parlons maintenant des nombres à virgule (ou à points, puisque tel est le séparateur décimal en Angleterre et donc dans le monde des programmeurs;-).
+Parlons maintenant des nombres à virgule (ou à point, puisque tel est le séparateur décimal en Angleterre et donc dans le monde des programmeurs;-).
 
-Ces nombres ont un  défaut,
-il ne peuvent pas représenter parfaitement tous les nombres décimaux,
+Ces nombres ont un  défaut :
+ils ne peuvent pas représenter parfaitement tous les nombres décimaux,
 comme un nombre décimal ne peut pas représenter parfaitement
 \begin{math} \frac{1}{7} \end{math}, par exemple.
 Mais en général cette approximation n'est pas un problème.
@@ -266,20 +264,20 @@ moins commun, que je cite par soucis d'exhaustivité :
 \hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
 \endhead
 \input{\TSwiftRoot/Reference/Types/Float}
-\caption{Les différents Types de nombres à virgule flottante}
+\caption{Les différents types de nombres à virgule flottante}
 \end{longtabu}
 
 Il est aussi possible d'insérer des \verb"_" entre les chiffres,
 pour formater ses nombres de manière plus (ou moins, au choix) lisible.
 
 \subsection{Changer la valeur d'une variable}
-Pour changer la valeur d'une variable il suffit d'utiliser l'opérateur \verb"=".
+Pour changer la valeur d'une variable, il suffit d'utiliser l'opérateur \verb"=".
 \begin{listing}[h]
 \caption{Changer la valeur d'une variable.}
 \begin{minted}[linenos]{swift}
-var sens_de_la_vie = 5 // Int
+var sens_de_la_vie = 5 // Int.
 sens_de_la_vie = 42 // Parce que c'est la seule bonne réponse !
-var six_fois_sept = sens_de_la_vie // ça marche aussi.
+var six_fois_sept = sens_de_la_vie // Ça marche aussi.
 var pi = 3.14 // Double
 pi = 3.141592 // Plus précis !
 \end{minted}
@@ -294,7 +292,7 @@ pi = 3.141592 // Plus précis !
 \input{\TSwiftRoot/Reference/Types/Float}
 \caption{Les différents types de nombres}
 \end{longtabu}
-Notez aussi que les nombres littéraux, que vous tapez n'ont pas de type a priori, et que le type résultant n'est déterminé qu'après comme étant Int ou Double, si le résultat n'est pas entier. Il existe plusieurs notations(décimale, hexadécimale, octale, binaire), mais je ne vous les présente pas ici.
+Notez aussi que les nombres littéraux que vous tapez n'ont pas de type a priori, et que le type résultant n'est déterminé qu'après comme étant Int, ou Double, si le résultat n'est pas entier. Il existe plusieurs notations (décimale, hexadécimale, octale, binaire), mais je ne vous les présente pas ici.
 \section{Variables et Constantes}
 On peut en fait imposer que la valeur d'une variable ne change plus après sa création :
 c'est alors une constante. Elle se déclare comme une variable excepté que l'on utilise le

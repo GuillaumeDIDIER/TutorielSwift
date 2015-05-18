@@ -1,10 +1,11 @@
 \chapter{Les Conditions}
+Après le chapitre précédent assez théorique, ce chapitre vous permettra enfin de réaliser des programmes un peu plus intéressants.
 \section{Si ... Alors... Sinon ...}
 \emph{<< C'est bien joli, les booléens, mais à quoi servent-ils ? >>}
 Une première utilisation des booléens est le <<\emph{branchement conditionnel}>>.
 \subsection{Exécuter des instructions uniquement lorsque une condition est vérifiée}
 On va prendre un exemple, on suppose que vous avez obtenu de l'utilisateur deux nombres a et b, stockés dans deux variables, pour calculer le quotient $\frac{a}{b}$.
-Cependant, si b est nul, vous ne pouvez pas effectuer la division. (En fait en Swift, avec des nombres à virgule vous obtiendrez $\pm infinty$
+Cependant, si b est nul, vous ne pouvez pas effectuer la division. %Not true anymore (En fait en Swift, avec des nombres à virgule vous obtiendrez $\pm \infty$)
 
 On se propose de vérifier si b est nul et d'écrire un message à la console dans ce cas.
 
@@ -13,12 +14,15 @@ Grâce au chapitre précédent, vous pouvez me trouver le condition correspondan
 \pagebreak % No cheating
 \mintinline{swift}{b == 0}, comme vous avez tous trouvé (sans tricher).
 
-Pour executer \mintinline{swift}{println("b est nul ! Division impossible")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}
+Pour exécuter \mintinline{swift}{println("b est nul ! Division impossible")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let b = 0
-if b == 0 /*Condition, non nécessairement entre parenthèse*/{
+
+// /!\ Abus de commentaire
+
+if b == 0 /*Condition*/ { // Condition non nécessairement entre parenthèse
     // Code à exécuter si la conditions est vérifié
     // Éventuellement plusieurs instructions.
     println("b est nul ! Division impossible")
@@ -35,21 +39,22 @@ dans un langage utilisant la syntaxe du C :}
 \item Les parenthèses autour de la condition ne sont pas nécessaires,
 et sont en général omise dans la doc d'Apple.
 \item Les accolades ne peuvent par contre pas être omise,
-même s'il n'y a qu'une instruction à exécuter.
+même s'il n'y a qu'une instruction à exécuter
+\footnote{Chercher "goto fail" sur Google}.
 \end{itemize}
 \subsection{Et dans le cas contraire ?}
 Évidement maintenenant que l'on  a testé la valeur de b, il faut n'exécuter la division que si b est non nul.
 La solution que vous pourriez envisager est de faire ensuite
 \mintinline{swift}{if b != 0},
-mais il existe une solution plus claire : \mintinline{swift}{else}
+mais il existe une solution plus claire : \mintinline{swift}{else}.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let b = 0
-if b == 0 /*Condition, non nécessairement entre parenthèse*/{
+if b == 0 {
     // Code à exécuter si la conditions est vérifié
     // Éventuellement plusieurs instructions.
     println("b est nul ! Division impossible")
-} else { // Même commentaire que précédement pour les accolades.
+} else {
     println("a/b = \( a/b )")
     // Code exécuté dans le cas contraire.
 }
@@ -60,8 +65,10 @@ if b == 0 /*Condition, non nécessairement entre parenthèse*/{
 
 Il est bien sur possible d'imbriquer des if à l'intérieur des accolades.
 \subsection{Else if, exécuter des tests plus complexes}
-Il est enfin possible de traiter des cas plus complexe avec l'idiome \mintinline{swift}{else if}, << sinon si >> :
+Il est enfin possible de traiter des cas plus complexe avec \mintinline{swift}{else if}, << sinon si >> :
+
 \begin{listing}[h]
+\begin{minted}[linenos]{swift}
 if condition1 {
     // code à exécuter si 1 est vérifiée.
 }
@@ -77,15 +84,15 @@ else {
     // code à exécuter si aucune  condition n'est vérifié.
 }
 // Code à exécuter dans tout les cas.
-
+\end{minted}
 \caption{if, else if, else}
 \end{listing}
-\section{Quelques généralités sur les instructions composée}
+\section{Quelques généralités sur les instructions composées}
 Lorsque vous voyez apparaître de accolades, vous entrez dans un nouveau bloc de code, dans ce bloc, toutes les variables que vous déclarerez ne serons déclarés que dans ce bloc, et ne seront plus accessible une fois que vous en serez sorti. On parle de variable locales. Dans certain cas une variable locale est définie sur la ligne introduisant l'instruction composée.
 
 On peut, par contre, accéder aux variables définis à l'extérieur de ce bloc, dite globales.
 \section{Application : Une année est elle bissextile ?}
-Après un chapitre quelque peu théorique, je vous propose un premier exercice intéressant :
+Après un début de chapitre quelque peu théorique, je vous propose un premier exercice un peu sérieux.
 \subsection{Consignes}
 Je vous demande d'écrire un code qui déclare une constante contenant une année
 (que vous changerez pour tester le programme),
@@ -96,6 +103,9 @@ Je rappelle à toute fin utile qu'une année sur quatre est bissextile,
 sauf pour les années qui sont un multiple de 100, qui ne sont pas bissextile,
 sauf (encore un exception !) lorsque qu'elles sont multiple de 400.
 \subsection{Indications}
+
+Ceci est votre premier TP, ne vous inquiétez pas si ce n'est pas évident.
+
 \begin{itemize}
 
 \item N'oubliez pas l'assommant cours de méthodologie que je vous ai servi en introduction.
@@ -190,16 +200,15 @@ Essayez de refaire cela:
 \item En n'obtenant cela sans if, juste avec un grosse condition.
 
 \end{itemize}
-\section{Switch...case}
-\subsection{Effectuer un disjonction de cas}
+\section{Effectuer un disjonction de cas : switch...case}
 Il existe une deuxième syntaxe permettant de créer des branchements :
 \mintinline{swift}{switch...case}.
 Il s'agit de choisir un bloc à exécuter selon la valeur d'une variable.
-\paragraph{Remarque :}Cette Syntaxe diffère de celle du C de façon importante.
+\paragraph{Attention :}Cette Syntaxe diffère de celle du C de façon importante.
 
 
 En effet en Swift, il faut que tous les cas soient traités.
-\begin{listing}{h}
+\begin{listing}[h]
 \begin{minted}[linenos]{swift}
 switch(<variable>){
 case <valeur1> :
@@ -217,4 +226,29 @@ default :
 \caption{Syntaxe basique de switch}
 \end{listing}
 \paragraph{Un cas vide}
-Je détaillerai le role de break par la suite, mais sachez que pour qu'un cas vide accepte de compiler, il suffit de mettre l'instruction \mintinline{swift}{break} là ou le code et attendu.
+Je détaillerai le rôle de break par la suite, mais sachez que pour qu'un cas vide accepte de compiler, il suffit de mettre l'instruction \mintinline{swift}{break} là ou le code est attendu.
+
+
+\section*{Conclusion}
+\phantomsection
+\addcontentsline{toc}{section}{Conclusion}
+Dans ce chapitre vous avez appris à utiliser des conditions pour effectuer des branchements conditionnels, avec deux structures, \mintinline{swift}{if} ... \mintinline{swift}{else if} ... \mintinline{swift}{else}, et \mintinline{swift}{switch} ... \mintinline{swift}{case}.
+
+Vous avez surtout été confronté à votre première séance de travaux pratiques (TP).
+
+Je vous conseille de vérifier que vous avez bien tout compris et que vous êtes capable de ré-écrire le programme du TP sans regarder la solution, avant de poursuivre votre lecture.
+
+\section*{Exercices}
+\phantomsection
+\addcontentsline{toc}{section}{Exercices}
+Je vous ai déjà laissé quelques exercices après le TP.
+Si vous souhaitez pratiquer plus vous pouvez essayer de faire :
+\begin{itemize}
+\item Un programme qui dit si un nombre est paire ou impaire
+\emph{(Bonus, faire cela avec un nombre à virgule)}, positif ou négatif.
+\item Un programme qui dit si un nombre est paire ou impaire en utilisant un \mintinline{swift}{switch}.
+\item Un programme qui dit si un nombre à virgule est un entier.
+\end{itemize}
+
+Je n'ai pas beaucoup d'exercice pratiques à vous proposer car le TP reprend assez bien toutes les notions déjà exposée.
+
