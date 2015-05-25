@@ -76,9 +76,25 @@ comme vous voulez */{
 Essayez d'écrire une boucle while équivalente.
 
 \subsection{La boucle for et les chaines de caractères}
+Il est possible d'énumérer de la même façon les caractères d'une chaine de caractère.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let bonjour = "Hello"
+for car in bonjour {
+    println(car)
+}
+// Affiche :
+// H
+// e
+// l
+// l
+// o
+\end{minted}
 
-
-
+\caption{La boucle \mintinline{swift}{for … in} appliquée au chaînes de caractères.}
+\end{listing}
+La variable car est du type \mintinline{swift}{Char}.
+Il est possible de la convertir en chaîne de caractères en utilisant la syntaxe \mintinline{swift}{String(car)}
 \section{Seconde syntaxe de la boucle for}
 Cette seconde syntaxe était la première historiquement,
 il s'agit en effet de la syntaxe historique de cette boucle en C,
