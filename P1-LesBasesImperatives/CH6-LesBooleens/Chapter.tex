@@ -1,26 +1,25 @@
 \chapter{La logique booléenne et le type Bool}
-Dans ce chapitre, nous allons voir comment vérifier si des conditions sont remplis dans notre programme, et découvrir la logique booléenne.
+Dans ce chapitre, nous allons voir comment vérifier si des conditions sont remplies dans notre programme, et découvrir la logique booléenne.
 
 \section{Le type Bool}
 Je vous ai mentionné à l'instant les conditions ;
-l'heure est donc venu de vous introduire le type
-"qui va bien" pour stocker et manipuler les conditions.
-Une condition peut être ou non vérifié, elle peut donc prendre deux valeurs : Vrai ou Faux.
+l'heure est donc venue de vous introduire le type
+\og qui va bien \fg{} pour stocker et manipuler les conditions.
+Une condition peut être ou non vérifiée, elle peut donc prendre deux valeurs : \og vrai \fg{} ou \og faux\fg{}.
 En Swift, le type \mintinline{swift}{Bool} correspond à cela. Un \mintinline{swift}{Bool}, du nom du mathématicien anglais du XIX\textsuperscript{e} George Boole,
-inventeur de la logique Booléenne, peut prendre les valeurs \mintinline{swift}{true} (Vrai en anglais) et \mintinline{swift}{false}.
+inventeur de la logique booléenne, peut prendre les valeurs \mintinline{swift}{true} (\og vrai \fg{} en anglais) et \mintinline{swift}{false}.
 \begin{listing}
 \begin{minted}[linenos]{swift}
 // Avec des constantes, rappel d'un chapitre précédent.
 let les_oranges_sont_orange = true
 let les_navets_sont_délicieux = false
 \end{minted}
-\caption{Deux booléens}
+\caption{Deux booléens.}
 \end{listing}
 \section{Un peu de logique}
-Je ne vous ferez pas un cours complet de logique, mais je vais tout de même vous montrer les trois opérateurs de bases,
+Je ne vous ferai pas un cours complet de logique, mais je vais tout de même vous montrer les trois opérateurs de bases,
 du point de vu théorique, avant de vous les montrer en Swift.
-
-(Ça pourra toujours vous servir si vous avez un jour affaire à un vrai matheux, ou si vous en devenez un)
+Ça pourra toujours vous servir si vous avez un jour affaire à un vrai matheux, ou si vous en devenez un.
 
 
 Pour toute la suite $A$ et $B$ désignent des booléens.
@@ -34,10 +33,10 @@ $A$ & $non(A)$ \\ \hline
 Vrai & Faux \\ \hline
 Faux & Vrai \\ \hline
 \end{tabu}
-\caption{La négation}
+\caption{La négation.}
 \end{table}
 \subsection{La conjonction}
-La conjonction que l'on note $A$ $et$ $B$, n'est vraie que si à la fois $A$ \textbf{et} $B$ sont toute les deux vrai.
+La conjonction que l'on note $A$ $et$ $B$, n'est vraie que si \textbf{à la fois} $A$ \textbf{et} $B$ sont vrais.
 \begin{table}[h]
 \centering
 \begin{tabu} spread \linewidth {|l|l|r|}
@@ -51,7 +50,7 @@ Faux & Faux & Faux \\ \hline
 \caption{La conjonction}
 \end{table}
 \subsection{La disjonction}
-La disjonction que l'on note $A$ $ou$ $B$, est vraie si au moins l'un des deux booléens $A$ et $B$ est vrai.
+La disjonction que l'on note $A$ $ou$ $B$, est vraie si \textbf{au moins} l'un des deux booléens $A$ et $B$ est vrai.
 \begin{table}[h]
 \centering
 \begin{tabu} spread \linewidth {|l|l|r|}
@@ -62,7 +61,7 @@ Vrai & Faux & Vrai \\ \hline
 Faux & Vrai & Vrai \\ \hline
 Faux & Faux & Faux \\ \hline
 \end{tabu}
-\caption{La disjonction}
+\caption{La disjonction.}
 \end{table}
 \subsection{Les lois de Morgan}
 Dans cette section, nous allons aborder la négation respective d'une conjonction et d'une disjonction.
@@ -73,11 +72,11 @@ et $non(A$ $ou$ $B) = non(A)$ $et$ $non(B)$.
 \subsection{Distributivité}
 Comme avec certaines opérations mathématiques, il est possible de distribuer et de factoriser des expressions logiques.
 
-La conjonction est \emph{distributive} par rapport à la disjonction :
+La conjonction est \emph{distributive} par rapport à la disjonction.
 
 $A$ $et$ $(B$ $ou$ $C) = (A$ $et$ $B)$ $ou$ $(A$ $et$ $C)$
 
-Et la disjonction est aussi distributive par rapport à la conjonction :
+Et la disjonction est aussi distributive par rapport à la conjonction.
 
 $A$ $ou$ $(B$ $et$ $C) = (A$ $ou$ $B)$ $et$ $(A$ $ou$ $C)$
 
@@ -86,24 +85,24 @@ $A$ $ou$ $(B$ $et$ $C) = (A$ $ou$ $B)$ $et$ $(A$ $ou$ $C)$
 La négation est représentée en Swift par l'opérateur (unaire préfix) \verb"!", qui se place immédiatement avant le booléen dont on veut la négation.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-let le_plat_du_jour_est_dégoutant = true
-// ou false si votre cantine vous gate.
-let je_vais_apprécier_mon_repas = !le_plat_du_jour_est_dégoutant
+let le_plat_du_jour_est_dégoûtant = true
+// Ou false si votre cantine vous gâte.
+let je_vais_apprécier_mon_repas = !le_plat_du_jour_est_dégoûtant
 \end{minted}
-\caption{Négation}
+\caption{Négation.}
 \end{listing}
 \subsection{La conjonction}
 En Swift la conjonction (ET), s'exprime avec l'opérateur (binaire) \verb"&&", qui se place entre les deux booléens dont on souhaite obtenir la conjonction.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-// à l'entré d'un complexe militaire par exemple.
-let peut_rentrer = connait_le_mot_de_passe && a_des_papiers_en_ordre
+// À l'entré d'un complexe militaire par exemple.
+let peut_rentrer = connaît_le_mot_de_passe && a_des_papiers_en_ordre
 \end{minted}
-\caption{Conjonction}
+\caption{Conjonction.}
 \end{listing}
 \subsection{La disjonction}
-En Swift la disjonction (OU), s'exprime avec l'opérateur (binaire) \verb"||" (ce symbole s'obtient en appuyant sur \emph{Alt + Shift + L}), qui se place entre les deux booléens dont on souhaite obtenir la disjonction.
+En Swift la disjonction (OU), s'exprime avec l'opérateur (binaire) \verb"||" (ce symbole s'obtient en appuyant sur \verb"Alt" + \verb"Shift" + \verb"L", ou \verb"AltGr" + \verb"6" si vous avez l'idée saugrenue de faire du Swift sous Windows ou Linux), qui se place entre les deux booléens dont on souhaite obtenir la disjonction.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -112,7 +111,7 @@ En Swift la disjonction (OU), s'exprime avec l'opérateur (binaire) \verb"||" (c
 let peut_ouvrir_un_compte_chez_Picsou_Banque = 
 est_assez_vieux || est_très_riche
 \end{minted}
-\caption{Disjonction}
+\caption{Disjonction.}
 \end{listing}
 
 \subsection{Les priorités}
@@ -120,22 +119,22 @@ La négation est prioritaire par rapport aux opération mathématiques, priorita
 
 \emph{Comme cette dernière priorité n'est pas évidente, je vous recommande de toujours mettre des parenthèses, comme si rien n'était spécifié à propos des priorité entre conjonction et disjonction. C'est aussi ce qu'\emph{Apple} recommande.}
 \section{Les tests}
-<< \emph{C'est bien jolie les booléens, mais comment on en fabrique à partir d'autre chose ?}>>
-Il faut savoir que certains types peuvent se convertir en booléens, mais pas tous, mais il est heureusement possible de tester une condition sur deux objets et obtenir un booléens.
+<< \emph{C'est bien joli les booléens, mais comment on en fabrique à partir d'autre chose ?}>>
+Il faut savoir que certains types peuvent se convertir en booléens, mais pas tous, mais il est heureusement possible de tester une condition sur deux objets et d'obtenir un booléen.
 \subsection{Égalité et inégalité}
 Pour tester si deux objets sont égaux (ont la même valeur),
 on utilise \verb"==". Attention à bien mettre \emph{deux} signes égal, pour distinguer cela de l'affectation d'une valeur à une variable. Pour  en obtenir la négation, l'opérateur \verb"!=" existe aussi. On a bien \mintinline{swift}{(a != b) == !(a == b)}
 
 On peut, entre autre, l'appliquer à des entiers, des nombres à virgule et des chaînes de caractères.
 \subsection{Relation d'ordre}
-Pour un certain nombre d'objet, il y a du sens à les ordonner.
+Pour un certain nombre d'objets, il y a du sens à les ordonner.
 Je vous passe la définition mathématique qui correspond, mais pour les types entiers et les nombres à virgule flottante la définition est bien celle que vous connaissez du primaire.
-Ils sont au nombre de 4 :
+Les opérateurs d'ordre sont au nombre de 4.
 \begin{itemize}
 \item \verb">", strictement supérieur à,
 \item \verb"<", strictement inférieur à,
-\item \verb">=", supérieur ou égal,
-\item \verb"<=", inférieur ou égal,
+\item \verb">=", supérieur ou égal à,
+\item \verb"<=", inférieur ou égal à,
 \end{itemize}
 
 \begin{listing}[h]
@@ -143,13 +142,13 @@ Ils sont au nombre de 4 :
 println("2 > 3 ? \(2 > 3)")
 println("2.5 > 2.4 ? \(2.5 > 2.4)")
 let trois /*: Int */ = 3
-println("2.3 < 3 ? \(2.3 < Double(trois))") // Conversion necessaire.
+println("2.3 < 3 ? \(2.3 < Double(trois))") // Conversion nécessaire.
 println(" (5 * 3) >= 15 \((5 * 3) >= 15)")
 println(" (5 * 3) <= 15 \((5 * 3) <= 15)")
-// Un nombre qui est à la fois plus petit et plus grand qu'un autre lui est égal !
+// Un nombre qui est à la fois plus petit et plus grand qu’un autre lui est égal !
 
 \end{minted}
-\caption{Quelques tests}
+\caption{Quelques tests.}
 \end{listing}%\) Stupid syntactic coloration !
 \subsection{Priorités}
 Tous les tests ont la même priorité
@@ -159,7 +158,7 @@ mais inférieur aux opérateurs mathématiques.
 
 
 
-J'ai laissé quelques tests de coté, moins intéressants pour vous dans l'immédiat, ils seront traités plus tard.
+J'ai laissé quelques tests de côté, moins intéressants pour vous dans l'immédiat : ils seront traités plus tard.
 \section{L'évaluation raccourcie}
 Pour optimiser les programmes, lorsque l'ordinateur peut conclure en ayant évalué que le premier opérande, il n'évalue pas le deuxième. C'est le cas pour \mintinline{swift}{A && B} si \mintinline{swift}{A == false},
 et pour \mintinline{swift}{A || B} si \mintinline{swift}{A == true}.
@@ -167,24 +166,25 @@ Ce comportement est garanti par le langage.
 
 On appelle cela l'évaluation raccourcie ou \emph{short-circuit}
 
+Il est important de tenir compte de ce phénomène lorsque les expressions booléennes évaluées sont complexes, notamment lorsqu'elles contiennent des appels de fonctions. On en parlera lorsque j'évoquerai les effets de bord.
 
 \section*{Conclusion}
 \phantomsection
 \addcontentsline{toc}{section}{Conclusion}
 Dans cette partie vous avez appris :
 \begin{itemize}
-\item ce qu'est un booléen
-\item quelles sont les opérations sur les booléens et leurs propriétés
-\item comment en pratique utiliser ces opération
-\item comment obtenir des booléens
-\item ce qu'est l'évaluation raccourcie (\emph{short-circuit})
+\item ce qu'est un booléen ;
+\item quelles sont les opérations sur les booléens et leurs propriétés ;
+\item comment en pratique utiliser ces opération ;
+\item comment obtenir des booléens ;
+\item ce qu'est l'évaluation raccourcie (\emph{short-circuit}).
 \end{itemize}
 \section*{Exercices}
 \phantomsection
 \addcontentsline{toc}{section}{Exercices}
 Je vous propose d'écrire un bout de code qui, étant donné un nombre,
-détermine s'il est paire ou impaire, stocke le résultat dans un \mintinline{swift}{Bool}, par exemple \mintinline{swift}{estPaire}, et affiche :
+détermine s'il est pair ou impair, stocke le résultat dans un \mintinline{swift}{Bool}, par exemple \mintinline{swift}{estPair}, et affiche :
 \begin{verbatim}
-Le nombre ... est pair : true/false.
-Le nombre ... est impair : true/false.
+Le nombre … est pair : true/false.
+Le nombre … est impair : true/false.
 \end{verbatim}

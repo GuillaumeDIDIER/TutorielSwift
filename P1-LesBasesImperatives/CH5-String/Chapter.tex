@@ -1,9 +1,9 @@
 \chapter{Première approche des chaînes de caractères}
-Dans ce chapitre, un peu moins long que les précédents, nous allons découvrir le type \mintinline{swift}{String}, de terme anglais pour ficelle, et qui n'a (cachez votre déception !) rien à voir avec un maillot de bain.
+Dans ce chapitre, un peu moins long que les précédents, nous allons découvrir le type \mintinline{swift}{String}, du terme anglais pour ficelle, et qui n'a (cachez votre déception !) rien à voir avec un maillot de bain.
 
-Il s'agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l'ordinateur, mais comme Swift utilise l'Unicode (qui permet de coder n'importe quel caractère informatique existant) le détail du fonctionnent des chaines de caractère est extrêmement complexe, et je ne le détaillerai pas ici !
+Il s'agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l'ordinateur, mais comme Swift utilise l'Unicode (qui permet de coder n'importe quel caractère informatique existant) le détail du fonctionnent des chaînes de caractères est extrêmement complexe, et je ne le détaillerai pas ici !
 \section{Playground, dis bonjour au monsieur}
-Pour introduire une chaîne de caractère littérale dans votre code, il suffit d'écrire votre texte entre des guillemets doubles \verb'"', une variable ou constante se déclarant exactement de la même manière :
+Pour introduire une chaîne de caractères littérale dans votre code, il suffit d'écrire votre texte entre des guillemets doubles \verb'"', une variable ou constante se déclarant exactement de la même manière.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let bonjour = "Bonjour tout le monde !"
@@ -21,55 +21,54 @@ Séquence & Signification \\ \hline
 %\caption{Les caractères spéciaux}
 \end{longtabu}
 
-Je vous passe les détails sur l'Unicode. Pour les curieux je vous renvoie à la \TSwiftUrl{https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html\#//apple_ref/doc/uid/TP40014097-CH7-ID285}{documentation Apple}{Chapitre sur les String du Swift Book}
+Je vous passe les détails sur l'Unicode. Pour les curieux je vous renvoie à la \TSwiftUrl{https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html\#//apple_ref/doc/uid/TP40014097-CH7-ID285}{documentation Apple}{Chapitre sur les String du Swift Book}.
 
-Nous rencontrerons par la suite le type \mintinline{swift}{Character}, qui correspond à un élément de chaine, très difficile à distinguer d'une chaîne de caractère de longueur 1, à ceci près qu'on ne peut pas la rallonger.
+Nous rencontrerons par la suite le type \mintinline{swift}{Character}, qui correspond à un élément de chaîne, très difficile à distinguer d'une chaîne de caractères de longueur 1, à ceci près qu'on ne peut pas la rallonger.
 \section{Concaténer deux chaînes}
-Il est possible de créer une chaîne en mettant bout à bout deux (voir plusieurs) chaînes ou carctères, on dit alors que l'on \emph{concatène} ces chaînes. En Swift, l'opérateur \verb"+", que l'on a déja croisé, permet aussi de concaténer deux chaînes de caractères.
+Il est possible de créer une chaîne en mettant bout à bout deux (voir plusieurs) chaînes ou caractères. On dit alors que l'on \emph{concatène} ces chaînes. En Swift, l'opérateur \verb"+", que l'on a déjà croisé, permet aussi de concaténer deux chaînes de caractères.
 
-De même étant donné une variable \mintinline{swift}{String} déja existante, on peut lui concaténer une seconde chaîne en utilisant \verb"+=".
-Ceci ne peux être fait avec une variable de type \mintinline{swift}{Character}.
+De même étant donné une variable \mintinline{swift}{String} déjà existante, on peut lui concaténer une seconde chaîne en utilisant \verb"+=".
+Ceci ne peux être fait avec une variable de type \mintinline{swift}{Character}. Exemple.
 
-Exemple :
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let bonjour = "Bonjour tout le monde !"
 let au_revoir = "J'espère avoir le plaisir de vous revoir"
-var discussion = bonjour + " ... " + au_revoir
+var discussion = bonjour + " … " + au_revoir
 // Notez les espaces dans la chaîne
 // On a oublié le point !
 discussion += "."
 \end{minted}
 \end{listing}
 \section{Insérer la valeur d'une variable dans une chaîne de caractères}
-Il est possible d'insérer la valeur d'une variable dans une chaine de caractère (sous réserve que son type le permette), ce qu'Apple appelle \emph{interpolation} dans une chaîne de caractères, en utilisant la syntaxe suivante :
+Il est possible d'insérer la valeur d'une variable dans une chaine de caractère (sous réserve que son type le permette), ce qu'Apple appelle \emph{interpolation} dans une chaîne de caractères, en utilisant la syntaxe suivante.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 var str = "La variable contient \(nom_de_la_variable)"
 \end{minted}
-\caption{Interpolation dans une chaine de caractères.}
+\caption{Interpolation dans une chaîne de caractères.}
 \end{listing}%\)
 
 En réalité, on peut mettre entre les parenthèses n'importe quelle expression, sous réserve que celle ci ne contienne ni guillemet double, ni antislash, ni retour à la ligne.
 
-Il set aussi possible de convertir une variable en texte en utilisant \mintinline{swift}{String(variable)}.
+Il est aussi possible de convertir une variable en texte en utilisant \mintinline{swift}{String(variable)}.
 
 \section*{Conclusion}
 \phantomsection
 \addcontentsline{toc}{section}{Conclusion}
 Dans cette partie vous avez appris :
 \begin{itemize}
-\item ce qu'est un chaine de caractères
-\item comment créer une chaine à partir de chaines plus petites
-\item comment convertir une variable en chaine de caractère
-\item comment insérer la valeur d'une variable dans une chaine de caractère
+\item ce qu'est un chaîne de caractères ;
+\item comment créer une chaîne à partir de chaînes plus petites ;
+\item comment convertir une variable en chaîne de caractère ;
+\item comment insérer la valeur d'une variable dans une chaîne de caractère.
 \end{itemize}
 \section*{Exercices}
 \phantomsection
 \addcontentsline{toc}{section}{Exercices}
-Je vous propose d'essayer de reprendre les exercices précédent, mais d'afficher à la fin le résultat sous la forme suivante :
+Je vous propose d'essayer de reprendre les exercices du chapitre précédent, mais d'afficher à la fin le résultat sous la forme suivante :
 \begin{verbatim}
-Conversion d'heures :
+Conversion d’heures :
 XXhYYminZZs font XXXXXs.
 XXXXs correspond à XXhYYminZZs.
 \end{verbatim}
