@@ -22,7 +22,8 @@ let pi = 3 + 0.141592
 \caption{Des additions.}
 \end{listing}
 
-Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante, il faut convertir l'un des deux pour que les deux aient le même type. 
+Attention, toutefois, au mélange des types. Pour additionner un entier et un nombre à virgule flottante, il faut convertir l'un des deux pour que les deux aient le même type.
+On utilise la syntaxe suivante : \mintinline{swift}{LeBonType(<var_du_mauvais_type>) + var_du_bon_type}
 \subsection{Soustraction et multiplication}
 De même, les bonnes vieilles soustractions et multiplications fonctionnent, avec les mêmes règles de priorité des opérations, en utilisant respectivement les opérateurs \verb"-" et \verb"*".
 L'opérateur \verb"-" peut aussi âtre utilisé seul devant une variable numérique pour en obtenir l'opposé.
@@ -41,43 +42,94 @@ let moins_cent= -nombre1
 \subsection{Division et modulo}
 La division, vous connaissez, mais vous allez sûrement me demander ce que j'entends par \emph{modulo}.
 
-Il s'agit en fait du nom que les programmeurs donnent au \emph{reste} de la division euclidienne.
-\subsubsection{La division}
+Il s'agit en fait du nom que les programmeurs donnent au \emph{reste} de la division euclidienne, avec quelques nuances.
 
-Commençons par la division.
+Pour deux variable \mintinline{swift}{a} et \mintinline{swift}{b} appropriés, les syntaxes sont les suivantes.
 
-Il est possible de diviser deux entiers pour obtenir un entier, et deux nombres à virgule pour obtenir un nombre à virgule, attention, les trois du même type, à vous de faire des conversions si besoin est : \mintinline{swift}{LeBonType(<var_du_mauvais_type>) + var_du_bon_type}.
+\begin{itemize}
+\item \mintinline{swift}{a/b} est la division de \mintinline{swift}{a} par \mintinline{swift}{b}.
+\item \mintinline{swift}{a%b} est le modulo ou reste de \mintinline{swift}{a} par \mintinline{swift}{b}.
+\end{itemize}
+
+\subsubsection{Division et modulo d'entiers}
+
+\paragraph{Pour des entiers positifs}
+Pour des entiers positifs, la définition des programmeurs coïncide avec celle de la division euclidienne des mathématiciens.
+
+\begin{quote}
+Soit $a$ et $b$ deux entiers.
+
+Il existe un unique couple d'entiers q et r tels que $a = bq + r$ et $0 < r < b$.
+
+Dans ce cas $q$ est appelé le \emph{quotient} et $r$ le \emph{reste}.
+
+\end{quote}
+
+Dans le cas des entiers positifs, \mintinline{swift}{a/b} renvoie exactement le quotient $q$ de la division euclidienne, et \mintinline{swift}{a%b} le reste $r$.
+
+\paragraph{Pour b négatif}
+Dans ce cas, on obtient un quotient $q$ opposé à celui qu'on obtiendrait avec $-b$. Le reste $r$ est inchangé (et donc positif). Il s'agit encore de la définition des mathématiciens.
+
+Plus généralement la définition générale est :
+\begin{quote}
+Soit $a$ et $b$ deux entiers.
+
+Il existe un unique couple d'entiers q et r tels que $a = bq + r$ et $0 < r < |b|$.
+
+Dans ce cas $q$ est appelé le \emph{quotient} et $r$ le \emph{reste}.
+
+($|b|$ désigne la valeur absolue de $b$ (positive, égale à $b$ ou $-b$ selon le signe de $b$.)
+\end{quote}
+
+\paragraph{Pour a négatif}
+Dans ce cas il y a divergence avec la définition des mathématiciens.
+
+Pour le mathématicien, le reste $r$ sera toujours positif.
+
+Pour les développeurs d'Apple, le reste $r$ sera du signe de $a$.
+
+On obtient alors un quotient $q$ différent de 1.
+
+On a avec la définition des informaticiens, $ -a\%b = (-a)\%b$.
+
+\subsubsection{Pour a et b nombres à virgule}
+La division \mintinline{swift}{a/b} fonctionne comme on peut s'y attendre, elle renvoie le nombre à virgule correspondant à la division, ou son arrondi s'il n'est pas représentable exactement comme $\frac{1}{3}$
+
+Dans Swift il existe aussi un modulo (ou reste) pour les nombres à virgule.
+Il s'agit est une extension de la définition modulo crée par Apple.
+
+Dans ce cas on a toujours $a = bq + r$, ou $r$ désigne le modulo \mintinline{swift}{a%b},
+mais avec $a$,$b$ et $r$ flottants, et \textbf{$q$ entier}. $q$ n'est alors plus, en général, égal à \mintinline{swift}{a/b}.
+
+\subsubsection{Schéma récapitulatif}
+Il me manque un illustrateur compétent pour créer des illustration vectorielles (PDF).
+
+\subsubsection{Mélanger les types}
+Si vous souhaitez mélanger les types, sachez que Swift n'acceptera pas le mélange (comment sinon déterminer si vous voulez obtenir un flottant ou un entier).
+
+Vous devez alors convertir la variable du mauvais type  vers le type qui vous intéresse.
+\subsubsection{Exemple de code en pratique}
+
+
+
+
+
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let entier = 49
 let flottant = 5.0
+
 let quotient_entier = entier / Int(flottant)
 // Division d'entiers : 9
 let quotient_flottant = Double(entier) / flottant
 // Division de flottants : 9.8
-\end{minted}
-\caption{Les deux divisions.}
-\end{listing}
 
-\subsubsection{Le modulo}
-
-%TODO : Rewrite entirely !
-
-Le modulo \mintinline{swift}{(a % b)} est défini tel que \mintinline{swift}{a = b * un_entier + (a % b)} ou \verb"un_entier" est le plus grand entier en valeur absolue (en ommetant le signe) tel que \verb"a % b" soit du signe de \verb"a". \verb"a % b", est donc, en valeur absolue (sans le signe), strictement plus petit que \verb"b".
-(en supposant \verb"b", positif, mais s'il est négatif on a le même réultat que s'il était positif)
-
-En Swift, contrairement à la plupart des langage, le modulo n'est pas réservé à deux entiers, il est aussi possible de l'appliquer à deux nombres à virgule.
-
-\begin{listing}[h]
-\begin{minted}[linenos]{swift}
-let entier = 49
-let flottant = 5.0
 let reste_entier = entier % Int(flottant)
 // Division d'entiers : 4
 let reste_flottant = Double(entier) % 2.5
 // Division de flottants : 1.5
 \end{minted}
-\caption{Le modulo, avec des entiers ou des flottants.}
+\caption{Divisions et modulos.}
 \end{listing}
 
 \subsection{Assignations augmentées}
@@ -90,6 +142,17 @@ ils utilisent une notation raccourcie spéciale \mintinline{swift}{a += 1}.
 
 On appelle cela des opérateurs \emph{augmentés}. Ils existent pour les cinq opérateurs que nous avons déjà vus :
 
+\newsavebox\percentboxone
+\begin{lrbox}{\percentboxone}
+\mintinline{swift}{a %= 2}
+\end{lrbox}
+
+\newsavebox\percentboxtwo
+\begin{lrbox}{\percentboxtwo}
+\mintinline{swift}{a = a % 2}
+\end{lrbox}
+
+
 \begin{longtabu} to \linewidth {|X[,l,m]|X[,l,m]|}
 \hline Opérateur augmenté & Opérateur normal \\ \hline
 \endhead
@@ -97,17 +160,21 @@ On appelle cela des opérateurs \emph{augmentés}. Ils existent pour les cinq op
 \mintinline{swift}{a -= 1} & \mintinline{swift}{a = a - 1} \\ \hline
 \mintinline{swift}{a *= 2} & \mintinline{swift}{a = a * 2} \\ \hline
 \mintinline{swift}{a /= 2} & \mintinline{swift}{a = a / 2} \\ \hline
-\mintinline{swift}{a \%= 2} & \mintinline{swift}{a = a \% 2} \\ \hline
+\usebox{\percentboxone} & \usebox{\percentboxtwo} \\ \hline
 \caption{Les différents opérateurs augmentés.}
 \end{longtabu}
 
 \subsection{Incrémenter et décrémenter}
 Comme les programmeurs sont vraiment très fainéants, il existe deux opérateurs pour ajouter et enlever 1 à une variable : \mintinline{swift}{++} et \mintinline{swift}{--}, formes raccourcies respectives de \mintinline{swift}{+=1} et \mintinline{swift}{-=1}. Ils peuvent être placés avant ou après une variable, avec une légère différence en terme de priorité, dont nous parlerons dans le chapitre dédié aux opérateurs avancés.
+
 \subsection{Les priorités}
 Si vous mélangez les différentes opérations, les opérateurs normaux seront exécutés en suivant les priorités mathématiques, c'est-à-dire les multiplications, divisions et restes avant les additions et soustractions ; et les assignations (éventuellement augmentées) en dernier.
 \emph{Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématiques.}
+
+\pagebreak
 \section{Première approche des fonctions}
 Vous vous souvenez de la ligne affichant du texte, au chapitre 2 ? Je vais ici vous l'expliquer un peu plus en détail.
+
 \subsection{Une fonction}
 Pour les matheux, \og Une fonction associe à tout élément d'un ensemble de départ au plus un élément d'un ensemble d'arrivé \fg{}.
 
