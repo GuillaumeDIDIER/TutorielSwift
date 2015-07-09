@@ -91,6 +91,8 @@ else {
 Lorsque vous voyez apparaître de accolades, vous entrez dans un nouveau bloc de code, dans ce bloc, toutes les variables que vous déclarerez ne serons déclarées que dans ce bloc, et ne seront plus accessible une fois que vous en serez sorti. On parle de variable locales. Dans certain cas une variable locale est définie sur la ligne introduisant l'instruction composée.
 
 On peut, par contre, accéder aux variables définies à l'extérieur de ce bloc, dite globales.
+
+Il est possible, mais c'est déconseillé, de masquer une variable existant à l'extérieur du bloque en définissant une variable de même nom dans le bloc. On ne peut alors plus accéder qu'à la définition au sein du bloc.
 \section{Application : une année est elle bissextile ?}
 Après un début de chapitre quelque peu théorique, je vous propose un premier exercice un peu sérieux.
 \subsection{Consignes}
