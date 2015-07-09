@@ -1,18 +1,18 @@
 \chapter{Découvrons Xcode}
 Dans cette partie, nous allons installer et découvrir l'EDI\footnote{\emph{EDI} : Environnement de Développement Intégré} d’Apple,
-puis découvrir notre première ligne de code. % FIXME : chapitre
+puis découvrir notre première ligne de code.
 \section{Installation de Xcode}
-L'installation de cet outil est plutôt facile,
-puisqu’il est disponible gratuitement depuis le \emph{Mac App Store}.
- 
-On peut cependant s'inscrire gratuitement en tant que développeur
-avec son Apple ID sur le
-\TSwiftUrl{http://developer.apple.com/}{site consacré aux développeurs}{Site d'Apple pour les développeurs},
-pour accéder aux diverses ressources, dont la documentation,
-ce que je vous recommande de faire.
-(Attention, les programmes payants ne sont pas nécessaires,
-il servent juste à pouvoir soumettre des applications sur les \emph{App Store},
-et à pouvoir signer son code, pour la distribution via Internet)
+À l'heure ou j'écris ces lignes, Xcode 7 n'est pas encore en version finale disponible sur le Mac App Store.
+
+Je vous conseille tout de même d'installer le version 6 depuis le Mac App Store. (Si il s'avère que la version que vous obtenez est déjà 7, c'est que je oublié de mettre à jour ces instructions)
+
+Je vous expliquerai ensuite comment obtenir la bêta de Xcode 7.
+
+\subsection{Installation dernière version finale depuis le Mac App Store}
+L'installation de Xcode depuis le MAS\footnote{Mac App Store} est plutôt facile et est gratuite (enfin moyennant votre abonnement internet).
+
+Il vous suffit de taper Xcode dans le champ de recherche pour voir apparaitre l'application comme premier résultat (marquée \emph{les indispensables} et \emph{Développeurs}).
+
 Une fois les quelques gigaoctets de l'application téléchargés
 (grosse pause café),
 vous verrez l'application apparaître dans votre dossier application.
@@ -21,6 +21,15 @@ vous verrez l'application apparaître dans votre dossier application.
 \includegraphics[scale=0.25]{\TSwiftRoot/P1-LesBasesImperatives/CH2-DecouvronsXcode/img/Launchpad}
 \caption{L'icône de Xcode dans la pile \og Applications \fg{}}
 \end{figure}
+
+\subsection{Installation de la beta}
+Un lien vers la bêta de Xcode 7 est fourni sur \TSwiftUrl{https://developer.apple.com/swift/resources/}{ce site}{Swift Blog --- Ressources}, qui correspond au blog d'Apple concernant Swift.
+
+A priori Apple devrait vous demander de vous identifier avec une Apple ID de développeur. Si vous ne vous êtes jamais enregistré, sachez que l'enregistrement est gratuit.
+
+\paragraph{Attention}
+Il existe un programme payant, qui donne accès à beaucoup plus de choses (Forum, possibilité de rapporter des bugs, certificats pour signer le code, distribution App Store), mais nous n'en avons pas besoin ici.
+
 
 \section{Premier contact avec Swift : un playground}
 Ouvrez Xcode.
@@ -62,7 +71,7 @@ Remplacez le par le code suivant :
 \begin{minted}[linenos=true]{swift}
 // Playground - noun: a place where people can play
 
-println("Hello, playground")
+print("Hello, playground")
 \end{minted}
 \end{listing}
 
@@ -87,7 +96,7 @@ qui est plutôt court dans ce langage
 Vous pouvez remplacer le texte entre guillemets par le texte que vous voulez,
 par exemple << \verb"Bonjour, <votre prénom> !" >>.
 
-\mintinline{swift}{println} est la fonction
+\mintinline{swift}{print} est la fonction
 qui est chargée d’afficher à l’écran une ligne de texte.
 
 Cette ligne de code correspond à une \emph{instruction}.
@@ -137,9 +146,9 @@ en Swift, les commentaires s'imbriquent les un dans les autres.
 // Ceci est un commentaire s'arrêtant en fin de ligne.
 // Cette sorte de commentaire commence par deux slash (/)
 // Et s'arrête à la fin de la ligne.
-println("Ceci est bien affiché")
+print("Ceci est bien affiché")
 /* Ceci est un commentaire qui s'arrête au symbole de fin */
-println("Ceci est (aussi) bien affiché")
+print("Ceci est (aussi) bien affiché")
 /*
 Il peut s'étendre sur plusieurs lignes,
 il est délimité par un symbole de début, un slash (/) suivi d'une étoile *,
@@ -148,13 +157,13 @@ En swift les commentaires s'imbriquent les un dans les autres.
 // Je suis un commentaire imbriqué sur une ligne*/
 Le symbole de fin est ignoré puisqu'il est dans un commentaire mono-ligne.
 /*Je suis aussi imbriqué*/
-println("Hello, playground")
+print("Hello, playground")
 Mais rien ne se passe ! On est dans un commentaire.
 Fin du commentaire sur plusieurs lignes:*/
 // On peut placer un commentaire après une instruction
-println("Hello, playground !") // Comme ici.
+print("Hello, playground !") // Comme ici.
 // Ou même au milieu, si c'est un commentaire avec un délimiteur de fin.
-println(/*Texte ici*/"Bonjour, bac à sable") // Parce qu'en Français c'est mieux.
+print(/*Texte ici*/"Bonjour, bac à sable") // Parce qu'en Français c'est mieux.
 \end{minted}
 \end{listing}
 Remarquez que Xcode colore les commentaires d'une couleur particulière (chez moi, le vert).
@@ -194,7 +203,7 @@ mais je ne le détaillerai pas ici, libre à vous de l’explorer.
 \begin{verbatim}
 $ swift
 Welcome to Swift!  Type :help for assistance.
-  1> println("Hello, REPL")
+  1> print("Hello, REPL")
 Hello, REPL
   2> :quit
 $
