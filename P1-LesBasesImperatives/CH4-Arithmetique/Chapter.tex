@@ -26,7 +26,7 @@ Attention, toutefois, au mélange des types. Pour additionner un entier et un no
 On utilise la syntaxe suivante : \mintinline{swift}{LeBonType(var_du_mauvais_type) + var_du_bon_type}
 \subsection{Soustraction et multiplication}
 De même, les bonnes vieilles soustractions et multiplications fonctionnent, avec les mêmes règles de priorité des opérations, en utilisant respectivement les opérateurs \verb"-" et \verb"*".
-L'opérateur \verb"-" peut aussi âtre utilisé seul devant une variable numérique pour en obtenir l'opposé.
+L'opérateur \verb"-" peut aussi être utilisé seul devant une variable numérique pour en obtenir l'opposé.
 Exemple.
 \begin{listing}
 \begin{minted}[linenos]{swift}
@@ -168,10 +168,11 @@ On appelle cela des opérateurs \emph{augmentés}. Ils existent pour les cinq op
 Comme les programmeurs sont vraiment très fainéants, il existe deux opérateurs pour ajouter et enlever 1 à une variable : \mintinline{swift}{++} et \mintinline{swift}{--}, formes raccourcies respectives de \mintinline{swift}{+=1} et \mintinline{swift}{-=1}. Ils peuvent être placés avant ou après une variable, avec une légère différence en terme de priorité, dont nous parlerons dans le chapitre dédié aux opérateurs avancés.
 
 \subsection{Les priorités}
-Si vous mélangez les différentes opérations, les opérateurs normaux seront exécutés en suivant les priorités mathématiques, c'est-à-dire les multiplications, divisions et restes avant les additions et soustractions ; et les assignations (éventuellement augmentées) en dernier.
-\emph{Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématiques.}
+Si vous mélangez les différentes opérations, les opérateurs normaux seront exécutés en suivant les priorités mathématiques, c'est-à-dire les multiplications, divisions et (modulo) avant les additions et soustractions ; et les assignations (éventuellement augmentées) en dernier.
+\emph{Pour modifier cette ordre on utilise des parenthèses, comme dans une expression mathématique.}
 
 \pagebreak
+
 \section{Première approche des fonctions}
 Vous vous souvenez de la ligne affichant du texte, au chapitre 2 ? Je vais ici vous l'expliquer un peu plus en détail.
 
@@ -184,7 +185,7 @@ Une fonction sert à réutiliser un bout de code sans avoir à le recopier à ch
 On reviendra sur l'utilité du découpage du code dans un chapitre ultérieur,
 ainsi que sur un usage plus avancé des fonctions.
 
-L'exemple que vous avez déjà vu est la fonction \mintinline{swift}{println}, qui affiche une ligne de texte. Les conversions de type ressemblent aussi à des fonctions.
+L'exemple que vous avez déjà vu est la fonction \mintinline{swift}{println} (on peut aussi utiliser \mintinline{swift}{print}, mais le retour à la ligne ne sera pas inclus de base), qui affiche une ligne de texte. Les conversions de type ressemblent aussi à des fonctions.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -214,7 +215,7 @@ Si vous êtes intéressés par certaines, une simple recherche Google (ou autre)
 \item[ceil, floor, round, trunc]
 : Arrondis respectivement, au nombre entier supérieur, inférieur, le plus proche et vers 0. Prennent un flottant (Double ou Float), et renvoient un nombre du \emph{même type}.
 \item[abs, fabs]
-: cette bonne vieille fonction valeur absolue (Int et Double ou Float), renvoie un nombre positif égal à plus ou moins le paramètre en entrée.
+: cette bonne vieille fonction valeur absolue (Int ou Double ou Float), renvoie un nombre positif égal à plus ou moins le paramètre en entrée.
 \item[sqrt, cbrt]
 : racines carrée et cubique.
 \item[pow]
