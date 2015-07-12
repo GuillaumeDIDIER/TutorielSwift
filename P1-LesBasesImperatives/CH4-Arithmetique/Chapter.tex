@@ -185,13 +185,13 @@ Une fonction sert à réutiliser un bout de code sans avoir à le recopier à ch
 On reviendra sur l'utilité du découpage du code dans un chapitre ultérieur,
 ainsi que sur un usage plus avancé des fonctions.
 
-L'exemple que vous avez déjà vu est la fonction \mintinline{swift}{println} (on peut aussi utiliser \mintinline{swift}{print}, mais le retour à la ligne ne sera pas inclus de base), qui affiche une ligne de texte. Les conversions de type ressemblent aussi à des fonctions.
+L'exemple que vous avez déjà vu est la fonction \mintinline{swift}{print} qui affiche une ligne de texte. Les conversions de type ressemblent aussi à des fonctions, on y reviendra beaucoup plus tard.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let entier = 42
 let flottant = Double(entier)
-println("Bonjour tout le monde")
+print("Bonjour tout le monde")
 \end{minted}
 \caption{Deux appels de fonctions.}
 \end{listing}
@@ -204,7 +204,7 @@ nom_de_la_fonction(<paramètre>[, <paramètre2 …])
 \caption{Forme générale d'un appel de fonction.}
 \end{listing}
 
-Ici les noms correspondants sont \mintinline{swift}{Double} (le nom du type, en effet …) et \mintinline{swift}{println}. La deuxième ne renvoie rien, tandis que la première renvoie un \mintinline{swift}{Double} (comme c'est original …), que l'on récupère ici dans une variable, mais qui aurait pu être utilisé dans une autre expression, comme paramètre d'une autre fonction, ou dans une opération.
+Ici les noms correspondants sont \mintinline{swift}{Double} (le nom du type, en effet …) et \mintinline{swift}{print}. La deuxième ne renvoie rien, tandis que la première renvoie un \mintinline{swift}{Double} (comme c'est original …), que l'on récupère ici dans une variable, mais qui aurait pu être utilisé dans une autre expression, comme paramètre d'une autre fonction, ou dans une opération.
 
 \subsection{Les Fonctions mathématiques}
 
@@ -244,13 +244,48 @@ Dans cette partie vous avez appris :
 \phantomsection
 \addcontentsline{toc}{section}{Exercices}
 \subsection*{Des heures, minutes, secondes vers les secondes}
+\phantomsection
+\addcontentsline{toc}{subsection}{Des heures, minutes, secondes vers les secondes}
 Donnez-vous trois variables contenant des heures des minutes et des secondes
 et faites calculer à votre ordinateur le nombre de secondes que cela fait.
 
 
 \subsection*{Des secondes vers les heures, minutes, secondes}
+\phantomsection
+\addcontentsline{toc}{subsection}{Des secondes vers les heures, minutes, secondes} 
 Essayez d'écrire un code qui à partir d'une durée en seconde la transforme en (jours,) heures, minutes et secondes, soit l'inverse de l'exercice précédent.
 
-%\section*{Correction}
-%\phantomsection
-%\addcontentsline{toc}{section}{Correction}
+\pagebreak % Don't cheat
+
+\section*{Correction}
+\phantomsection
+\addcontentsline{toc}{section}{Correction}
+Je vous propose ici une correction rapide.
+\subsection*{Des heures, minutes, secondes vers les secondes}
+\phantomsection
+\addcontentsline{toc}{subsection}{Des heures, minutes, secondes 
+vers les secondes}
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let hour = 2
+let minutes = 42
+let secondes = 14
+
+let total_seconde = hour * 3600 + minutes * 60 + secondes
+\end{minted}
+\caption{Des heures, minutes, secondes vers les secondes.}
+\end{listing}
+
+\subsection*{Des secondes vers les heures, minutes, secondes}
+\phantomsection
+\addcontentsline{toc}{subsection}{Des secondes vers les heures, minutes, secondes} 
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+let total_secondes = 44566
+
+let hour = total_secondes/3600
+let minutes = (total_secondes % 3600)/60
+let secondes = total_secondes % 60
+\end{minted}
+\caption{Des secondes vers les heures, minutes, secondes}
+\end{listing}
