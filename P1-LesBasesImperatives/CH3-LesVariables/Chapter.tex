@@ -30,12 +30,12 @@ et donc toute variable a une taille définie qui est un multiple de l'octet.
 
 L'ordinateur peut aussi stocker des nombres binaires à virgule,
 comme nos nombres à virgule, avec les limitations de ces derniers.
-%Je ne détaille pas ici toute la représentation, si vous voulez des détails,
-%je vous renvoie à cet excellent \TSwiftUrl{http://openclassrooms.com/courses/fonctionnement-d-un-ordinateur-depuis-zero}{tutoriel}{Fonctionnement d'un ordinateur à partir de zéro --- OpenClassrooms}.
+Je ne détaille pas ici toute la représentation, si vous voulez des détails,
+je vous renvoie à cet excellent \TSwiftUrl{https://zestedesavoir.com/forums/sujet/3083/fonctionnement-des-ordinateurs-de-zero/}{tutoriel, actuellement en bêta}{Fonctionnement d'un ordinateur à partir de zéro --- Zeste de Savoir, actuellement en bêta}.
 
-%Sachez toutefois que
-Par exemple
-0,1 n'est pas codable exactement avec un nombre fini de bit,
+Sachez toutefois que
+par exemple
+$0.1$ n'est pas codable exactement avec un nombre fini de bit,
 tout comme \(\frac{1}{3}\) en numération décimale.
 
 
@@ -125,7 +125,7 @@ mais pas toutes les deux en même temps.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-var <nom de variable> [ : <Type> ] [ = <valeur initiale> ]
+var nom_de_variable> [ : Type ] [ = valeur_initiale ]
 \end{minted}
 \caption{Structure générale d'une déclaration de variable.}
 \end{listing}
@@ -175,6 +175,7 @@ Il est possible de déclarer plusieurs variables en même temps, comme dans cet 
 \mintinline{swift}{extension},
 \mintinline{swift}{func},
 \mintinline{swift}{import},
+\mintinline{swift}{inout}
 \mintinline{swift}{init},
 \mintinline{swift}{internal},
 \mintinline{swift}{let},
@@ -193,31 +194,42 @@ Il est possible de déclarer plusieurs variables en même temps, comme dans cet 
 \mintinline{swift}{case},
 \mintinline{swift}{continue},
 \mintinline{swift}{default},
+\mintinline{swift}{defer}
 \mintinline{swift}{do},
 \mintinline{swift}{else},
 \mintinline{swift}{fallthrough},
 \mintinline{swift}{for},
+\mintinline{swift}{guard},
 \mintinline{swift}{if},
 \mintinline{swift}{in},
+\mintinline{swift}{repeat},
 \mintinline{swift}{return},
 \mintinline{swift}{switch},
 \mintinline{swift}{where} et
 \mintinline{swift}{while}
 
-\item Mots-clés utilisés dans des expressions :
+\item Mots-clés utilisés dans des expressions et types :
 \mintinline{swift}{as},
+\mintinline{swift}{catch},
 \mintinline{swift}{dynamicType},
 \mintinline{swift}{false},
 \mintinline{swift}{is},
 \mintinline{swift}{nil},
+\mintinline{swift}{rethrows},
 \mintinline{swift}{self},
 \mintinline{swift}{Self},
 \mintinline{swift}{super},
+\mintinline{swift}{throw},
+\mintinline{swift}{throws},
 \mintinline{swift}{true},
+\mintinline{swift}{try},
 \mintinline{swift}{__COLUMN__},
 \mintinline{swift}{__FILE__},
 \mintinline{swift}{__FUNCTION__} et
 \mintinline{swift}{__LINE__}
+
+\item Mot clé utilisé dans des \emph{patterns}:
+\mintinline{swift}{_}
 
 \item Mots-clés utilisés dans des contextes particuliers (en dehors de ces contextes, ils ne sont pas considérés comme des mots-clés,
 mais dans le doute je vous recommande de ne pas les utiliser) :
@@ -259,8 +271,8 @@ comme un nombre décimal ne peut pas représenter parfaitement
 \begin{math} \frac{1}{7} \end{math}, par exemple.
 Mais en général cette approximation n'est pas un problème.
 Il y deux principaux types de nombres à virgule, ainsi qu'un troisième,
-moins commun, que je cite par soucis d'exhaustivité :
-\begin{longtabu} to \linewidth {|X[3,l,m]|X[1,l,m]|X[4,r,m]|X[3,r,m]|}
+non documenté, que je cite par soucis d'exhaustivité :
+\begin{longtabu} to \linewidth {|X[3,l,m]|X[2,l,m]|X[4,r,m]|X[3,r,m]|}
 \hline Taille & Type & Plage de valeur (approximative) & Précision \\ \hline
 \endhead
 \input{\TSwiftRoot/Reference/Types/Float}
