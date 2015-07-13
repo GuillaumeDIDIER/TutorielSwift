@@ -1,7 +1,7 @@
 \chapter{Première approche des chaînes de caractères}
 Dans ce chapitre, un peu moins long que les précédents, nous allons découvrir le type \mintinline{swift}{String}, du terme anglais pour ficelle, et qui n'a (cachez votre déception !) rien à voir avec un maillot de bain.
 
-Il s'agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l'ordinateur, mais comme Swift utilise l'Unicode (qui permet de coder n'importe quel caractère informatique existant) le détail du fonctionnent des chaînes de caractères est extrêmement complexe, et je ne le détaillerai pas ici !\footnote{Surtout que je n'en connais pas tous les détails sordides qu'Apple ne s'est pas amusé à exposer dans la documentation}
+Il s’agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l’ordinateur, mais comme Swift utilise l’Unicode (qui permet de coder n’importe quel caractère informatique existant) le détail du fonctionnent des chaînes de caractères est extrêmement complexe, et je ne le détaillerai pas ici !\footnote{Surtout que je n'en connais pas tous les détails sordides qu'Apple ne s'est pas amusé à exposer dans la documentation.}
 \section{Playground, dis bonjour au monsieur}
 Pour introduire une chaîne de caractères littérale dans votre code, il suffit d'écrire votre texte entre des guillemets doubles \verb'"', une variable ou constante se déclarant exactement de la même manière.
 \begin{listing}[h]
@@ -11,7 +11,7 @@ let au_revoir = "J'espère avoir le plaisir de vous revoir"
 \end{minted}
 \end{listing}
 
-Pour insérer certains caractères spéciaux, interprétés par Swift de façon spécifique, par exemple, comme fin de chaîne il est nécessaire d'utiliser le caractère \verb"\".
+Pour insérer certains caractères spéciaux, interprétés par Swift de façon spécifique, par exemple, comme fin de chaîne il est nécessaire d'utiliser le caractère \verb"\", appelé \emph{caractère d'échappement}.
 % Tableau récap.
 \begin{longtabu} to \linewidth {|X[1,l,m]|X[4,l,m]|}
 \hline
@@ -38,7 +38,7 @@ let au_revoir = "J'espère avoir le plaisir de vous revoir"
 var discussion = bonjour + " … " + au_revoir
 // Notez les espaces dans la chaîne
 // On a oublié le point !
-discussion += "." // "." est bien une chaine de carctères
+discussion += "." // "." est bien une chaîne de caractères.
 \end{minted}
 \end{listing}
 \section{Insérer la valeur d'une variable dans une chaîne de caractères}

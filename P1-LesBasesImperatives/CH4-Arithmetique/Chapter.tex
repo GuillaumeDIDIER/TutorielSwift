@@ -113,6 +113,8 @@ Pour les matheux, \og Une fonction associe à tout élément d'un ensemble de d�
 
 Pour le programmeur, une fonction, c'est donc une sorte de \emph{boite noire}, à laquelle on donne à manger des paramètres, \emph{de types bien définis}, et qui renvoie une valeur (ou rien du tout).
 
+Pour les puristes, une fonction retourne quelque chose à la fin de son exécution (en Swift à l'aide du mot-clé \mintinline{swift}{return} par exemple) sinon cela s'appelle une procédure.
+
 Une fonction sert à réutiliser un bout de code sans avoir à le recopier à chaque fois, et permet de ne pas avoir à savoir comment cela fonctionne.
 On reviendra sur l'utilité du découpage du code dans un chapitre ultérieur,
 ainsi que sur un usage plus avancé des fonctions.
@@ -192,18 +194,18 @@ Essayez d'écrire un code qui à partir d'une durée en seconde la transforme en
 \section*{Correction}
 \phantomsection
 \addcontentsline{toc}{section}{Correction}
-Je vous propose ici une correction rapide.
+Je vous propose ici une correction rapide. Ne la regardez pas avant d'avoir essayé au moins une fois, ce serait ralentir votre apprentissage.
 \subsection*{Des heures, minutes, secondes vers les secondes}
 \phantomsection
 \addcontentsline{toc}{subsection}{Des heures, minutes, secondes 
 vers les secondes}
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-let hour = 2
+let heures = 2
 let minutes = 42
 let secondes = 14
 
-let total_seconde = hour * 3600 + minutes * 60 + secondes
+let total_seconde = heures * 3600 + minutes * 60 + secondes
 \end{minted}
 \caption{Des heures, minutes, secondes vers les secondes.}
 \end{listing}
@@ -215,7 +217,7 @@ let total_seconde = hour * 3600 + minutes * 60 + secondes
 \begin{minted}[linenos]{swift}
 let total_secondes = 44566
 
-let hour = total_secondes/3600
+let heures = total_secondes/3600
 let minutes = (total_secondes % 3600)/60
 let secondes = total_secondes % 60
 \end{minted}
