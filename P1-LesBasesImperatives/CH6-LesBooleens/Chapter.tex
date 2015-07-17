@@ -69,6 +69,20 @@ Dans cette section, nous allons aborder la négation respective d'une conjonctio
 On a $non(A$ $et$ $B) = non(A)$ $ou$ $non(B)$,
 et $non(A$ $ou$ $B) = non(A)$ $et$ $non(B)$.
 
+\begin{table}[h]
+\centering
+\begin{tabu} spread \linewidth {|l|l|r|r|}
+\hline
+$A$ & $B$ & $A$ $ou$ $B$ & $non(A$ $ou$ $B)$ & $non(A)$ & $non(B)$ & $non(A)$ $et$ $non(B)$\\ \hline
+Vrai & Vrai & Vrai & \textbf{Faux} & Faux & Faux & \textbf{Faux} \\ \hline
+Vrai & Faux & Vrai & \textbf{Faux} & Faux & Vrai & \textbf{Faux} \\ \hline
+Faux & Vrai & Vrai & \textbf{Faux} & Vrai & Faux & \textbf{Faux} \\ \hline
+Faux & Faux & Faux & \textbf{Vrai} & Vrai & Vrai & \textbf{Vrai} \\ \hline
+\end{tabu}
+\caption{Démonstartion d'une des lois de Morgan.}
+\end{table}
+
+
 \subsection{Distributivité}
 Comme avec certaines opérations mathématiques, il est possible de distribuer et de factoriser des expressions logiques.
 

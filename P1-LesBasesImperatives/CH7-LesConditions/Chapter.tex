@@ -14,7 +14,7 @@ Grâce au chapitre précédent, vous pouvez me trouver le condition correspondan
 \pagebreak % No cheating
 \mintinline{swift}{b == 0}, comme vous avez tous trouvé (sans tricher).
 
-Pour exécuter \mintinline{swift}{println("b est nul ! Division impossible.")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}, \og si \fg{}.
+Pour exécuter \mintinline{swift}{print("b est nul ! Division impossible.")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}, \og si \fg{}.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -25,7 +25,7 @@ let b = 0
 if b == 0 /*Condition*/ { // Condition non nécessairement entre parenthèses
     // Code à exécuter si la conditions est vérifié.
     // Éventuellement plusieurs instructions.
-    println("b est nul ! Division impossible.")
+    print("b est nul ! Division impossible.")
 } // Les accolades ouvrantes et fermantes pourraient respectivement
   // être mise une ligne après le if,
   // ou sur la même ligne que la dernière instruction.
@@ -53,9 +53,9 @@ let b = 0
 if b == 0 {
     // Code à exécuter si la conditions est vérifié
     // Éventuellement plusieurs instructions.
-    println("b est nul ! Division impossible")
+    print("b est nul ! Division impossible")
 } else {
-    println("a/b = \( a/b )")
+    print("a/b = \( a/b )")
     // Code exécuté dans le cas contraire.
 }
 // Code exécuté dans tout les cas.
@@ -145,15 +145,15 @@ let année = 2015
 if année % 4 == 0 {
     if année % 100 == 0 {
         if année % 400 == 0 {
-            println("Bissextile")
+            print("Bissextile")
         } else {
-            println("Pas bissextile")
+            print("Pas bissextile")
         }
     } else {
-        println("Bissextile")
+        print("Bissextile")
     }
 } else {
-    println("Pas bissextile")
+    print("Pas bissextile")
 }
 \end{minted}
 \caption{Méthode bourrin.}
@@ -165,11 +165,11 @@ même si c'est la plus évidente pour le débutant.
 \begin{minted}[linenos]{swift}
 let année = 2000 // Attention BUG ! ;)
 if année % 400 == 0 {
-    println("Bissextile")
+    print("Bissextile")
 } else if année % 100 == 0 {
-    println("Pas bissextile")
+    print("Pas bissextile")
 } else if année % 4 == 0 {
-    println("Bissextile")
+    print("Bissextile")
 } else {
     pintln("Pas bissextile")
 }
@@ -182,13 +182,13 @@ C'est un peu moins brouillon, mais (comme précédemment), on duplique les ligne
 \begin{minted}[linenos]{swift}
 let année = 1995
 if année % 4 != O {
-    println("Pas bissextile")
+    print("Pas bissextile")
 } else if année % 100 != 0 {
-    println("Bissextile")
+    print("Bissextile")
 } else if année % 400 != 0 {
-    println("Pas bissextile")
+    print("Pas bissextile")
 } else {
-    println("Bissextile")
+    print("Bissextile")
 }
 \end{minted}
 \caption{Méthode élégante optimisée.}
@@ -199,9 +199,9 @@ Voilà qui est plus optimisé, mais il reste à résoudre la duplication de code
 \begin{minted}[linenos]{swift}
 let année = 2042 // Attention, Geek !
 if année % 4 != 0 || (année % 100 == 0 && année % 400 != 0) {
-    println("Pas Bissextile")
+    print("Pas Bissextile")
 } else {
-    println("Bissextile")
+    print("Bissextile")
 }
 \end{minted}
 \caption{Méthode experte !}
@@ -223,7 +223,7 @@ Essayez de refaire cela:
 Il existe une deuxième syntaxe permettant de créer des branchements :
 \mintinline{swift}{switch … case}.
 Il s'agit de choisir un bloc à exécuter selon la valeur d'une variable.
-\paragraph{Attention :}Cette Syntaxe diffère de celle du C de façon importante.
+\paragraph{Attention :}Cette syntaxe diffère de celle du C de façon importante.
 
 
 En effet en Swift, il faut que tous les cas soient traités.
