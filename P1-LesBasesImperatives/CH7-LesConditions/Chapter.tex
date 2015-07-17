@@ -14,7 +14,7 @@ Grâce au chapitre précédent, vous pouvez me trouver le condition correspondan
 \pagebreak % No cheating
 \mintinline{swift}{b == 0}, comme vous avez tous trouvé (sans tricher).
 
-Pour exécuter \mintinline{swift}{println("b est nul ! Division impossible.")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}.
+Pour exécuter \mintinline{swift}{println("b est nul ! Division impossible.")}, nous allons utiliser notre première instruction composée : \mintinline{swift}{if}, \og si \fg{}.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
@@ -40,13 +40,13 @@ dans un langage utilisant la syntaxe du C.}
 et sont en général omises dans la doc d'Apple.
 \item Les accolades ne peuvent par contre pas être omises,
 même s'il n'y a qu'une instruction à exécuter
-\footnote{Apple à retenu la leçon, cherchez \og goto fail \fg{} dans Google.}.
+\footnote{Apple a retenu la leçon, cherchez \og goto fail \fg{} dans Google.}.
 \end{itemize}
 \subsection{Et dans le cas contraire ?}
 Évidement, maintenant que l'on a testé la valeur de $b$, il faut n'exécuter la division que si $b$ est non nul.
 La solution que vous pourriez envisager est de faire ensuite
 \mintinline{swift}{if b != 0},
-mais il existe une solution plus claire : \mintinline{swift}{else}.
+mais il existe une solution plus claire : \mintinline{swift}{else}, \og sinon \fg{}.
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
 let b = 0
@@ -65,17 +65,17 @@ if b == 0 {
 
 Il est bien sûr possible d'imbriquer des \mintinline{swift}{if} à l'intérieur des accolades.
 \subsection{Else if, exécuter des tests plus complexes}
-Il est enfin possible de traiter des cas plus complexe avec \mintinline{swift}{else if}, << sinon si >>.
+Il est enfin possible de traiter des cas plus complexe avec \mintinline{swift}{else if}, \og sinon si \fg{}.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-if condition1 {
+if condition_1 {
     // Code à exécuter si 1 est vrai.
 }
-else if condition 2
+else if condition_2
 {
     // Code à exécuter si 1 n'est pas vrai et que 2 est vrai.
-} else if condition 3 {
+} else if condition_3 {
     // Code à exécuter si 1 et 2 sont faux et 3 vrai .
 }
 /* … Avec autant de condition que nécessaires */
@@ -92,7 +92,24 @@ Lorsque vous voyez apparaître de accolades, vous entrez dans un nouveau bloc de
 
 On peut, par contre, accéder aux variables définies à l'extérieur de ce bloc, dite globales.
 
-Il est possible, mais c'est déconseillé, de masquer une variable existant à l'extérieur du bloque en définissant une variable de même nom dans le bloc. On ne peut alors plus accéder qu'à la définition au sein du bloc.
+\begin{listing}[h]
+\begin{minted}[linenos]{swift}
+var a = 1 // On déclare a en tant que variable globale.
+	
+if a == 1 { // Une condition simple qui débute un nouveau bloc.
+    print("a vaut \(a)") // On affiche la valeur actuelle de a.
+    a = 2 // On affecte une nouvelle valeur à a.
+    var b = 3 // On déclare une nouvelle variable b, locale cette fois-ci.
+    print("a vaut \(a) et b vaut \(b)") // On affiche a et b.
+} // Fin du bloc, b vient d'être détruit
+
+print("a vaut \(a) et b vaut \(b)") // Erreur ! b n'est pas accessible !
+                                      // Xcode affiche l'erreur :
+                                      // 'Use of unresolved identifier b'.
+\end{minted}%\)
+\caption{Exemple concernant la visibilité des variables}
+\end{listing}
+
 \section{Application : une année est elle bissextile ?}
 Après un début de chapitre quelque peu théorique, je vous propose un premier exercice un peu sérieux.
 \subsection{Consignes}
@@ -101,7 +118,7 @@ Je vous demande d'écrire un code qui déclare une constante contenant une anné
 puis détermine si cette année est bissextile,
 en affichant sur la sortie standard l'information.
 
-Je rappelle à toute fin utiles qu'une année sur quatre est bissextile,
+Je rappelle à toutes fin utiles qu'une année sur quatre est bissextile,
 sauf pour les années qui sont un multiple de 100, qui ne sont pas bissextile,
 sauf (encore une exception !) lorsque qu'elles sont multiples de 400.
 \subsection{Indications}
@@ -192,7 +209,7 @@ if année % 4 != 0 || (année % 100 == 0 && année % 400 != 0) {
 
 Je vous conseille de ne pas attaquer le chapitre suivant
 si vous ne comprenez pas ces quatre corrections,
-et sans avoir essayé les petits exercices faciles qui suivent.
+et sans avoir essayé les petits exercices faciles qui suivent. Pour mieux comprendre le code, vous pouvez effectuer son cheminement dans votre tête, étape par étape, c’est très instructif ! (Et facile à faire sur un code court, moins sur 200 lignes.)
 \subsection{Variantes}
 Essayez de refaire cela:
 \begin{itemize}

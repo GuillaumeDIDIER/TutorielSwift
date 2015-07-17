@@ -50,7 +50,7 @@ Faux & Faux & Faux \\ \hline
 \caption{La conjonction}
 \end{table}
 \subsection{La disjonction}
-La disjonction que l'on note $A$ $ou$ $B$, est vraie si \textbf{au moins} l'un des deux booléens $A$ et $B$ est vrai.
+La disjonction que l'on note $A$ $ou$ $B$, est vraie si \textbf{au moins} l'un des deux booléens $A$ \textbf{ou} $B$ est vrai.
 \begin{table}[h]
 \centering
 \begin{tabu} spread \linewidth {|l|l|r|}
@@ -139,12 +139,12 @@ Les opérateurs d'ordre sont au nombre de 4.
 
 \begin{listing}[h]
 \begin{minted}[linenos]{swift}
-println("2 > 3 ? \(2 > 3)")
-println("2.5 > 2.4 ? \(2.5 > 2.4)")
+print("2 > 3 ? \(2 > 3)")
+print("2.5 > 2.4 ? \(2.5 > 2.4)")
 let trois /*: Int */ = 3
-println("2.3 < 3 ? \(2.3 < Double(trois))") // Conversion nécessaire.
-println(" (5 * 3) >= 15 \((5 * 3) >= 15)")
-println(" (5 * 3) <= 15 \((5 * 3) <= 15)")
+print("2.3 < 3 ? \(2.3 < Double(trois))") // Conversion nécessaire.
+print(" (5 * 3) >= 15 \((5 * 3) >= 15)")
+print(" (5 * 3) <= 15 \((5 * 3) <= 15)")
 // Un nombre qui est à la fois plus petit et plus grand qu’un autre lui est égal !
 
 \end{minted}
@@ -188,3 +188,7 @@ détermine s'il est pair ou impair, stocke le résultat dans un \mintinline{swif
 Le nombre … est pair : true/false.
 Le nombre … est impair : true/false.
 \end{verbatim}
+
+%À dé-commenter si besoin, ou si l’on veut être gentil
+%\pagebreak
+%Un peu d’aide : on peut déterminer si un nombre est pair ou impair grâce au reste de sa division par deux.
