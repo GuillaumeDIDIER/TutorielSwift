@@ -1,7 +1,7 @@
 \chapter{Première approche des chaînes de caractères}
 Dans ce chapitre, un peu moins long que les précédents, nous allons découvrir le type \mintinline{swift}{String}, du terme anglais pour ficelle, et qui n'a (cachez votre déception !) rien à voir avec un maillot de bain.
 
-Il s’agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l’ordinateur, mais comme Swift utilise l’Unicode (qui permet de coder n’importe quel caractère informatique existant) le détail du fonctionnent des chaînes de caractères est extrêmement complexe, et je ne le détaillerai pas ici !\footnote{Surtout que je n'en connais pas tous les détails sordides qu'Apple ne s'est pas amusé à exposer dans la documentation.}
+Il s’agit du type permettant de stocker de chaînes de caractères. Pour information, chaque caractère correspond à un nombre dans la mémoire de l’ordinateur, mais comme Swift utilise l’Unicode (qui permet de coder n’importe quel caractère informatique existant). Le détail du fonctionnent des chaînes de caractères est extrêmement complexe, et je ne le détaillerai pas ici !\footnote{Surtout que je n'en connais pas tous les détails sordides qu'Apple ne s'est pas amusée à exposer dans la documentation.}
 \section{Playground, dis bonjour au monsieur}
 Pour introduire une chaîne de caractères littérale dans votre code, il suffit d'écrire votre texte entre des guillemets doubles \verb'"', une variable ou constante se déclarant exactement de la même manière.
 \begin{listing}[h]
@@ -20,6 +20,9 @@ Séquence & Signification \\ \hline
 \input{\TSwiftRoot/Reference/Character/SpecialCharacter}
 %\caption{Les caractères spéciaux}
 \end{longtabu}
+
+\paragraph{Information}
+Dans de nombreux langages, il est possible de créer une chaîne de caractère avec le guillemet simple \verb"'", il est donc parfois nécessaire de l’échapper. Ce n’est pas le cas en Swift.
 
 Je vous passe les détails sur l'Unicode. Pour les curieux je vous renvoie à la \TSwiftUrl{https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html\#//apple_ref/doc/uid/TP40014097-CH7-ID285}{documentation Apple}{Chapitre sur les String du Swift Book}.
 
